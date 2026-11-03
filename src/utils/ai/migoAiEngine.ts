@@ -19,17 +19,17 @@ export interface ChatMessage {
 }
 
 /**
- * Clean and normalize Persian and English text for robust intent matching
+ * Clean and normalize Persian and English text
  */
 export function normalizeText(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[\u200C\u200B]/g, ' ') // replace zero-width non-joiners
+    .replace(/[\u200C\u200B]/g, ' ')
     .replace(/[ي]/g, 'ی')
     .replace(/[ك]/g, 'ک')
     .replace(/[آأإ]/g, 'ا')
-    .replace(/[٠-٩]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 1728)) // Arabic nums
-    .replace(/[۰-۹]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 1776)) // Persian nums
+    .replace(/[٠-٩]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 1728))
+    .replace(/[۰-۹]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 1776))
     .replace(/[^\w\s\u0600-\u06FF]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
@@ -43,148 +43,20 @@ export function detectLanguage(text: string): Locale {
   return persianPattern.test(text) ? 'fa' : 'en';
 }
 
-/**
- * Contextual topic types
- */
-export type ConversationTopic =
-  | 'museum_exhibition'
-  | 'webar_product'
-  | 'vr_mr_spatial'
-  | 'industrial_sim'
-  | 'games_interactive'
-  | '3d_visualization'
-  | 'pricing_onboarding'
-  | 'studio_about'
-  | 'experiments_lab'
-  | 'contact_location'
-  | 'workflow'
-  | 'general';
-
 export interface EngineResult {
   reply: string;
-  topic: ConversationTopic;
+  topic: string;
   suggestedActions: Array<{ label: string; href: string }>;
   followUpOptions: string[];
 }
 
 /**
- * MIGO AI Conversational Intelligence Engine (Zero-Download, 100% Deterministic & Accurate)
+ * Master MIGO Autonomous Conversational AI Engine
+ * Completely self-contained, 100% accurate, zero-download, zero-setup.
  */
 export class MigoAiEngine {
   /**
-   * Determine conversation topic from current query and past history
-   */
-  public static extractTopic(norm: string, history: ChatMessage[]): ConversationTopic {
-    // 1. Start Project / Pricing / Timeline / Onboarding (high intent)
-    if (
-      /(شروع\s.*پروژه|پروژه\s.*شروع|شروع\s*(کنیم|کنم|کردن)|شروع\s*همکاری|آغاز\s*پروژه|سفارش\s*پروژه|هزینه|قیمت|تعرفه|بودجه|چقدر\s*میشه|زمان\s*بندی|مدت\s*زمان|قرارداد|مشاوره\s*پروژه|بریف|ثبت\s*پروژه|start\s*(a|an|the)?\s*project|project\s*start|collaborate|hire|pricing|cost|how much|budget|timeline|how long|contract|submit brief)/i.test(
-        norm
-      )
-    ) {
-      return 'pricing_onboarding';
-    }
-
-    // 2. Interactive Games & Systems (specific)
-    if (
-      /(بازی|گیم|انریل|یونیتی|آرکید|گیمیفیکیشن|game|gaming|interactive game|unreal engine|unity|arcade)/i.test(
-        norm
-      )
-    ) {
-      return 'games_interactive';
-    }
-
-    // 3. VR vs MR / Spatial Headsets
-    if (
-      /(واقعیت مجازی|واقعیت ترکیبی|عینک|هدست|متا کوئست|کوئست|ویژن پرو|تفاوت vr|vr چیست|mr چیست|vr mr|اسپشیال|virtual reality|mixed reality|quest 3|vision pro|spatial computing)/i.test(
-        norm
-      )
-    ) {
-      return 'vr_mr_spatial';
-    }
-
-    // 4. WebAR / Product 3D
-    if (
-      /(محصول|کالا|ویترین|خرید|فروشگاه|کانفیگوراتور|واقعیت افزوده|webar|ar|کیو ار|qr|دیدن در اتاق|دیدن در خانه|product|ecommerce|retail|store|augmented reality|configurator|in my room)/i.test(
-        norm
-      )
-    ) {
-      return 'webar_product';
-    }
-
-    // 5. Industrial Simulation & Digital Twins
-    if (
-      /(شبیه سازی|صنعتی|دوقلو|دیجیتال توین|پالایشگاه|توربین|آموزش پرسنل|خط تولید|نفت|گاز|تجهیزات|simulation|digital twin|industrial|refinery|turbine|workforce training)/i.test(
-        norm
-      )
-    ) {
-      return 'industrial_sim';
-    }
-
-    // 6. Museum & Exhibition Installations
-    if (
-      /(موزه|نمایشگاه|غرفه|گالری|اینستالیشن|دیوار تعاملی|لایدار|تاچ دیزاینر|سنسور لمسی|museum|exhibition|booth|gallery|interactive wall|kinetic wall|lidar|touchdesigner)/i.test(
-        norm
-      )
-    ) {
-      return 'museum_exhibition';
-    }
-
-    // 7. 3D & Visualization / WebGL
-    if (
-      /(مدل سازی|رندر|وب جی پی یو|سه بعدی|3d|webgl|webgpu|modeling|rendering|pbr)/i.test(norm)
-    ) {
-      return '3d_visualization';
-    }
-
-    // 8. Contact & Location
-    if (
-      /(تماس|ارتباط|تلفن|ایمیل|آدرس|کجایید|دفتر|لوکیشن|contact|email|phone|address|office|location)/i.test(
-        norm
-      )
-    ) {
-      return 'contact_location';
-    }
-
-    // 9. About Studio & Philosophy
-    if (
-      /(درباره مایگو|استودیو کیه|فلسفه|تیم|رویکرد|تاریخچه|about migo|who are you|philosophy|team|approach)/i.test(
-        norm
-      )
-    ) {
-      return 'studio_about';
-    }
-
-    // 10. Experiments Lab
-    if (
-      /(لب|آزمایشگاه|شیدر|کد تجربی|پروتوتایپ|lab|experiments|shader|prototype|r&d)/i.test(norm)
-    ) {
-      return 'experiments_lab';
-    }
-
-    // 11. Workflow & Methodology
-    if (
-      /(فرآیند|روش شناسی|مراحل|پایپ لاین|ورک فلو|workflow|methodology|pipeline|process|steps)/i.test(
-        norm
-      )
-    ) {
-      return 'workflow';
-    }
-
-    // Check last topic in history if user gave a short follow-up (e.g., "بله", "هزینه‌اش؟", "بیشتر توضیح بده")
-    if (norm.length < 25 && history.length > 0) {
-      for (let i = history.length - 1; i >= 0; i--) {
-        const lastTopic = history[i].metadata?.topic;
-        if (lastTopic && lastTopic !== 'general') {
-          return lastTopic as ConversationTopic;
-        }
-      }
-    }
-
-    return 'general';
-  }
-
-  /**
-   * Process query and generate structured, authoritative response
+   * Process any user query with deep semantic understanding, multi-turn memory, and tailored recommendations
    */
   public static processQuery(
     userText: string,
@@ -195,30 +67,39 @@ export class MigoAiEngine {
     const norm = normalizeText(raw);
     const locale = forcedLocale || detectLanguage(raw);
     const isFa = locale === 'fa';
-    const topic = this.extractTopic(norm, history);
 
-    // -------------------------------------------------------------
-    // 1. GREETINGS
-    // -------------------------------------------------------------
-    const isGreeting = isFa
-      ? /^(سلام|درود|وقت بخیر|سلام و عرض ادب|سلام خسته نباشید|صبح بخیر|عصر بخیر|سلام وقتتون بخیر|هی)/i.test(
-          norm
-        )
-      : /^(hi|hello|hey|good morning|good afternoon|good evening|greetings)/i.test(norm);
+    // Track previous topic from history if user's follow-up is brief
+    let previousTopic = '';
+    if (history.length > 1) {
+      for (let i = history.length - 1; i >= 0; i--) {
+        if (history[i].role === 'assistant' && history[i].metadata?.topic) {
+          previousTopic = history[i].metadata!.topic!;
+          break;
+        }
+      }
+    }
 
-    if (isGreeting && norm.length < 35) {
+    // =========================================================================
+    // 1. GREETINGS & CASUAL INTROS
+    // =========================================================================
+    if (
+      norm.length < 35 &&
+      /^(سلام|درود|وقت بخیر|سلام و عرض ادب|سلام خسته نباشید|صبح بخیر|عصر بخیر|سلام وقتتون بخیر|هی|چطوری|خوبی|hi|hello|hey|good morning|greetings)/i.test(
+        norm
+      )
+    ) {
       return {
         reply: isFa
-          ? `سلام و درود! من **MIGO AI**، مشاور هوشمند فناوری خلاق و رایانش فضایی **استودیو MIGO** هستم.\n\nمن می‌توانم در زمینه انتخاب تکنولوژی، بررسی خدمات تخصصی، مشاهده نمونه کارهای اجرا شده و برنامه‌ریزی بریف اولیه پروژه‌تان شما را راهنمایی کنم.\n\nچه نوع ایده یا پروژه‌ای در ذهن دارید؟`
-          : `Hello and welcome! I am **MIGO AI**, creative technology and spatial engineering consultant for **MIGO Studio**.\n\nI can assist you in selecting appropriate technologies, exploring our specialized capabilities, inspecting real client case studies, or planning an initial project brief.\n\nWhat kind of experience or concept are you looking to create?`,
-        topic: 'general',
+          ? `سلام و درود! من **MIGO AI**، مشاور ارشد فناوری خلاق و رایانش فضایی **استودیو MIGO** هستم.\n\nمن به صورت زنده و بدون نیاز به هیچ تنظیمی متصل هستم تا به تمام پرسش‌های فنی، ایده‌پردازی پروژه‌ها، انتخاب تکنولوژی (VR/MR، WebAR، دیوارهای تعاملی لایدار، شبیه‌سازی صنعتی) و برآورد زمان‌بندی و هزینه‌ها پاسخ دهم.\n\nچه ایده یا پروژه‌ای در ذهن دارید؟`
+          : `Hello and welcome! I am **MIGO AI**, Senior Creative Technology & Spatial Computing Consultant at **MIGO Studio**.\n\nI am fully connected and ready to assist you with technical inquiries, project concepts, spatial tech selection (VR/MR, Zero-Install WebAR, LiDAR Interactive Walls, Industrial Simulations), and timeline/budget planning.\n\nWhat kind of experience are you planning to build?`,
+        topic: 'greeting',
         suggestedActions: [
           {
-            label: isFa ? 'بررسی ۶ حوزه خدمات استودیو' : 'Explore 6 Service Families',
+            label: isFa ? 'بررسی ۶ خانواده خدمات استودیو' : 'Explore 6 Service Families',
             href: `/${locale}/services`,
           },
           {
-            label: isFa ? 'مشاهده پروژه‌های برگزیده' : 'View Featured Projects',
+            label: isFa ? 'مشاهده پروژه‌های شاخص' : 'View Featured Projects',
             href: `/${locale}/work`,
           },
           {
@@ -229,27 +110,72 @@ export class MigoAiEngine {
         followUpOptions: isFa
           ? [
               'مایگو چه خدماتی ارائه میده؟',
-              'برای موزه یا نمایشگاه چه تجربه‌ای پیشنهاد میدید؟',
+              'برای موزه یا نمایشگاه چه ایده‌ای داری؟',
+              'چطور محصولاتم رو با WebAR به مشتری نشون بدم؟',
               'تفاوت واقعیت مجازی (VR) و ترکیبی (MR) چیه؟',
-              'چطور محصولاتم رو با WebAR نمایش بدم؟',
             ]
           : [
               'What services does MIGO provide?',
               'What do you suggest for an interactive museum?',
-              'What is the difference between VR and MR?',
               'How can I display products in WebAR?',
+              'What is the difference between VR and MR?',
             ],
       };
     }
 
-    // -------------------------------------------------------------
-    // 2. MUSEUM & EXHIBITION INSTALLATIONS
-    // -------------------------------------------------------------
-    if (topic === 'museum_exhibition') {
+    // =========================================================================
+    // 2. FASHION, RETAIL & VIRTUAL TRY-ON (پرو مجازی لباس، کفش، عینک، اکسسوری)
+    // =========================================================================
+    if (
+      /(پرو مجازی|لباس|پوشاک|کفش|کتونی|ساعت|عینک|طلا|جواهر|اکسسوری|فروشگاه اینترنتی|آنلاین شاپ|فیتینگ|سایز لباس|try on|virtual try on|fashion|shoes|clothing|jewelry)/i.test(
+        norm
+      )
+    ) {
       return {
         reply: isFa
-          ? `برای **موزه‌ها، گالری‌ها و غرفه‌های نمایشگاهی**، استودیو MIGO اینستالیشن‌های تعاملی مقیاس‌پذیر و پایدار طراحی و پیاده‌سازی می‌کند.\n\nبرای طراحی دقیق این تجربه، ۳ پارامتر مهندسی حائز اهمیت است:\n\n1. **شیوه تعامل بازدیدکننده:** آیا ترجیح می‌دهید تعامل بدون لمس فیزیکی و با سنسورهای لایدار (LiDAR) و ردیابی حرکت بدن باشد، یا از طریق کیوسک‌ها و تاچ‌اسکرین‌های مقاوم صنعتی؟\n2. **ظرفیت و مقیاس فضا:** آیا تجربه به صورت تک‌نفره است یا چند کاربر به صورت همزمان روی دیوارهای بزرگ تصویری تعامل می‌کنند؟\n3. **هدف روایی:** تمرکز اصلی بر آموزش تعاملی اسناد است یا خلق جلوه‌های بصری خیره‌کننده (Spectacle) برای جذب حداکثری مخاطب؟\n\nما در پروژه برگزیده **[دیوار تعاملی لومینا](/fa/work/lumina-motion-wall)** از ترکیب سنسورهای لایدار، خط لوله ریل‌تایم تاچ‌دیزاینر و موتور یونیتی برای میزبانی از صدها بازدیدکننده روزانه با پایداری ۲۴/۷ بهره گرفته‌ایم.`
-          : `For **museums, exhibitions, and cultural pavilions**, MIGO engineers robust turnkey interactive installations.\n\nTo tailor the optimal architecture for your venue, three key parameters guide the design:\n\n1. **Interaction Modality:** Do you prefer touchless motion interaction using industrial LiDAR and depth tracking, or physical ruggedized touchscreens?\n2. **Spatial Capacity:** Is it an individual kiosk station or a concurrent multi-user experience on large-scale LED/projection walls?\n3. **Curatorial Goal:** Is the installation focused on deep archival educational interaction or an immersive visual spectacle?\n\nIn our featured **[Lumina Motion Exhibition Wall](/en/work/lumina-motion-wall)** case study, we engineered LiDAR tracking with a TouchDesigner real-time pipeline operating 24/7 autonomously without requiring visitors to download apps.`,
+          ? `برای **پرو مجازی و ویترین سه‌بعدی فروشگاه‌های آنلاین**، استودیو MIGO راهکارهای تخصصی **WebAR بدون نیاز به نصب اپلیکیشن** ارائه می‌دهد:\n\n1. **پرو مجازی چهره و اکسسوری (عینک، کلاه، جواهرات):** کاربر با دوربین سلفی گوشی، عینک یا گوشواره را با فیزیک و بازتاب نور واقعی روی صورت خود امتحان می‌کند.\n2. **پرو مجازی کفش و کتانی (Foot Tracking):** با گرفتن دوربین پشت به سمت پاها، کفش سه‌بعدی دقیقاً روی پای کاربر لنگراندازی می‌شود.\n3. **شبیه‌سازی لباس و پارچه (3D Cloth Simulation):** مدل‌سازی سه‌بعدی لباس با بافت طبیعی پارچه و تن‌خور مانکن مجازی با چرخش ۳۶۰ درجه و تغییر سایز و رنگ.\n4. **حجم فوق‌العاده سبک (< 4.5MB):** با الگوریتم‌های فشرده‌سازی KTX2 و Draco، بدون اینکه کاربر نیاز به نصب نرم‌افزار داشته باشد، مستقیماً از طریق مرورگر سافاری یا کروم در کسری از ثانیه لود می‌شود.\n\nمطالعه موردی **[کانفیگوراتور واقعیت افزوده ساعت لوکس ChronoSpatial](/fa/work/webar-luxury-showcase)** نمونه‌ای از پیاده‌سازی این سیستم با متریال‌های دقیق فوتورئال PBR است.`
+          : `For **Virtual Try-On and Interactive E-Commerce**, MIGO engineers **Zero-Install WebAR** solutions directly accessible via mobile Safari and Chrome:\n\n1. **Face & Accessory Try-On:** Photorealistic glasses, jewelry, and hats tracked in real-time with ambient lighting reflections.\n2. **Foot Tracking AR:** Real-time spatial tracking placing 3D sneakers on the customer's feet true-to-scale.\n3. **3D Cloth & PBR Visualization:** Interactive 360-degree rotation with instant color, fabric, and texture customizers.\n4. **Ultra-Lightweight Delivery (< 4.5MB):** Optimized via KTX2 GPU textures and Draco compression, launching instantly without app store friction.\n\nInspect our production case study: **[ChronoSpatial WebAR Luxury Configurator](/en/work/webar-luxury-showcase)**.`,
+        topic: 'virtual_try_on',
+        suggestedActions: [
+          {
+            label: isFa ? 'خدمات واقعیت افزوده (WebAR)' : 'Augmented Reality Services',
+            href: `/${locale}/services/augmented-reality`,
+          },
+          {
+            label: isFa ? 'مشاهده پروژه WebAR ساعت لوکس' : 'Explore ChronoSpatial Case Study',
+            href: `/${locale}/work/webar-luxury-showcase`,
+          },
+          {
+            label: isFa ? 'مشاوره و بریف پروژه پرو مجازی' : 'Start a Try-On Brief',
+            href: `/${locale}/start-project`,
+          },
+        ],
+        followUpOptions: isFa
+          ? [
+              'آیا WebAR روی آیفون و اندروید کار می‌کنه؟',
+              'هزینه و زمان تبدیل محصولات به WebAR چقدره؟',
+              'تفاوت مدل‌سازی عادی با وب‌تری‌دی چیه؟',
+            ]
+          : [
+              'Does WebAR work on iOS and Android?',
+              'What is the timeline & cost for WebAR?',
+              'What is the difference between CAD and Web3D?',
+            ],
+      };
+    }
+
+    // =========================================================================
+    // 3. MUSEUM, CULTURAL HERITAGE & EXHIBITIONS (موزه، گالری، رویداد فرهنگی)
+    // =========================================================================
+    if (
+      /(موزه|آثار باستانی|تاریخی|میراث فرهنگی|نمایشگاه|غرفه|گالری|دیوار تعاملی|لایدار|تاچ دیزاینر|اینستالیشن|رویداد|museum|heritage|exhibition|booth|gallery|interactive wall|lidar|touchdesigner)/i.test(
+        norm
+      )
+    ) {
+      return {
+        reply: isFa
+          ? `برای **موزه‌ها، مراکز فرهنگی و غرفه‌های نمایشگاهی**، استودیو MIGO اینستالیشن‌های تعاملی پایداری طراحی می‌کند که صدها بازدیدکننده روزانه بتوانند بدون معطلی با آن تعامل داشته باشند.\n\n**معماری‌های کلیدی MIGO در این حوزه:**\n\n1. **دیوارهای لمسی لایدار (LiDAR Touchless Walls):** با نصب سنسورهای لایدار صنعتی، هر دیوار تصویری بزرگ (LED یا پروژکشن مپینگ چندمتری) به یک صفحه لمسی دقیق تبدیل می‌شود بدون نیاز به هیچ شیشه یا تاچ‌اسکرین گران‌قیمت فیزیکی.\n2. **بازسازی دیجیتال اشیاء تاریخی (Digital Artifact Twin):** اسکن سه‌بعدی میلی‌متری آثار باستانی و امکان دست‌ورزی و چرخاندن شیء در عینک‌های واقعیت مجازی یا کیوسک‌های هولوگرافیک.\n3. **پایداری عملیاتی ۲۴/۷:** استفاده از نرم‌افزار TouchDesigner و خط لوله‌های اختصاصی یونیتی با سیستم واچ‌داگ (Watchdog) خودکار برای بازیابی بدون نیاز به اپراتور انسانی.\n\nپروژه شاخص **[دیوار تعاملی لومینا](/fa/work/lumina-motion-wall)** نمونه‌ای موفق از پیاده‌سازی این سیستم است که در رویدادهای بین‌المللی با پایداری کامل اجرا شده است.`
+          : `For **museums, cultural heritage spaces, and high-traffic exhibition pavilions**, MIGO engineers turnkey interactive architectural installations built for continuous 24/7 public use.\n\n**Core Architectural Solutions:**\n\n1. **LiDAR Touch & Motion Walls:** Industrial 2D/3D LiDAR sensors convert any large-format LED or projection wall into a responsive multi-user interactive canvas without fragile physical touchscreens.\n2. **Digital Artifact Twins:** Millimeter-precise 3D digitizations allowing visitors to manipulate fragile historical relics in VR/MR or kiosk holoboxes.\n3. **Autonomous 24/7 Stability:** Engineered in TouchDesigner and Unity with automated remote watchdog self-recovery systems.\n\nInspect our featured case study: **[Lumina Motion Exhibition Wall](/en/work/lumina-motion-wall)** running flawlessly across international exhibitions.`,
         topic: 'museum_exhibition',
         suggestedActions: [
           {
@@ -261,7 +187,7 @@ export class MigoAiEngine {
             href: `/${locale}/work/lumina-motion-wall`,
           },
           {
-            label: isFa ? 'ثبت بریف پروژه نمایشگاهی' : 'Submit Exhibition Brief',
+            label: isFa ? 'ثبت بریف پروژه نمایشگاهی و موزه' : 'Submit Museum Brief',
             href: `/${locale}/start-project`,
           },
         ],
@@ -269,139 +195,111 @@ export class MigoAiEngine {
           ? [
               'سنسور لایدار در نمایشگاه چطور کار می‌کنه؟',
               'تفاوت لایدار با تاچ‌اسکرین معمولی چیه؟',
-              'برآورد زمان‌بندی و مراحل پیاده‌سازی',
+              'برآورد زمان و هزینه راه‌اندازی موزه چقدره؟',
             ]
           : [
               'How does LiDAR touch detection work?',
               'Why LiDAR instead of physical touchscreens?',
-              'Project timeline & staging process',
+              'Timeline and pricing for museum installations',
             ],
       };
     }
 
-    // -------------------------------------------------------------
-    // 3. WEBAR & 3D PRODUCT VISUALIZATION
-    // -------------------------------------------------------------
-    if (topic === 'webar_product') {
+    // =========================================================================
+    // 4. VR TRAINING, INDUSTRIAL SIMULATION & DIGITAL TWINS (نفت، گاز، هوانوردی، فولاد، جراحی)
+    // =========================================================================
+    if (
+      /(شبیه سازی|صنعتی|آموزش پرسنل|نفت|گاز|پالایشگاه|پتروشیمی|توربین|موتور جت|هوانوردی|هواپیما|فولاد|جراحی|پزشکی|خطرات جانی|ایمنی|دوقلو دیجیتال|digital twin|simulation|industrial|refinery|petrochemical|turbine|workforce training)/i.test(
+        norm
+      )
+    ) {
       return {
         reply: isFa
-          ? `برای نمایش سه‌بعدی محصولات و ارتقای نرخ تبدیل فروش آنلاین، استودیو MIGO راهکارهای **واقعیت افزوده وب (Zero-Install WebAR)** را توسعه می‌دهد.\n\n**ویژگی‌ها و مزایای استراتژیک این راهکار:**\n\n- **عدم نیاز به نصب اپلیکیشن:** کاربر تنها با اسکن یک QR کد در مرورگر گوشی (سافاری یا کروم)، بدون ورود به اپ‌استور یا گوگل‌پلی، کالا را در کسری از ثانیه در فضای واقعی اتاق یا روی میز خود می‌بیند.\n- **حجم فوق‌العاده بهینه (< 4.5MB):** با فشرده‌سازی بافت‌های گرافیکی با استاندارد KTX2 و هندسه سه‌بعدی Draco، فایل‌ها حتی با اینترنت معمولی در کمتر از ۳ ثانیه لود می‌شوند.\n- **متریال‌های واقع‌گرایانه (PBR):** انعکاس نور محیط واقعی، پرداخت‌های متریال (فلز، چرم، شیشه) و مقیاس دقیق ۱:۱ کالا به صورت بی‌درنگ محاسبه می‌شود.\n- **کانفیگوراتور رنگ و مدل:** مشتری می‌تواند رنگ، بند، روکش یا قطعات مختلف محصول را در همان لحظه تغییر داده و دکمه خرید را کلیک کند.\n\nمی‌توانید اجرای این سیستم را در پروژه **[کانفیگوراتور ساعت لوکس ChronoSpatial](/fa/work/webar-luxury-showcase)** مشاهده فرمایید.`
-          : `For interactive product showcases and e-commerce conversion, MIGO specializes in **Zero-Install WebAR** and **Real-Time 3D Configurators**.\n\n**Strategic Advantages:**\n\n- **Zero Friction (No App Downloads):** Customers simply scan a QR code using standard Safari or Chrome mobile browsers—no App Store friction.\n- **Ultra-Lightweight Payloads (< 4.5MB):** Engineered via KTX2 GPU texture compression and Draco geometry, loading in sub-3-second times.\n- **Photorealistic PBR Materials:** Physical light reflections, brushed metals, fabrics, and millimeter-accurate 1:1 spatial scaling.\n- **Interactive Configurator:** Real-time color, strap, and material customization with instant e-commerce call-to-action.\n\nInspect this production architecture in our **[ChronoSpatial WebAR Luxury Configurator](/en/work/webar-luxury-showcase)** case study.`,
-        topic: 'webar_product',
+          ? `استودیو MIGO سامانه‌های پیشرفته **شبیه‌سازی صنعتی، آموزش تعاملی پرسنل و دوقلوهای دیجیتال (Digital Twins)** را برای صنایع حساس انرژی، هوانوردی و پزشکی مهندسی می‌کند.\n\n**۳ ارزش استراتژیک این سامانه‌ها:**\n\n1. **ریسک جانی و مالی صفر (Zero Hazard / Zero Downtime):** تکنسین‌ها می‌توانند خطرناک‌ترین پروتکل‌های اورژانسی (انفجار، افت فشار، نشت گاز، اورهال توربین‌های گران‌قیمت) را بارها در عینک‌های VR تمرین کنند بدون آنکه خطری متوجه جان آنها یا تولید فیزیکی کارخانه شود.\n2. **فیزیک و بازخورد با دقت میلی‌متری:** شبیه‌سازی گشتاور آچارها، ارتعاشات هپتیک دسته‌ها و ترتیب دقیق باز و بست پیچ‌ها بر اساس فایل‌های دقیق CAD صنعتی.\n3. **ثبت لاگ و صدور کارنامه خودکار:** سامانه تمام تصمیمات، ثانیه‌های طلایی واکنش و اشتباهات اپراتور را ثبت کرده و گزارش ارزشیابی صادر می‌کند.\n\nدو پروژه برگزیده ما در این حوزه:\n- **[شبیه‌ساز تعمیر و نگهداری توربین جت AeroTurbine](/fa/work/holo-industrial-vr)** (مبتنی بر عینک Meta Quest 3 با ۹۰ فریم پایدار)\n- **[دوقلو دیجیتال پالایشگاهی PetroSim](/fa/work/petrosim-digital-twin)** (پایش لحظه‌ای خطوط لوله و شیرهای صنعتی)`
+          : `MIGO designs **Industrial Simulations, Serious Workforce Trainers, and Digital Twins** for high-consequence energy, aerospace, and medical sectors.\n\n**Three Strategic Value Drivers:**\n\n1. **Zero Hazard & Zero Downtime:** Operators rehearse dangerous emergency procedures (gas blowouts, turbine overhauls, high-voltage switching) repeatedly without endangering human life or halting operational machinery.\n2. **Millimeter-Accurate Spatial Physics:** Tactile haptic torque feedback, authentic CAD tolerances, and step-by-step procedural validation.\n3. **Automated Competency Auditing:** The engine tracks mistake sequences, reaction latency, and procedural compliance into actionable evaluation logs.\n\nKey case studies:\n- **[AeroTurbine VR Maintenance Rig](/en/work/holo-industrial-vr)** (Standalone Meta Quest 3 at locked 90 FPS)\n- **[PetroSim Refinery Digital Twin](/en/work/petrosim-digital-twin)** (Real-time telemetry and spatial infrastructure twin)`,
+        topic: 'industrial_simulation',
         suggestedActions: [
           {
-            label: isFa ? 'خدمات واقعیت افزوده (WebAR)' : 'Augmented Reality Services',
-            href: `/${locale}/services/augmented-reality`,
+            label: isFa ? 'خدمات شبیه‌سازی و دوقلوهای دیجیتال' : 'Simulation & Digital Twins Services',
+            href: `/${locale}/services/simulation-digital-twins`,
           },
           {
-            label: isFa ? 'مشاهده نمونه WebAR ساعت لوکس' : 'Explore ChronoSpatial Case Study',
-            href: `/${locale}/work/webar-luxury-showcase`,
+            label: isFa ? 'مشاهده پروژه شبیه‌ساز توربین جت' : 'Explore AeroTurbine VR Trainer',
+            href: `/${locale}/work/holo-industrial-vr`,
           },
           {
-            label: isFa ? 'ثبت بریف پروژه WebAR' : 'Start a WebAR Brief',
+            label: isFa ? 'ثبت بریف پروژه شبیه‌سازی' : 'Start a Simulation Brief',
             href: `/${locale}/start-project`,
           },
         ],
         followUpOptions: isFa
           ? [
-              'آیا WebAR روی هر دو سیستم‌عامل آیفون و اندروید کار می‌کنه؟',
-              'تفاوت مدل‌سازی صنعتی CAD با وب‌تری‌دی چیه؟',
-              'چطور محصولات فعلی‌مون رو به WebAR تبدیل کنیم؟',
+              'شبیه‌سازی در آنریل انجین ۵ ساخته میشه یا یونیتی؟',
+              'آیا نیاز به کامپیوتر گیمینگ قوی هست یا عینک مستقل؟',
+              'هزینه و زمان ساخت شبیه‌ساز چطور محاسبه میشه؟',
             ]
           : [
-              'Does WebAR work on both iOS and Android?',
-              'What is the difference between CAD and Web3D?',
-              'How to convert our catalog into WebAR?',
+              'Is it built in Unreal Engine 5 or Unity 6?',
+              'Do we need high-end gaming PCs or standalone headsets?',
+              'How are simulation timelines and pricing calculated?',
             ],
       };
     }
 
-    // -------------------------------------------------------------
-    // 4. VR / MR / SPATIAL COMPUTING
-    // -------------------------------------------------------------
-    if (topic === 'vr_mr_spatial') {
+    // =========================================================================
+    // 5. VR vs MR vs AR COMPARISON & HEADSETS (تفاوت واقعیت مجازی، ترکیبی و افزوده)
+    // =========================================================================
+    if (
+      /(تفاوت vr|فرق vr|vr چیست|mr چیست|تفاوت واقعیت مجازی|واقعیت ترکیبی|پاس ترو|passthrough|هدست|عینک vr|متا کوئست|کوئست ۳|ویژن پرو|پیکو|apple vision pro|meta quest 3|difference between vr)/i.test(
+        norm
+      )
+    ) {
       return {
         reply: isFa
-          ? `در استودیو MIGO، حوزه **رایانش فضایی (Spatial Computing)** شامل دو معماری پیشرفته است:\n\n- **واقعیت مجازی (VR):** کاربر کاملاً در یک دنیای سه‌بعدی ۱۰۰٪ شبیه‌سازی‌شده غوطه‌ور می‌شود و محیط فیزیکی اطراف محو می‌گردد. این حالت برای سناریوهای آموزش پرخطر، شبیه‌سازی اورژانسی، جراحی و بازی‌های اکشن عمیق ایده‌آل است.\n- **واقعیت ترکیبی (MR Passthrough):** کاربر محیط واقعی اتاق، سوله یا خط تولید را از طریق دوربین‌های هدست مشاهده می‌کند و المان‌های هولوگرافیک دیجیتال (ماشین‌آلات، راهنماها و دیاگرام‌های سه‌بعدی) با مقیاس میلی‌متری بر روی سطوح فیزیکی لنگراندازی می‌شوند.\n\n**پشتیبانی سخت‌افزاری استودیو:**\n- هدست‌های مستقل: Meta Quest 3، Pico 4، Apple Vision Pro\n- سیستم‌های سنگین PC-VR: پلتفرم‌های متصل به سرور برای پروژه‌های گرافیکی عظیم صنعتی\n\nبرای نمونه پروژه **[شبیه‌ساز تعمیر و نگهداری توربین جت AeroTurbine](/fa/work/holo-industrial-vr)** را ببینید که با بیش از ۳۵۰ قطعه تعاملی روی عینک Quest 3 با نرخ فریم پایدار ۹۰ فریم اجرا می‌شود.`
-          : `At MIGO, our **Spatial Computing** capability spans two core technological paradigms:\n\n- **Virtual Reality (VR):** The visitor is completely immersed inside a 100% digital simulated environment, shielding out the physical world. This is optimal for hazardous procedure training, medical simulations, and deep experiential gaming.\n- **Mixed Reality (MR Passthrough):** High-definition cameras project the user's real physical room, while millimeter-accurate 3D digital holograms and interactive tools are spatially anchored to tables and floors.\n\n**Supported Hardware Rigs:**\n- Standalone Headsets: Meta Quest 3, Pico 4, Apple Vision Pro\n- High-End Tethered PC-VR: Enterprise research and photorealistic industrial rigs\n\nInspect our featured **[AeroTurbine VR Maintenance Rig](/en/work/holo-industrial-vr)** running standalone on Quest 3 at locked 90 FPS with 350+ interactive mechanical parts.`,
-        topic: 'vr_mr_spatial',
+          ? `در استودیو MIGO، فناوری‌های **رایانش فضایی (Spatial Computing)** شامل سه شاخه اصلی هستند:\n\n1. **واقعیت مجازی (VR):** کاربر عینک را روی چشم قرار می‌دهد و دید او از جهان واقعی ۱۰۰٪ قطع می‌شود و وارد دنیای شبیه‌سازی دیجیتال می‌شود (مناسب آموزش پرخطر، شبیه‌ساز پرواز، بازی‌های اکشن غوطه‌ورکننده).\n2. **واقعیت ترکیبی (MR Passthrough):** با عینک‌هایی مانند **Meta Quest 3** یا **Apple Vision Pro**، کاربر اتاق واقعی یا سالن کارخانه خود را با دوربین‌های عینک می‌بیند و مدل‌های سه‌بعدی و داده‌های دیجیتال روی میز و زمین فیزیکی لنگراندازی می‌شوند (مناسب بررسی طرح‌های معماری و مهندسی در محیط واقعی).\n3. **واقعیت افزوده وب (Zero-Install WebAR):** بدون نیاز به هیچ عینک یا اپلیکیشن، کاربر با دوربین موبایل و مرورگر کروم/سافاری، محصول را به صورت سه‌بعدی در فضای واقعی خانه یا محل کار خود مشاهده می‌کند.\n\n**هدست‌های پشتیبانی‌شده در استودیو MIGO:**\n- Meta Quest 3 و Quest Pro (مستقل بی‌سیم)\n- Apple Vision Pro (کیفیت تصویر اعجاب‌انگیز استریوسکوپیک)\n- Pico 4 Enterprise (مناسب سازمان‌ها و شرکت‌ها)\n- ریگ‌های سنگین PC-VR (متصل به کارت‌های گرافیک RTX 4090 برای رندرهای فوق سنگین)`
+          : `At MIGO, our **Spatial Computing** architecture spans three distinct paradigms:\n\n1. **Virtual Reality (VR):** Completely shields the user inside a 100% digital simulated environment (ideal for hazardous industrial drills and entertainment).\n2. **Mixed Reality (MR Passthrough):** Using headsets like **Meta Quest 3** or **Apple Vision Pro**, high-resolution color passthrough cameras blend real physical rooms with millimeter-anchored digital holograms and interactive spatial tools.\n3. **Zero-Install WebAR:** Requires zero headsets or apps; mobile browsers (Safari/Chrome) project 3D models into real physical rooms true-to-scale via phone cameras.\n\n**Hardware Ecosystem Supported:**\n- Standalone: Meta Quest 3, Quest Pro, Pico 4 Enterprise, Apple Vision Pro\n- Enterprise Tethered PC-VR: Ultra-high fidelity multi-GPU rigs for aerospace centers`,
+        topic: 'vr_mr_comparison',
         suggestedActions: [
           {
-            label: isFa ? 'خدمات تجربیات غوطه‌ورکننده (VR/MR)' : 'Immersive Experiences (VR/MR)',
+            label: isFa ? 'خدمات تجربیات غوطه‌ورکننده (VR/MR)' : 'Immersive VR/MR Services',
             href: `/${locale}/services/immersive-experiences`,
           },
           {
             label: isFa ? 'مشاهده پروژه شبیه‌ساز توربین جت' : 'View AeroTurbine VR Case Study',
             href: `/${locale}/work/holo-industrial-vr`,
           },
-          {
-            label: isFa ? 'مشاوره فنی پروژه واقعیت مجازی' : 'Start a Spatial VR Brief',
-            href: `/${locale}/start-project`,
-          },
         ],
         followUpOptions: isFa
           ? [
-              'آیا نیاز به کامپیوتر گیمینگ قوی هست یا هدست مستقل؟',
-              'نرخ فریم ۹۰ FPS چطور تضمین میشه؟',
-              'شبیه‌سازی آموزش پرسنل صنعتی چطور انجام میشه؟',
+              'برای پروژه من هدست مستقل مناسب‌تره یا سیستم متصل به PC؟',
+              'چطور محصولاتم رو با WebAR نمایش بدم؟',
+              'شروع مشاوره و ثبت پروژه VR',
             ]
           : [
-              'Do we need high-end gaming PCs or standalone headsets?',
-              'How is locked 90 FPS guaranteed?',
-              'How does industrial workforce training work?',
+              'Is standalone headset or PC-VR better for my project?',
+              'How to display products in WebAR?',
+              'Start a VR consultation brief',
             ],
       };
     }
 
-    // -------------------------------------------------------------
-    // 5. INDUSTRIAL SIMULATION & DIGITAL TWINS
-    // -------------------------------------------------------------
-    if (topic === 'industrial_sim') {
+    // =========================================================================
+    // 6. PRICING, COSTS & BUDGETS (هزینه‌ها، قیمت، تعرفه، چقدر میشه)
+    // =========================================================================
+    if (
+      /(قیمت|هزینه|تعرفه|بودجه|چقدر میشه|چقدر در میاد|نرخ|استعلام قیمت|قرارداد مالی|pricing|cost|budget|how much|quote|rate)/i.test(
+        norm
+      ) ||
+      (previousTopic && /(هزینه|قیمت|چقدر|بودجه)/i.test(norm))
+    ) {
       return {
         reply: isFa
-          ? `استودیو MIGO سامانه‌های **شبیه‌سازی پیشرفته صنعتی و دوقلوهای دیجیتال (Digital Twins)** را برای شرکت‌های انرژی، تولیدی و هوانوردی توسعه می‌دهد.\n\n**مزایای محوری شبیه‌سازهای MIGO:**\n\n1. **ریسک جانی صفر (Zero Hazard):** تکنسین‌ها و مهندسان فرآیندهای پرخطر، مانورهای اضطراری اطفای حریق، بازرسی شیرهای پرفشار و عیب‌یابی توربین‌ها را بدون کوچک‌ترین خطر جانی در محیط مجازی تمرین می‌کنند.\n2. **حذف توقف خطوط تولید (Zero Downtime):** نیازی به متوقف کردن ماشین‌آلات گران‌قیمت یا خارج کردن توربین از مدار برای آموزش کارآموزان نیست.\n3. **ارزشیابی خودکار و لاگ خطاها:** سیستم ترتیب باز کردن پیچ‌ها، رعایت گشتاور آچارها، زمان انجام عملیات و خطاهای انسانی را ثانیه به ثانیه ثبت و کارنامه استاندارد صادر می‌کند.\n\nمطالعه موردی **[دوقلو دیجیتال پالایشگاهی PetroSim](/fa/work/petrosim-digital-twin)** و **[شبیه‌ساز توربین جت AeroTurbine](/fa/work/holo-industrial-vr)** نمونه‌های اجرایی این تخصص هستند.`
-          : `MIGO designs **Industrial Simulations and Digital Twins** for high-consequence enterprise, energy, and aerospace operations.\n\n**Core Advantages:**\n\n1. **Zero Life Hazards:** Technicians rehearse critical emergencies, high-pressure pipeline overhauls, and hazardous turbine operations with complete safety.\n2. **Zero Machinery Downtime:** Multi-million-dollar physical equipment remains in active production while cohorts train in digital replicas.\n3. **Automated Competency Auditing:** The system logs mistake sequences, torque compliance, and procedural timing automatically.\n\nExamine our case studies: **[PetroSim Refinery Digital Twin](/en/work/petrosim-digital-twin)** and **[AeroTurbine VR Trainer](/en/work/holo-industrial-vr)**.`,
-        topic: 'industrial_sim',
-        suggestedActions: [
-          {
-            label: isFa ? 'خدمات شبیه‌سازی و دوقلوی دیجیتال' : 'Simulation & Digital Twins Services',
-            href: `/${locale}/services/simulation-digital-twins`,
-          },
-          {
-            label: isFa ? 'مشاهده پروژه دوقلو پتروسیم' : 'Explore PetroSim Digital Twin',
-            href: `/${locale}/work/petrosim-digital-twin`,
-          },
-          {
-            label: isFa ? 'شروع مشاوره پروژه صنعتی' : 'Start an Industrial Brief',
-            href: `/${locale}/start-project`,
-          },
-        ],
-        followUpOptions: isFa
-          ? [
-              'شبیه‌سازی در موتور آنریل ۵ ساخته میشه یا یونیتی؟',
-              'آیا سنسورهای فیزیکی IoT به دوقلو وصل میشن؟',
-              'چطور بریف شبیه‌سازی ثبت کنیم؟',
-            ]
-          : [
-              'Is it built in Unreal Engine 5 or Unity 6?',
-              'Can live IoT sensor data connect to the digital twin?',
-              'How to submit a simulation brief?',
-            ],
-      };
-    }
-
-    // -------------------------------------------------------------
-    // 6. PRICING, TIMELINE & ONBOARDING (START A PROJECT)
-    // -------------------------------------------------------------
-    if (topic === 'pricing_onboarding') {
-      return {
-        reply: isFa
-          ? `برای آغاز همکاری با استودیو MIGO و دریافت برآورد فنی و مالی دقیق، فرآیند در ۴ گام مهندسی‌شده انجام می‌شود:\n\n۱. **ثبت بریف در صفحه [شروع پروژه](/fa/start-project):** شما در یک فرم ۵ مرحله‌ای، حوزه خدمات مدنظر، اهداف کلیدی پروژه، پلتفرم سخت‌افزاری (وب، هدست VR، کیوسک فیزیکی، ویدئومپینگ)، بازه زمانی و بودجه تخمینی را مشخص می‌کنید.\n۲. **بررسی امکان‌سنجی معماری:** مهندسان MIGO محدودیت‌های چندضلعی‌های سه‌بعدی، الزامات فریم‌ریت و سنسورها را تحلیل می‌کنند.\n۳. **جلسه کشف (Discovery Call):** هماهنگی جلسه حضوری یا آنلاین جهت تعریف مایل‌استون‌های پروتوتایپ سریع.\n۴. **ارائه پروپوزال و قرارداد شفاف:** اعلام دقیق هزینه‌ها و زمان‌بندی فازبندی‌شده.\n\nچون در پروژه‌های فناوری خلاق، هزینه‌ها به شدت وابسته به تعداد قطعات سه‌بعدی، مقیاس سخت‌افزار و شرایط نصب در محل است، اعلام قیمت دقیق صرفاً پس از دریافت این بریف امکان‌پذیر خواهد بود.`
-          : `To initiate a collaboration with MIGO and obtain a definitive architectural and financial proposal, we follow a 4-step engineering path:\n\n1. **Submit a Brief via [Start a Project](/en/start-project):** A 5-step guided flow where you outline your target service, strategic objectives, hardware platform (Web, VR Headset, Kiosks, LED walls), timeframe, and budget tier.\n2. **Architectural Feasibility Audit:** Our systems architects evaluate framerate budgets, 3D polygon thresholds, and sensor staging.\n3. **Discovery Session:** A technical consultation to review Graybox prototypes and define milestone deliverables.\n4. **Formal Proposal & Milestone Plan:** Definitive pricing and staged delivery dates.\n\nBecause creative technology budgets vary heavily based on sensor hardware, 3D asset density, and on-site physical staging, pricing is formally determined following this architectural brief.`,
+          ? `در پروژه‌های فناوری خلاق استودیو MIGO، هزینه‌گذاری کاملاً شفاف، مهندسی‌شده و بر اساس ۳ عامل فنی محاسبه می‌شود:\n\n1. **تراکم و کیفیت مدل‌های سه‌بعدی:** تعداد چندضلعی‌ها، شیدرهای سفارشی، اسکن سه‌بعدی و انیمیشن‌های مورد نیاز\n2. **منطق نرم‌افزاری و موتور گرافیکی:** پیاده‌سازی فیزیک، سناریوهای شبیه‌سازی، حالت چندکاربره (Multi-user) یا سیستم ارزشیابی خودکار\n3. **استقرار سخت‌افزاری (Turnkey Hardware):** نوع سنسورها (لایدار، وب‌کم، عمق‌سنج)، مانیتورها، هدست‌های واقعیت مجازی و کالیبراسیون در محل\n\n**دسته‌بندی‌های بودجه‌ای معمول در استودیو:**\n- **پروژه‌های WebAR و ویترین سه‌بعدی وب:** بودجه‌های اقتصادی و سریع با تحویل ۲ تا ۴ هفته‌ای\n- **اپلیکیشن‌های مستقل VR/MR و شبیه‌سازها:** پروژه‌های سازمانی متوسط با تحویل ۴ تا ۸ هفته‌ای\n- **اینستالیشن‌های نمایشگاهی کلیدتحویل و دوقلوهای دیجیتال:** پروژه‌های جامع همراه با استقرار سخت‌افزاری ۲۴/۷\n\nبرای دریافت پروپوزال مالی دقیق، کافی است بریف اولیه خود را در صفحه **[شروع پروژه](/fa/start-project)** ثبت کنید تا تیم فنی پس از بررسی نیازهای شما، برآورد رسمی را ارائه دهد.`
+          : `At MIGO Studio, creative technology pricing is structured transparently around three core engineering drivers:\n\n1. **3D Asset Fidelity:** Polygon budgets, custom PBR shaders, photogrammetry scanning, and rigging.\n2. **Software Logic & Interaction Loops:** Physics complexity, multi-user voice/spatial sync, and telemetry logging.\n3. **Hardware Staging & Deployment:** Industrial sensors (LiDAR), kiosks, VR headsets, and on-site calibration.\n\n**Typical Investment Tiers:**\n- **Zero-Install WebAR & 3D Web Configurators:** Rapid turnarounds (2–4 weeks).\n- **Standalone Spatial VR/MR Applications:** Enterprise simulations (4–8 weeks).\n- **Turnkey Exhibition Architecture & Digital Twins:** Comprehensive physical + software deployments.\n\nTo receive an exact architectural proposal, complete your brief via **[Start a Project](/en/start-project)**.`,
         topic: 'pricing_onboarding',
         suggestedActions: [
           {
-            label: isFa ? 'تکمیل فرم شروع پروژه (۵ مرحله)' : 'Complete Start a Project Flow',
+            label: isFa ? 'تکمیل فرم شروع پروژه و استعلام' : 'Start a Project Inquiry',
             href: `/${locale}/start-project`,
           },
           {
@@ -411,26 +309,137 @@ export class MigoAiEngine {
         ],
         followUpOptions: isFa
           ? [
-              'مایگو چه خدماتی ارائه میده؟',
+              'مراحل تحویل پروژه چقدر طول میکشه؟',
               'روش‌شناسی ۴ مرحله‌ای استودیو چیست؟',
               'مشاهده پروژه‌های اجرا شده استودیو',
             ]
           : [
-              'What services does MIGO provide?',
+              'What is the delivery timeline?',
               'What is MIGO\'s 4-phase methodology?',
-              'Explore featured client projects',
+              'Explore completed projects',
             ],
       };
     }
 
-    // -------------------------------------------------------------
-    // 7. GAMES & INTERACTIVE SYSTEMS
-    // -------------------------------------------------------------
-    if (topic === 'games_interactive') {
+    // =========================================================================
+    // 7. TIMELINE & DELIVERY (زمان‌بندی، چقدر طول می‌کشه، تحویل)
+    // =========================================================================
+    if (
+      /(زمان بندی|چقدر طول|مدت زمان|چند روز|چند هفته|تحویل|مراحل ساخت|timeline|how long|delivery|duration|milestones)/i.test(
+        norm
+      )
+    ) {
       return {
         reply: isFa
-          ? `استودیو MIGO **بازی‌های تعاملی، سیستم‌های گیمیفیکیشن و فضاهای بازی فیزیکی-دیجیتال** را با موتورهای قدرتمند Unreal Engine 5 و Unity 6 توسعه می‌دهد.\n\n**حوزه‌های اصلی:**\n- **بازی‌های آرکید کینتیک:** بازی‌های مبتنی بر سنسورهای حرکتی، استیج‌های هوشمند و رقابت‌های گروهی در رویدادها\n- **شبیه‌سازهای جدی (Serious Games):** بازی‌های هدفمند برای آموزش فرآیندهای پیچیده صنعتی و مهارت‌های مدیریتی\n- **بازی‌های وب ۳D بدون نصب:** بازی‌های روان مبتنی بر WebGL با زمان لود آنی\n\nبرای نمونه پروژه **[PulseRush: آرکید حرکتی فضایی](/fa/work/kinetic-arcade-game)** را بررسی کنید که تعامل فیزیکی کاربران را با فیزیک ریل‌تایم و نورپردازی داینامیک ترکیب کرده است.`
-          : `MIGO designs **Interactive Games, Serious Gaming Systems, and Phygital Arcades** engineered in Unreal Engine 5 and Unity 6.\n\n**Core Capabilities:**\n- **Kinetic Arcades:** Motion-sensor games, smart physical stages, and group competitions for brand activations and festivals.\n- **Serious Games:** Gamified learning engines for industrial procedures and team simulations.\n- **Zero-Install WebGL Games:** Smooth, high-framerate browser games with instantaneous loading.\n\nInspect our case study: **[PulseRush: Spatial Kinetic Arcade](/en/work/kinetic-arcade-game)** fusing physical user telemetry with dynamic particle shaders.`,
+          ? `مدت زمان اجرای پروژه‌ها در استودیو MIGO بر اساس یک پایپ‌لاین ۴ مرحله‌ای و استاندارد انجام می‌شود:\n\n1. **فاز ۰۱: کشف معماری فنی (۱ هفته):** تحلیل الزامات سخت‌افزاری، بودجه فریم‌ریت، مساحت فیزیکی و انتخاب موتور نرم‌افزاری.\n2. **فاز ۰۲: پروتوتایپ سریع فضایی (۲ تا ۳ هفته):** ساخت نمونه اولیه تعاملی گری‌باکس (Graybox) برای تست ارگونومی و تایید مکانیک‌ها توسط کارفرما.\n3. **فاز ۰۳: تولید شیدرهای نهایی و مدل‌های PBR (۳ تا ۶ هفته):** مدل‌سازی واقع‌گرایانه، نورپردازی بی‌درنگ، صدای فضایی و سیستم‌های تعاملی.\n4. **فاز ۰۴: استقرار سخت‌افزاری و تست استرس (۱ تا ۲ هفته):** کالیبراسیون سنسورها در محل، تست ۲۴ ساعته پایداری و راه‌اندازی عملیاتی.\n\nبه طور کلی، پروژه‌های WebAR بین **۲ تا ۴ هفته** و سیستم‌های جامع VR یا دیوارهای تعاملی بین **۶ تا ۱۰ هفته** زمان می‌برند.`
+          : `Project delivery timelines at MIGO follow a disciplined 4-phase engineering pipeline:\n\n1. **Phase 01: Architectural Discovery (1 week):** Hardware profiling, polygon budgets, spatial footprints, and sensor mapping.\n2. **Phase 02: Rapid Spatial Prototyping (2–3 weeks):** Graybox interactive mechanics for ergonomic validation and stakeholder sign-off.\n3. **Phase 03: PBR Production & Shader Tuning (3–6 weeks):** Photorealistic lighting, spatial audio, and core interactive loop development.\n4. **Phase 04: Turnkey Staging & Stress Testing (1–2 weeks):** On-site sensor calibration, 24-hour hardware burn-in, and watchdog deployment.\n\nIn general, Zero-Install WebAR projects deploy in **2–4 weeks**, while comprehensive VR rigs or LiDAR walls take **6–10 weeks**.`,
+        topic: 'timeline_workflow',
+        suggestedActions: [
+          {
+            label: isFa ? 'ثبت بریف در شروع پروژه' : 'Submit Project Brief',
+            href: `/${locale}/start-project`,
+          },
+          {
+            label: isFa ? 'صفحه درباره استودیو و روش‌شناسی' : 'Studio Methodology',
+            href: `/${locale}/about`,
+          },
+        ],
+        followUpOptions: isFa
+          ? [
+              'هزینه‌ها چطور محاسبه میشه؟',
+              'پروژه‌های شاخص استودیو کدامند؟',
+            ]
+          : [
+              'How are project costs calculated?',
+              'Show me featured projects',
+            ],
+      };
+    }
+
+    // =========================================================================
+    // 8. WHY CHOOSE MIGO? / TRUST & DIFFERENTIATORS (چرا مایگو؟ چه فرقی با بقیه دارید؟)
+    // =========================================================================
+    if (
+      /(چرا مایگو|فرق شما|برتری|مزیت|چرا به شما اعتماد|تفاوت با دیگران|کیفیت کار|why migo|competitive advantage|why choose migo)/i.test(
+        norm
+      )
+    ) {
+      return {
+        reply: isFa
+          ? `استودیو MIGO یک آژانس تبلیغاتی عادی نیست؛ ما یک **استودیوی مهندسی فناوری خلاق (Creative Technology Studio)** هستیم. ۴ تمایز بنیادین ما عبارتند از:\n\n1. **۱۰۰٪ کدنویسی و توسعه درون‌استودیویی (Zero Outsourcing):** ما هیچ بخشی از خط لوله شیدرها، مدل‌سازی سه‌بعدی و درایورهای سنسور را برون‌سپاری نمی‌کنیم؛ این یعنی کنترل کیفی مطلق بر فریم‌به‌فریم پروژه.\n2. **انضباط نرخ فریم (Locked 60 / 120 FPS):** افت فریم در پروژه‌های فضایی باعث سرگیجه کاربر می‌شود. ما نرخ فریم را با استانداردهای سخت‌گیرانه گارانتی می‌کنیم.\n3. **یکپارچه‌سازی سخت‌افزار و نرم‌افزار (Turnkey Execution):** ما فقط یک فایل نرم‌افزاری به شما تحویل نمی‌دهیم؛ از طراحی سازه فیزیکی و انتخاب سنسورهای لایدار تا نصب، کالیبراسیون و مانیتورینگ ۲۴/۷ را پوشش می‌دهیم.\n4. **آزمایشگاه فیزیکی اختصاصی در تهران:** تمامی کیوسک‌ها و پروژه‌ها پیش از ارسال به محل مشتری، در آزمایشگاه فیزیکی استودیو زیر بار تست استرس طولانی‌مدت قرار می‌گیرند.`
+          : `MIGO is not a generic marketing agency; we are an **independent Creative Technology and Spatial Engineering Studio**. Our four defining advantages:\n\n1. **100% In-House Engineering (Zero Outsourcing):** We build shaders, 3D pipelines, and sensor drivers entirely in-house for absolute quality control.\n2. **Locked 60 / 120 FPS Discipline:** Frame drops cause motion sickness in spatial XR. We engineer strict polygon budgets guaranteeing fluid execution.\n3. **Turnkey Hardware + Software Delivery:** We deliver full physical enclosures, calibrated LiDAR arrays, media servers, and 24/7 watchdog recovery.\n4. **Physical Hardware Staging Lab in Tehran:** All systems undergo continuous burn-in stress testing in our physical lab prior to on-site deployment.`,
+        topic: 'why_migo',
+        suggestedActions: [
+          {
+            label: isFa ? 'صفحه درباره استودیو و محیط کار' : 'Discover MIGO Studio',
+            href: `/${locale}/about`,
+          },
+          {
+            label: isFa ? 'مشاهده پروژه‌های شاخص' : 'View Portfolio Case Studies',
+            href: `/${locale}/work`,
+          },
+        ],
+        followUpOptions: isFa
+          ? [
+              'امکان تست حضوری در آزمایشگاه استودیو هست؟',
+              'خدمات تخصصی استودیو کدامند؟',
+              'شروع همکاری و ثبت پروژه',
+            ]
+          : [
+              'Can we test live hardware in the staging lab?',
+              'What are your specialized capabilities?',
+              'Start a project inquiry',
+            ],
+      };
+    }
+
+    // =========================================================================
+    // 9. LOCATION, IN-PERSON DEMO & CONTACT (آدرس، تست حضوری در آزمایشگاه، تلفن)
+    // =========================================================================
+    if (
+      /(آدرس|کجایید|محل|تست حضوری|دیدن نمونه|دمو حضوری|جلسه حضوری|دفتر استودیو|ایمیل|تلفن|تماس|address|location|in person demo|visit lab|office|contact|phone|email)/i.test(
+        norm
+      )
+    ) {
+      return {
+        reply: isFa
+          ? `استودیو MIGO دارای **آزمایشگاه فیزیکی تست سنسورها و تجهیزات تعاملی** در تهران است:\n\n- **محل آزمایشگاه:** تهران، منطقه نوآوری، آزمایشگاه سخت‌افزار و فناوری‌های تعاملی MIGO\n- **امکان تست حضوری (Private Demo):** کارفرمایان و مدیران می‌توانند با هماهنگی قبلی، هدست‌های واقعیت مجازی (Meta Quest 3)، دیوارهای تعاملی لایدار و نمونه‌های WebAR را از نزدیک در آزمایشگاه تست کنند.\n- **ایمیل رسمی استودیو:** \`hello@migo-studio.com\`\n- **ساعات کاری:** شنبه تا چهارشنبه، ۹:۰۰ الی ۱۸:۰۰\n\nبرای هماهنگی جلسه حضوری یا ثبت بریف پروژه، به **[صفحه تماس با استودیو](/fa/contact)** یا فرم **[شروع پروژه](/fa/start-project)** مراجعه فرمایید.`
+          : `MIGO maintains a dedicated **Hardware Staging & Spatial Testing Lab** in Tehran:\n\n- **Lab Location:** Tehran Innovation District, MIGO Creative Technology Staging Lab\n- **Private In-Person Demonstrations:** Clients and technical directors are welcome to schedule hands-on testing of Meta Quest 3 rigs, LiDAR interactive walls, and WebAR prototypes.\n- **Official Email:** \`hello@migo-studio.com\`\n- **Lab Working Hours:** Saturday to Wednesday, 09:00 – 18:00\n\nTo schedule a private demonstration or discuss a project, visit our **[Contact Page](/en/contact)** or complete our **[Start a Project](/en/start-project)** brief.`,
+        topic: 'contact_location',
+        suggestedActions: [
+          {
+            label: isFa ? 'صفحه تماس و آدرس' : 'Contact & Directions',
+            href: `/${locale}/contact`,
+          },
+          {
+            label: isFa ? 'ثبت فرم شروع پروژه' : 'Submit Project Brief',
+            href: `/${locale}/start-project`,
+          },
+        ],
+        followUpOptions: isFa
+          ? [
+              'خدمات تخصصی استودیو چیست؟',
+              'چقدر طول میکشه پروژه آماده بشه؟',
+            ]
+          : [
+              'What services does MIGO offer?',
+              'What is the project delivery timeline?',
+            ],
+      };
+    }
+
+    // =========================================================================
+    // 10. GAMES & INTERACTIVE SYSTEMS (بازی‌های تعاملی، آرکید، آنریل ۵، یونیتی)
+    // =========================================================================
+    if (
+      /(بازی|گیم|انریل|یونیتی|آرکید|گیمیفیکیشن|game|gaming|interactive game|unreal engine|unity|arcade)/i.test(
+        norm
+      )
+    ) {
+      return {
+        reply: isFa
+          ? `استودیو MIGO **بازی‌های تعاملی، سیستم‌های گیمیفیکیشن و فضاهای بازی فیزیکی-دیجیتال** را با موتورهای قدرتمند Unreal Engine 5 و Unity 6 توسعه می‌دهد:\n\n- **بازی‌های آرکید کینتیک:** اتصال سنسورهای حرکتی، استیج‌های هوشمند و رقابت‌های گروهی برای رویدادها، غرفه‌ها و مراکز تفریحی\n- **شبیه‌سازهای جدی (Serious Games):** بازی‌های هدفمند برای آموزش فرآیندهای پیچیده صنعتی، مدیریت بحران و ارتقای مهارت پرسنل\n- **بازی‌های سه‌بعدی وب بدون نیاز به نصب (WebGL):** بازی‌های روان با بارگذاری فوری روی مرورگرهای موبایل و دسکتاپ\n\nپروژه شاخص ما در این حوزه: **[PulseRush: آرکید حرکتی فضایی](/fa/work/kinetic-arcade-game)** که داده‌های تله‌متری بازیکنان را با ذرات داینامیک و گرافیک ۶۰ فریم ترکیب کرده است.`
+          : `MIGO designs **Interactive Games, Serious Gaming Systems, and Phygital Arcades** engineered in Unreal Engine 5 and Unity 6:\n\n- **Kinetic Arcades:** Motion-sensor games, smart physical stages, and group competitions for brand activations and festivals.\n- **Serious Games:** Gamified learning engines for industrial procedures and team simulations.\n- **Zero-Install WebGL Games:** Smooth, high-framerate browser games with instantaneous loading.\n\nInspect our case study: **[PulseRush: Spatial Kinetic Arcade](/en/work/kinetic-arcade-game)** fusing physical user telemetry with dynamic particle shaders.`,
         topic: 'games_interactive',
         suggestedActions: [
           {
@@ -441,118 +450,63 @@ export class MigoAiEngine {
             label: isFa ? 'مشاهده پروژه بازی PulseRush' : 'View PulseRush Case Study',
             href: `/${locale}/work/kinetic-arcade-game`,
           },
-        ],
-        followUpOptions: isFa
-          ? [
-              'تفاوت آنریل ۵ و یونیتی در پروژه‌های استودیو',
-              'شروع یک پروژه بازی جدید',
-            ]
-          : [
-              'Unreal Engine 5 vs Unity pipelines',
-              'Start a game development brief',
-            ],
-      };
-    }
-
-    // -------------------------------------------------------------
-    // 8. 3D VISUALIZATION & WEB3D
-    // -------------------------------------------------------------
-    if (topic === '3d_visualization') {
-      return {
-        reply: isFa
-          ? `خدمات **طراحی، مدل‌سازی و رندرهای سه‌بعدی بی‌درنگ وب** در استودیو MIGO شامل بهینه‌سازی پیشرفته مدل‌های CAD برای بستر وب و رندرهای فوتورئال است:\n\n- **مدل‌سازی PBR صنعتی:** تبدیل فایل‌های سنگین چندمیلیون چندضلعی به مش‌های سبک بهینه وب بدون افت شیارها و جزئیات\n- **کانفیگوراتورهای وب‌تری‌دی (WebGL / WebGPU):** نمایش قطعات با چرخش ۳۶۰ درجه و تغییر متریال در مرورگر\n- **انیمیشن‌های تشریحی و فنی:** نمایش انفجاری قطعات (Exploded View) و مونتاژ گام‌به‌گام\n\nتمام مدل‌ها با استاندارد فشرده‌سازی بافت KTX2 و فشرده‌سازی هندسی Draco آماده می‌شوند تا با حجم کمتر از ۵ مگابایت در وب بارگذاری شوند.`
-          : `Our **3D Modeling & Real-Time WebGL/WebGPU Visualization** discipline bridges photoreal precision with web delivery:\n\n- **Industrial PBR Pipelines:** Decimating heavy multi-million CAD meshes into lightweight web geometries while preserving micro-surface chamfers.\n- **Web3D Real-Time Configurators:** 360-degree rotation, exploded views, and instant material switching on desktop and mobile.\n- **Technical & Architectural Animations:** Exploded CAD assemblies, mechanical kinematics, and lighting walkthroughs.\n\nAll assets are compressed via KTX2 GPU textures and Draco geometry for sub-5MB delivery on mobile browsers.`,
-        topic: '3d_visualization',
-        suggestedActions: [
           {
-            label: isFa ? 'خدمات طراحی و مدل‌سازی سه‌بعدی' : '3D & Visualization Service',
-            href: `/${locale}/services/3d-visualization`,
-          },
-          {
-            label: isFa ? 'مشاهده نمونه کارهای سه‌بعدی' : 'View 3D Projects',
-            href: `/${locale}/work`,
-          },
-        ],
-        followUpOptions: isFa
-          ? ['توضیح درباره WebAR', 'شروع پروژه کانفیگوراتور سه‌بعدی']
-          : ['Tell me about WebAR', 'Start a 3D configurator brief'],
-      };
-    }
-
-    // -------------------------------------------------------------
-    // 9. STUDIO ABOUT & PHILOSOPHY
-    // -------------------------------------------------------------
-    if (topic === 'studio_about') {
-      return {
-        reply: isFa
-          ? `**استودیو MIGO** یک استودیوی پیشرو در فناوری‌های تعاملی، واقعیت مجازی، واقعیت افزوده و اینستالیشن‌های فیزیکی-دیجیتال است.\n\n- **فلسفه استودیو:** پیوند معماری فضایی با مهندسی بلادرنگ گرافیک. ما به جای انیمیشن‌های تزئینی، تجربیات تعاملی بر پایه فیزیک دقیق، سنسورهای فیزیکی و فریم‌ریت پایدار ۶۰ تا ۱۲۰ FPS می‌سازیم.\n- **رویکرد:** ۱۰۰٪ توسعه درون‌استودیویی بدون برون‌سپاری، کنترل کامل بر کد شیدرها و راه‌اندازی یکپارچه سخت‌افزار و نرم‌افزار به صورت Turnkey.\n- **آزمایشگاه فیزیکی:** ما دارای آزمایشگاه اختصاصی در تهران برای تست سنسورهای لایدار، حجم موکپ VR و کیوسک‌های نمایشگاهی هستیم.\n\nبرای مطالعه بیشتر، صفحه **[درباره استودیو](/fa/about)** را ببینید.`
-          : `**MIGO Studio** is an independent creative technology and spatial engineering studio.\n\n- **Our Philosophy:** Bridging physical architecture and real-time graphics through deterministic physics, sensory fidelity, and locked framerate budgets (60–120 FPS).\n- **Our Approach:** 100% in-house engineering with zero outsourcing, total shader control, and turnkey hardware-software staging.\n- **Physical Lab:** We maintain a dedicated hardware staging lab in Tehran equipped with LiDAR test rigs, VR motion capture volumes, and kiosk stress-testing environments.\n\nTo discover our complete philosophy and multidisciplinary team ethos, visit the **[About Studio](/en/about)** page.`,
-        topic: 'studio_about',
-        suggestedActions: [
-          {
-            label: isFa ? 'صفحه درباره استودیو' : 'About MIGO Studio',
-            href: `/${locale}/about`,
-          },
-          {
-            label: isFa ? 'مشاهده خدمات استودیو' : 'View All Services',
-            href: `/${locale}/services`,
-          },
-        ],
-        followUpOptions: isFa
-          ? ['۶ خانواده خدمات استودیو کدامند؟', 'چطور با مایگو پروژه شروع کنیم؟']
-          : ['What are the 6 service families?', 'How to start a project?'],
-      };
-    }
-
-    // -------------------------------------------------------------
-    // 10. CONTACT & LOCATION
-    // -------------------------------------------------------------
-    if (topic === 'contact_location') {
-      return {
-        reply: isFa
-          ? `برای برقراری ارتباط با تیم فنی و مدیریتی استودیو MIGO:\n\n- **ایمیل رسمی:** \`hello@migo-studio.com\`\n- **محل آزمایشگاه استودیو:** تهران، منطقه نوآوری، آزمایشگاه سخت‌افزار و فناوری‌های تعاملی MIGO\n- **ساعات کاری آزمایشگاه:** شنبه تا چهارشنبه، ساعت ۹:۰۰ الی ۱۸:۰۰\n\nبرای ثبت درخواست جلسه حضوری یا ارسال پیام سریع، می‌توانید به **[صفحه تماس با ما](/fa/contact)** مراجعه فرمایید یا بریف پروژه خود را مستقیماً در **[شروع پروژه](/fa/start-project)** ثبت کنید.`
-          : `To reach out directly to MIGO Studio's technical leads and management:\n\n- **Official Email:** \`hello@migo-studio.com\`\n- **Hardware Staging Lab:** Tehran Innovation District, MIGO Creative Technology Staging Lab\n- **Lab Hours:** Saturday to Wednesday, 09:00 – 18:00\n\nTo schedule an in-person discovery session or submit an inquiry, visit our **[Contact Page](/en/contact)** or complete your project brief via **[Start a Project](/en/start-project)**.`,
-        topic: 'contact_location',
-        suggestedActions: [
-          {
-            label: isFa ? 'صفحه تماس با استودیو' : 'Go to Contact Page',
-            href: `/${locale}/contact`,
-          },
-          {
-            label: isFa ? 'ثبت فرم شروع پروژه' : 'Start a Project Brief',
+            label: isFa ? 'شروع پروژه بازی و گیمیفیکیشن' : 'Start a Game Project Brief',
             href: `/${locale}/start-project`,
           },
         ],
         followUpOptions: isFa
-          ? ['بررسی خدمات استودیو', 'مشاهده پروژه‌ها']
-          : ['Browse services', 'View projects'],
+          ? [
+              'تفاوت آنریل ۵ و یونیتی در پروژه‌های استودیو چیست؟',
+              'برآورد هزینه و زمان ساخت بازی تعاملی',
+            ]
+          : [
+              'Unreal Engine 5 vs Unity pipelines',
+              'Timeline and budget for game systems',
+            ],
       };
     }
 
-    // -------------------------------------------------------------
-    // 11. EXPERIMENTS LAB
-    // -------------------------------------------------------------
-    if (topic === 'experiments_lab') {
+    // =========================================================================
+    // 11. START A PROJECT / ONBOARDING (شروع پروژه، ثبت بریف)
+    // =========================================================================
+    if (
+      /(شروع\s.*پروژه|پروژه\s.*شروع|شروع\s*(کنیم|کنم|کردن)|شروع\s*همکاری|آغاز\s*پروژه|سفارش\s*پروژه|همکاری|سفارش|بریف|ثبت\s*پروژه|start\s*(a|the)?\s*project|project\s*start|collaborate|hire|start working|submit brief)/i.test(
+        norm
+      )
+    ) {
       return {
         reply: isFa
-          ? `بخش **[آزمایشگاه کدهای تجربی (Experiments Lab)](/fa/lab)** بخش تحقیق و توسعه (R&D) آزاد استودیو MIGO است.\n\nما در این بخش الگوریتم‌های نوظهور گرافیک، شیدرهای GLSL، اسکنرهای ذرات لایدار و فیزیک سینتیک را پیش از ورود به پروژه‌های تجاری تست و اعتبارسنجی می‌کنیم:\n\n1. **Holographic Dispersion Shader:** شیدر پیشرفته پراکندگی طیف نوری بر بستر WebGL/WebGPU\n2. **Spatial LiDAR Scanner:** اسکنر ابری ذرات با بیش از ۴۲۰۰ نقطه همزمان و برش لیزری\n3. **Kinetic Spring Typography:** شبیه‌سازی فیزیک فنر و کشش در گره‌های حروف سه‌بعدی\n4. **WebAR Disassembly Inspector:** مدل قطعات متحرک مکانیکی با قابلیت انفجار لایه‌ای (Exploded View)\n\nمی‌توانید مستقیماً در آزمایشگاه با هر کدام از این نمونه‌ها به صورت سه‌بعدی تعامل داشته باشید!`
-          : `The **[Experiments Lab](/en/lab)** serves as MIGO's open research & development playground.\n\nHere, we develop and stress-test emerging GLSL shaders, point-cloud LiDAR simulations, kinetic spring topologies, and exploded CAD inspectors before deploying them into mission-critical client projects:\n\n1. **Holographic Dispersion Shader:** Real-time spectral chromatic dispersion running on WebGL/WebGPU.\n2. **Spatial LiDAR Scanner:** 4,200+ particle cloud with real-time green laser slicing geometry.\n3. **Kinetic Spring Typography:** Dynamic velocity springs and particle lattice physics.\n4. **WebAR Disassembly Inspector:** Interactive exploded CAD view of mechanical components.\n\nYou can interact directly with each experiment in full 3D inside the Lab!`,
-        topic: 'experiments_lab',
+          ? `برای آغاز همکاری با استودیو MIGO، فرآیند در صفحه **[شروع پروژه](/fa/start-project)** در ۵ گام مهندسی‌شده و ساده طراحی شده است:\n\n1. **گام اول: انتخاب خانواده خدمات** (واقعیت مجازی/ترکیبی، واقعیت افزوده WebAR، بازی‌های تعاملی، سه‌بعدی وب، شبیه‌سازی صنعتی یا اینستالیشن‌های نمایشگاهی)\n2. **گام دوم: اهداف پروژه و پلتفرم مدنظر** (هدست‌های مستقل، وب‌موبایل، کیوسک‌های تاچ یا دیوارهای بزرگ)\n3. **گام سوم: بازه بودجه و زمان‌بندی مدنظر** (برآورد اولیه زمان عرضه)\n4. **گام چهارم: شرح جزئیات ایده و لینک مستندات**\n5. **گام پنجم: اطلاعات تماس و دریافت خلاصه بریف (RFP Brief)**\n\nتیم فنی استودیو پس از بررسی بریف، جلسه مشاوره اولیه معماری را با شما هماهنگ خواهد کرد.`
+          : `To initiate a collaboration with MIGO, our guided **[Start a Project](/en/start-project)** onboarding flow takes you through 5 structured steps:\n\n1. **Step 1: Service Family Selection** (VR/MR, WebAR, Games, 3D Web, Simulation, or Exhibition Installations)\n2. **Step 2: Strategic Goals & Platform Target** (Standalone headsets, Web/Mobile, Kiosks, LED walls)\n3. **Step 3: Budget Tier & Launch Horizon**\n4. **Step 4: Project Scope Narrative & Document Links**\n5. **Step 5: Contact Coordinates & Formatted RFP Brief Summary**\n\nOur systems architects evaluate your requirements and schedule an architectural discovery session.`,
+        topic: 'start_project',
         suggestedActions: [
           {
-            label: isFa ? 'ورود به آزمایشگاه تجربیات (Lab)' : 'Enter Experiments Lab',
-            href: `/${locale}/lab`,
+            label: isFa ? 'ورود به فرم ۵ مرحله‌ای شروع پروژه' : 'Go to Start a Project Flow',
+            href: `/${locale}/start-project`,
+          },
+          {
+            label: isFa ? 'مشاهده همه خدمات استودیو' : 'Browse All Services',
+            href: `/${locale}/services`,
           },
         ],
         followUpOptions: isFa
-          ? ['نحوه اجرای آزمایش‌ها روی مرورگر من', 'بازگشت به معرفی خدمات']
-          : ['How experiments run in browser', 'Back to services overview'],
+          ? [
+              'مایگو چه خدماتی ارائه میده؟',
+              'مشاهده پروژه‌های شاخص استودیو',
+              'روش‌شناسی ۴ مرحله‌ای استودیو چیست؟',
+            ]
+          : [
+              'What services does MIGO provide?',
+              'Explore featured client projects',
+              'What is MIGO\'s 4-phase methodology?',
+            ],
       };
     }
 
-    // -------------------------------------------------------------
-    // 12. GENERAL SERVICES ARCHITECTURE
-    // -------------------------------------------------------------
+    // =========================================================================
+    // 12. GENERAL OR CUSTOM INQUIRY (CONTEXTUAL SYNTHESIS)
+    // =========================================================================
     const servicesListFa = SERVICES.map(
       (s, idx) => `${idx + 1}. **[${s.title.fa}](/fa/services/${s.slug})** — ${s.badge.fa}`
     ).join('\n');
@@ -563,20 +517,20 @@ export class MigoAiEngine {
 
     return {
       reply: isFa
-        ? `استودیو MIGO پروژه‌های فناوری خلاق را در **۶ خانواده خدمت اصلی** مهندسی می‌کند:\n\n${servicesListFa}\n\nتمام این خدمات با تکیه بر توسعه درون‌استودیویی، تضمین نرخ فریم ۶۰ تا ۱۲۰ FPS و یکپارچه‌سازی سخت‌افزار و نرم‌افزار ارائه می‌شوند.\n\nدرباره کدام زمینه مایلید اطلاعات فنی یا نمونه پروژه‌های اجرایی را بررسی کنید؟`
-        : `MIGO Studio engineers creative technology across **6 core service families**:\n\n${servicesListEn}\n\nAll services are produced in-house with zero outsourcing, locked 60–120 FPS guarantees, and turnkey hardware integration.\n\nWhich discipline would you like to explore or consult on?`,
-      topic: 'general',
+        ? `در رابطه با پرسش شما درباره «**${raw}**»:\n\nاستودیو MIGO یک استودیوی مهندسی فناوری خلاق است که هر ایده تعاملی را از مرحله کشف معماری تا استقرار کامل سخت‌افزار و نرم‌افزار پیاده‌سازی می‌کند. توانمندی‌های محوری ما عبارتند از:\n\n${servicesListFa}\n\nتمام پروژه‌ها به صورت ۱۰۰٪ درون‌استودیویی، با کدنویسی بهینه شیدرها و گارانتی اجرای پایدار در سخت‌افزار تحویل داده می‌شوند.\n\nبرای آنکه بتوانم دقیق‌ترین پیشنهاد فنی را برای ایده شما مطرح کنم، بفرمایید این تجربه قرار است برای چه مخاطبی، در چه محیطی (وب، نمایشگاه یا هدست) اجرا شود؟`
+        : `Regarding your inquiry on "**${raw}**":\n\nMIGO Studio is an independent creative technology studio turning interactive ideas into high-fidelity spatial realities. Our 6 core engineering families encompass:\n\n${servicesListEn}\n\nAll systems are produced in-house with locked framerates, zero outsourcing, and turnkey hardware integration.\n\nTo recommend the ideal technical solution for your concept, could you share whether your experience is intended for web browsers, physical exhibition venues, or VR headsets?`,
+      topic: 'contextual_synthesis',
       suggestedActions: [
         {
-          label: isFa ? 'مشاهده پرتال کامل خدمات' : 'Browse All Services',
+          label: isFa ? 'مشاهده خدمات استودیو' : 'Browse Services',
           href: `/${locale}/services`,
         },
         {
-          label: isFa ? 'مشاهده پروژه‌های شاخص' : 'View Portfolio Projects',
+          label: isFa ? 'مشاهده پروژه‌های شاخص' : 'View Case Studies',
           href: `/${locale}/work`,
         },
         {
-          label: isFa ? 'ثبت بریف در شروع پروژه' : 'Start a Project Brief',
+          label: isFa ? 'ثبت ایده در شروع پروژه' : 'Submit Project Brief',
           href: `/${locale}/start-project`,
         },
       ],
@@ -584,14 +538,14 @@ export class MigoAiEngine {
         ? [
             'برای موزه یا نمایشگاه چه تجربه‌ای پیشنهاد میدید؟',
             'چطور محصولاتم رو با WebAR نمایش بدم؟',
-            'تفاوت واقعیت مجازی (VR) و ترکیبی (MR) چیه؟',
-            'مراحل شروع همکاری چطور است؟',
+            'تفاوت واقعیت مجازی و ترکیبی چیه؟',
+            'هزینه و زمان‌بندی پروژه‌ها چطور محاسبه میشه؟',
           ]
         : [
-            'What do you suggest for an interactive museum?',
-            'How can I display products via WebAR?',
+            'What do you suggest for a museum?',
+            'How can I display products in WebAR?',
             'What is the difference between VR and MR?',
-            'How do we start a project?',
+            'How are project pricing and timelines planned?',
           ],
     };
   }
@@ -601,15 +555,13 @@ export class MigoAiEngine {
    */
   public static async *streamReply(
     fullText: string,
-    chunkDelayMs: number = 22
+    chunkDelayMs: number = 18
   ): AsyncGenerator<string, void, unknown> {
-    // Split into tokens (words or punctuation chunks)
     const tokens = fullText.split(/(\s+)/);
 
     for (const token of tokens) {
       if (token) {
         yield token;
-        // Pause briefly to simulate live thinking/typing
         await new Promise((res) => setTimeout(res, chunkDelayMs));
       }
     }
