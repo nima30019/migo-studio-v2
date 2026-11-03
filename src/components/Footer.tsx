@@ -133,8 +133,8 @@ export function Footer() {
             <div className="space-y-3 text-xs">
               <div className="flex items-center gap-2 text-neutral-300">
                 <Mail className="w-4 h-4 text-brand-orange shrink-0" />
-                <a href="mailto:hello@migo-studio.com" className="hover:text-brand-orange transition-colors">
-                  hello@migo-studio.com
+                <a href="mailto:migogamessemnan@gmail.com" className="hover:text-brand-orange transition-colors">
+                  migogamessemnan@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2 text-neutral-300">

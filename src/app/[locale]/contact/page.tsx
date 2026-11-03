@@ -67,8 +67,8 @@ export default function ContactPage({ params }: { params: { locale: Locale } }) 
                   <span className="block text-xs font-mono text-neutral-400">
                     {isRtl ? 'ایمیل رسمی و مکاتبات:' : 'Direct Inquiries:'}
                   </span>
-                  <a href="mailto:hello@migo-studio.com" className="text-white hover:text-brand-orange transition-colors">
-                    hello@migo-studio.com
+                  <a href="mailto:migogamessemnan@gmail.com" className="text-white hover:text-brand-orange transition-colors">
+                    migogamessemnan@gmail.com
                   </a>
                 </div>
               </div>
