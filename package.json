@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mlc-ai/web-llm": "^0.2.87",
     "clsx": "^2.1.1",
     "lucide-react": "^0.453.0",
     "next": "14.2.18",

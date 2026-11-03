@@ -8,6 +8,7 @@ import { Footer } from '@/components/Footer';
 import { CustomCursor } from '@/components/CustomCursor';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { StructuredData } from '@/components/StructuredData';
+import { MigoAi } from '@/components/ai/MigoAi';
 import { getOrganizationSchema, getWebSiteSchema } from '@/utils/schema';
 import { createLocalizedMetadata } from '@/utils/seo';
 
@@ -65,6 +66,9 @@ export default function LocaleLayout({
 
         {/* Desktop Magnetic Custom Cursor */}
         <CustomCursor />
+
+        {/* MIGO AI Autonomous In-Browser Assistant */}
+        <MigoAi />
 
         {/* GA4 Script Container */}
         <GoogleAnalytics />
