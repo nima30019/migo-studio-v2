@@ -15,7 +15,7 @@ export async function generateMetadata({
   return createLocalizedMetadata({
     locale: params.locale,
     path: '/start-project',
-    title: isFa ? 'شروع همکاری و سفارش پروژه' : 'Initiate Project & Scope Assessment',
+    title: isFa ? 'شروع همکاری و سفارش پروژه' : 'Start a Project & Scope Assessment',
     description: isFa
       ? 'فرم هوشمند دریافت نیازمندی‌ها، انتخاب پلتفرم واقعیت مجازی/افزوده و زمان‌بندی پروژه در استودیو MIGO.'
       : 'Interactive project onboarding and scoping wizard for VR/MR simulations, WebAR, and turnkey exhibition tech.',

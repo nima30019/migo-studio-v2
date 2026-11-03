@@ -17,7 +17,7 @@ export async function generateMetadata({
   return createLocalizedMetadata({
     locale: params.locale,
     path: '/contact',
-    title: isFa ? 'تماس با استودیو MIGO' : 'Contact MIGO Studio',
+    title: isFa ? 'تماس و مشاوره پروژه' : 'Contact & Project Inquiry',
     description: isFa
       ? 'راه‌های ارتباطی با تیم فنی و مهندسی استودیو MIGO جهت مشاوره، استعلام پروژه‌های واقعیت مجازی، غرفه‌های تعاملی و بازی‌سازی.'
       : 'Connect with MIGO Creative Technology Studio leads for architectural feasibility, RFP submissions, and spatial project consultations.',

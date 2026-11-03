@@ -276,11 +276,12 @@ export function LabCanvas({
     // Performance & FPS counter
     let frameCount = 0;
     let lastFpsTime = performance.now();
-    let animId: number;
+    let animId: number | null = null;
     let clock = new THREE.Clock();
+    let isIntersecting = true;
+    let isTabVisible = typeof document !== 'undefined' ? !document.hidden : true;
 
-    const animate = () => {
-      animId = requestAnimationFrame(animate);
+    const renderLabFrame = () => {
       const t = clock.getElapsedTime();
 
       // FPS tracking
@@ -362,7 +363,55 @@ export function LabCanvas({
       renderer.render(scene, camera);
     };
 
-    animate();
+    const loop = () => {
+      if (!isIntersecting || !isTabVisible) {
+        animId = null;
+        return;
+      }
+      renderLabFrame();
+      animId = requestAnimationFrame(loop);
+    };
+
+    const startLoop = () => {
+      if (animId === null && isIntersecting && isTabVisible) {
+        clock.start();
+        animId = requestAnimationFrame(loop);
+      }
+    };
+
+    const stopLoop = () => {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+        clock.stop();
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(container);
+
+    const handleVisibilityChange = () => {
+      isTabVisible = !document.hidden;
+      if (isTabVisible) {
+        startLoop();
+      } else {
+        stopLoop();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    startLoop();
 
     const handleResize = () => {
       if (!container || !renderer) return;
@@ -375,7 +424,9 @@ export function LabCanvas({
     window.addEventListener('resize', handleResize);
 
     return () => {
-      cancelAnimationFrame(animId);
+      stopLoop();
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('mousemove', handlePointerMove);
       window.removeEventListener('touchmove', handlePointerMove);
       window.removeEventListener('resize', handleResize);

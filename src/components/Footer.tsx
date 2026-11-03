@@ -28,10 +28,11 @@ export function Footer() {
             >
               <img
                 src={logoSrc}
-                alt={isRtl ? 'لوگوی رسمی استودیو فناوری خلاق MIGO V2' : 'MIGO Studio V2 Logo'}
+                alt={isRtl ? 'لوگوی رسمی استودیو MIGO' : 'MIGO Studio Logo'}
                 width={80}
                 height={44}
                 loading="lazy"
+                decoding="async"
                 className="h-10 w-auto object-contain"
               />
               <div className="flex flex-col">
@@ -59,7 +60,7 @@ export function Footer() {
                 aria-label="MIGO Studio GitHub"
                 className="p-2.5 rounded-xl bg-white/[0.04] hover:bg-brand-orange/20 hover:text-white border border-white/[0.08] transition-all"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-4 h-4" aria-hidden="true" />
               </a>
               <a
                 href="https://linkedin.com/company/migo-studio"
@@ -68,7 +69,7 @@ export function Footer() {
                 aria-label="MIGO Studio LinkedIn"
                 className="p-2.5 rounded-xl bg-white/[0.04] hover:bg-brand-orange/20 hover:text-white border border-white/[0.08] transition-all"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-4 h-4" aria-hidden="true" />
               </a>
               <a
                 href="https://instagram.com/migo.studio"
@@ -77,7 +78,7 @@ export function Footer() {
                 aria-label="MIGO Studio Instagram"
                 className="p-2.5 rounded-xl bg-white/[0.04] hover:bg-brand-orange/20 hover:text-white border border-white/[0.08] transition-all"
               >
-                <Instagram className="w-4 h-4" />
+                <Instagram className="w-4 h-4" aria-hidden="true" />
               </a>
             </div>
           </div>

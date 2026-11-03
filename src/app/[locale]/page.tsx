@@ -30,31 +30,11 @@ export async function generateMetadata({
     locale: params.locale,
     path: '/',
     title: isFa
-      ? 'خلق تجربیات تعاملی، واقعیت مجازی و استودیو سه‌بعدی'
-      : 'Engineering Interactive Realities, Virtual Reality & 3D Lab',
+      ? 'خلق تجربیات تعاملی و واقعیت مجازی'
+      : 'Interactive Realities & Spatial XR',
     description: isFa
       ? 'استودیو فناوری خلاق MIGO؛ پیشگام در توسعه واقعیت مجازی (VR/MR)، واقعیت افزوده وب (WebAR)، فناوری‌های تعاملی نمایشگاهی، بازی‌سازی و شبیه‌سازی‌های پیشرفته سه‌بعدی.'
       : 'MIGO Creative Technology Studio engineers spatial computing, high-fidelity VR/MR, WebAR, kinetic exhibition walls, and simulation engines.',
-    keywords: isFa
-      ? [
-          'واقعیت مجازی',
-          'رایانش فضایی',
-          'استودیو MIGO',
-          'فناوری خلاق',
-          'WebAR',
-          'فناوری نمایشگاهی',
-          'شبیه‌سازی صنعتی',
-          'بازی‌سازی',
-        ]
-      : [
-          'Spatial Computing',
-          'Virtual Reality',
-          'Mixed Reality',
-          'Creative Technology',
-          'WebAR',
-          'MIGO Studio',
-          'Exhibition Tech',
-        ],
   });
 }
 
@@ -152,14 +132,26 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#090B0F] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#090B0F] to-transparent z-10 pointer-events-none" />
           <div className="flex w-max animate-marquee gap-8 items-center text-xs sm:text-sm font-mono font-bold tracking-widest text-neutral-400">
-            {[...marqueeKeywords, ...marqueeKeywords].map((word, i) => (
-              <span key={i} className="flex items-center gap-3">
-                <span className="text-white hover:text-brand-orange transition-colors">
-                  {word}
+            <div className="flex items-center gap-8">
+              {marqueeKeywords.map((word, i) => (
+                <span key={`original-${i}`} className="flex items-center gap-3">
+                  <span className="text-white hover:text-brand-orange transition-colors">
+                    {word}
+                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
-              </span>
-            ))}
+              ))}
+            </div>
+            <div className="flex items-center gap-8" aria-hidden="true">
+              {marqueeKeywords.map((word, i) => (
+                <span key={`clone-${i}`} className="flex items-center gap-3">
+                  <span className="text-white hover:text-brand-orange transition-colors">
+                    {word}
+                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 

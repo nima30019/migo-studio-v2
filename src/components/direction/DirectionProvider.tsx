@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useMemo } from 'react';
+import React, { createContext, useContext, useEffect, useMemo } from 'react';
 import { Locale, Direction, getDirection } from '@/data/translations';
 
 interface DirectionContextValue {
@@ -23,6 +23,13 @@ export interface DirectionProviderProps {
 export function DirectionProvider({ locale, children }: DirectionProviderProps) {
   const direction = getDirection(locale);
   const isRtl = direction === 'rtl';
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = locale;
+      document.documentElement.dir = direction;
+    }
+  }, [locale, direction]);
 
   const value = useMemo<DirectionContextValue>(() => {
     return {

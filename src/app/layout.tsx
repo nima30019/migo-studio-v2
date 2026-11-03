@@ -5,8 +5,8 @@ import { getAssetPath } from '@/utils/asset';
 export const metadata: Metadata = {
   metadataBase: new URL('https://nima30019.github.io/migo-studio-v2'),
   title: {
-    template: '%s | MIGO Creative Technology Studio V2',
-    default: 'MIGO Creative Technology Studio V2 | Virtual Reality, WebAR & 3D Lab',
+    template: '%s',
+    default: 'MIGO | Creative Technology Studio',
   },
   icons: {
     icon: [
@@ -24,8 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="dark">
+    <html lang="fa" dir="rtl" className="dark">
       <head>
+        <meta name="theme-color" content="#07080B" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <link rel="icon" href={getAssetPath('/migo-logo-transparent.png')} />
         <link rel="apple-touch-icon" href={getAssetPath('/migo-logo-transparent.png')} />
       </head>

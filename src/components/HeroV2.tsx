@@ -34,6 +34,7 @@ export function HeroV2() {
                 alt={isRtl ? 'نشان استودیو MIGO' : 'MIGO Emblem'}
                 width={24}
                 height={24}
+                decoding="async"
                 className="w-6 h-6 object-contain"
               />
               <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />

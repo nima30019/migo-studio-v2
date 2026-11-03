@@ -27,7 +27,7 @@ export async function generateMetadata({
     path: '/',
     title: isFa
       ? 'استودیو فناوری خلاق و رایانش فضایی'
-      : 'Creative Technology & Spatial XR Studio',
+      : 'Creative Technology & Spatial XR',
   });
 }
 

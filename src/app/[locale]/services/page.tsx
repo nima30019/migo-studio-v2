@@ -16,7 +16,7 @@ export async function generateMetadata({
   return createLocalizedMetadata({
     locale: params.locale,
     path: '/services',
-    title: isFa ? 'زمینه‌های فعالیت و خدمات تخصصی' : 'Specialized Services & Capabilities',
+    title: isFa ? 'خدمات تخصصی و حوزه‌های فعالیت' : 'Specialized Services & Capabilities',
     description: isFa
       ? 'خدمات استودیو فناوری خلاق MIGO شامل توسعه واقعیت مجازی (VR/MR)، واقعیت افزوده وب (WebAR)، فناوری‌های تعاملی نمایشگاهی، بازی‌سازی و شبیه‌سازی صنعتی.'
       : 'Explore MIGO Studio engineering services across Virtual Reality, WebAR, Kinetic Exhibition Walls, Serious Games, and 3D Visualizations.',

@@ -18,7 +18,7 @@ export async function generateMetadata({
   return createLocalizedMetadata({
     locale: params.locale,
     path: '/insights',
-    title: isFa ? 'مقالات، یادداشت‌های فنی و اخبار' : 'Insights, Technical Papers & XR Research',
+    title: isFa ? 'مقالات و پژوهش‌های فنی' : 'Technical Insights & Research',
     description: isFa
       ? 'مقالات تخصصی استودیو MIGO پیرامون آینده واقعیت مجازی، تکنولوژی‌های تعاملی نمایشگاهی، بازی‌های جدی و WebAR.'
       : 'Read technical engineering insights on spatial computing, WebGL performance, VR training architectures, and zero-install WebAR.',

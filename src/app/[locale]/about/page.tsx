@@ -32,7 +32,7 @@ export async function generateMetadata({
   return createLocalizedMetadata({
     locale: params.locale,
     path: '/about',
-    title: isFa ? 'استودیو MIGO — فلسفه، فناوری و تیم مهندسی' : 'MIGO Studio — Philosophy, Technology & Team',
+    title: isFa ? 'فلسفه، فناوری و تیم مهندسی' : 'Philosophy, Technology & Team',
     description: isFa
       ? 'آشنایی عمیق با فلسفه استودیو MIGO، رویکرد خلاقانه، فناوری‌های کلیدی، تخصص‌های تیمی، متدولوژی مهندسی و محیط آزمایشگاهی استودیو.'
       : 'Explore MIGO Studio architecture: our core philosophy, creative approach, industrial tech stack, cross-disciplinary team, and turnkey delivery workflow.',

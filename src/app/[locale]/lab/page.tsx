@@ -15,7 +15,7 @@ export async function generateMetadata({
   return createLocalizedMetadata({
     locale: params.locale,
     path: '/lab',
-    title: isFa ? 'آزمایشگاه تجربی و شیدرهای ریل‌تایم' : 'Experiments Lab & Real-Time Shaders',
+    title: isFa ? 'آزمایشگاه تجربی و فناوری‌های نو' : 'Experiments Lab & Creative Tech',
     description: isFa
       ? 'آزمایشگاه فناوری‌های تجربی استودیو MIGO؛ شیدرهای تعاملی WebGL، شبیه‌ساز ابر نقاط LiDAR، تایپوگرافی حرکتی و کاوشگر WebAR.'
       : 'Explore MIGO Studio Experiments Lab: real-time GPU simplex noise shaders, LiDAR point cloud streaming, kinetic typography, and zero-install WebAR.',

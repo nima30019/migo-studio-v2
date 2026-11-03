@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Locale } from '@/data/translations';
 
-export const SITE_NAME_FA = 'استودیو فناوری خلاق MIGO';
-export const SITE_NAME_EN = 'MIGO Creative Technology Studio';
+export const SITE_NAME_FA = 'استودیو MIGO';
+export const SITE_NAME_EN = 'MIGO Studio';
 export const DEFAULT_DESCRIPTION_FA =
   'استودیو MIGO طراح و مجری تجربیات غوطه‌ورکننده دیجیتال، واقعیت مجازی (VR/MR)، واقعیت افزوده وب (WebAR)، بازی‌های سازمانی و فناوری‌های تعاملی نمایشگاهی.';
 export const DEFAULT_DESCRIPTION_EN =
@@ -51,39 +51,21 @@ export function createLocalizedMetadata({
   const enUrl = buildCanonicalUrl(`/en${cleanPath === '/' ? '' : cleanPath}`);
   const imageUrl = image.startsWith('http') ? image : `${getBaseUrl()}${image.startsWith('/') ? image : `/${image}`}`;
 
-  const defaultKeywords = isFa
-    ? [
-        'واقعیت مجازی',
-        'فناوری نمایشگاهی',
-        'طراحی سه‌بعدی',
-        'WebAR',
-        'شبیه‌سازی صنعتی',
-        'بازی تعاملی',
-        'استودیو MIGO',
-        'فناوری خلاق',
-        'آزمایشگاه تجربی',
-      ]
-    : [
-        'Virtual Reality',
-        'Mixed Reality',
-        'WebAR',
-        'Creative Technology',
-        'MIGO Studio',
-        'Exhibition Tech',
-        'Serious Games',
-        'Interactive 3D',
-        'Spatial Computing',
-      ];
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+  const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
 
-  const googleVerification =
-    process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google-site-verification-placeholder-migo-v2';
-  const bingVerification =
-    process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || 'bing-site-verification-placeholder-migo-v2';
+  const verification: Metadata['verification'] = {};
+  if (googleVerification && !googleVerification.includes('placeholder')) {
+    verification.google = googleVerification;
+  }
+  if (bingVerification && !bingVerification.includes('placeholder')) {
+    verification.other = { 'msvalidate.01': bingVerification };
+  }
+  const hasVerification = Object.keys(verification).length > 0;
 
   return {
     title: `${title} | ${siteName}`,
     description: desc,
-    keywords: keywords || defaultKeywords,
     authors: [{ name: 'MIGO Creative Technology Studio', url: getBaseUrl() }],
     creator: 'MIGO Studio',
     publisher: 'MIGO Studio',
@@ -106,24 +88,19 @@ export function createLocalizedMetadata({
         'x-default': faUrl,
       },
     },
-    verification: {
-      google: googleVerification,
-      other: {
-        'msvalidate.01': bingVerification,
-      },
-    },
+    verification: hasVerification ? verification : undefined,
     openGraph: {
       title: `${title} | ${siteName}`,
       description: desc,
       url: canonicalUrl,
-      siteName: siteName,
+      siteName: isFa ? 'استودیو فناوری خلاق MIGO' : 'MIGO Creative Technology Studio',
       locale: isFa ? 'fa_IR' : 'en_US',
       type: type,
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
+          width: image === '/migo-logo.png' ? 1024 : 1200,
+          height: image === '/migo-logo.png' ? 682 : 630,
           alt: `${title} | ${siteName}`,
         },
       ],

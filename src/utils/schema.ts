@@ -22,7 +22,6 @@ export function getOrganizationSchema(locale: Locale) {
       ? 'استودیو فناوری خلاق MIGO؛ پیشگام در توسعه واقعیت مجازی (VR/MR)، واقعیت افزوده وب (WebAR)، فناوری‌های تعاملی نمایشگاهی، بازی‌سازی و آزمایشگاه تجربیات نوآورانه.'
       : 'MIGO Creative Technology Studio engineering next-generation VR/MR, WebAR, kinetic exhibition walls, serious games, and interactive 3D simulations.',
     email: 'migogamessemnan@gmail.com',
-    telephone: '+98-21-88880000',
     priceRange: '$$$$',
     knowsAbout: [
       'Virtual Reality (VR)',
@@ -63,7 +62,7 @@ export function getWebSiteSchema(locale: Locale) {
     '@type': 'WebSite',
     '@id': `${baseUrl}/#website`,
     url: `${baseUrl}/${locale}`,
-    name: isFa ? 'استودیو تجربیات تعاملی MIGO V2' : 'MIGO Interactive Studio V2',
+    name: isFa ? 'استودیو تجربیات تعاملی MIGO' : 'MIGO Interactive Studio',
     description: isFa
       ? 'استودیو فناوری خلاق MIGO؛ طراحی و مهندسی تجربیات تعاملی، سه‌بعدی و فضایی.'
       : 'MIGO Creative Technology Studio; engineering interactive, 3D, and spatial digital experiences.',

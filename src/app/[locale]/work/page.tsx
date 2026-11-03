@@ -15,7 +15,7 @@ export async function generateMetadata({
   return createLocalizedMetadata({
     locale: params.locale,
     path: '/work',
-    title: isFa ? 'پروژه‌های اجرایی و نمونه‌کارها' : 'Case Studies & Production Deployments',
+    title: isFa ? 'پروژه‌های اجرایی و نمونه‌کارها' : 'Case Studies & Deployments',
     description: isFa
       ? 'منتخبی از تجربیات دیجیتال، اپلیکیشن‌های تعاملی واقعیت مجازی، WebAR و فناوری‌های نمایشگاهی اجرا شده توسط استودیو MIGO.'
       : 'Explore MIGO Studio portfolio of virtual reality simulators, interactive museum installations, WebAR configurators, and serious games.',

@@ -57,9 +57,10 @@ export function Navbar() {
               <div className="flex items-center transition-transform duration-200 group-hover:scale-105">
                 <img
                   src={logoSrc}
-                  alt={isRtl ? 'لوگوی رسمی استودیو فناوری خلاق MIGO V2' : 'Official MIGO Studio V2 Logo'}
+                  alt={isRtl ? 'لوگوی رسمی استودیو MIGO' : 'Official MIGO Studio Logo'}
                   width={80}
                   height={44}
+                  decoding="async"
                   className="h-10 sm:h-11 w-auto max-w-[90px] object-contain"
                 />
               </div>

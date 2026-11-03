@@ -166,12 +166,13 @@ export function InteractiveWebGLHero() {
     };
     window.addEventListener('resize', handleResize);
 
-    // 7. Animation Loop
-    let animationFrameId: number;
+    // 7. Animation Loop with Visibility & Intersection Optimization
+    let animationFrameId: number | null = null;
     let clock = new THREE.Clock();
+    let isIntersecting = true;
+    let isTabVisible = typeof document !== 'undefined' ? !document.hidden : true;
 
-    const animate = () => {
-      animationFrameId = requestAnimationFrame(animate);
+    const renderFrame = () => {
       const elapsedTime = clock.getElapsedTime();
 
       // Damped mouse tracking
@@ -191,11 +192,61 @@ export function InteractiveWebGLHero() {
       renderer.render(scene, camera);
     };
 
-    animate();
+    const loop = () => {
+      if (!isIntersecting || !isTabVisible) {
+        animationFrameId = null;
+        return;
+      }
+      renderFrame();
+      animationFrameId = requestAnimationFrame(loop);
+    };
+
+    const startLoop = () => {
+      if (animationFrameId === null && isIntersecting && isTabVisible) {
+        clock.start();
+        animationFrameId = requestAnimationFrame(loop);
+      }
+    };
+
+    const stopLoop = () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+        clock.stop();
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(container);
+
+    const handleVisibilityChange = () => {
+      isTabVisible = !document.hidden;
+      if (isTabVisible) {
+        startLoop();
+      } else {
+        stopLoop();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    startLoop();
 
     // 8. Cleanup
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      stopLoop();
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('mousemove', handlePointerMove);
       window.removeEventListener('touchmove', handlePointerMove);
       window.removeEventListener('resize', handleResize);
