@@ -28,7 +28,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci || npm install
 
       - name: Build with Next.js export
         run: npm run build
