@@ -6,42 +6,35 @@ import {
   X,
   RotateCcw,
   Sparkles,
-  Cpu,
-  Zap,
-  ShieldCheck,
   Send,
-  Loader2,
-  ExternalLink,
-  ChevronDown,
-  Info,
+  Zap,
 } from 'lucide-react';
 import { useDirection } from '@/components/direction/DirectionProvider';
 import { DirectionAwareArrow } from '@/components/direction/DirectionAwareArrow';
 import { getAssetPath } from '@/utils/asset';
 import { MessageContent } from './MessageContent';
 import { UseMigoAiReturn } from '@/hooks/useMigoAi';
-import { SUPPORTED_MODELS } from '@/utils/ai/webllmService';
 
 interface MigoAiChatModalProps {
   chat: UseMigoAiReturn;
 }
 
 export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
-  const { isRtl, locale } = useDirection();
+  const { isRtl } = useDirection();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const logoSrc = getAssetPath('/migo-logo-transparent.png');
   const logoEmblem = getAssetPath('/brand/instagram/migo-instagram-avatar-emblem-dark.png');
 
-  // Auto scroll to bottom on new messages
+  // Auto-scroll to bottom on message update or streaming
   useEffect(() => {
     if (chat.isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [chat.messages, chat.isOpen, chat.isStreaming]);
 
-  // Focus input on open
+  // Auto-focus input on modal open
   useEffect(() => {
     if (chat.isOpen) {
       setTimeout(() => {
@@ -52,15 +45,28 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
 
   if (!chat.isOpen) return null;
 
-  const isLocalReady = chat.engineMode === 'local-ai' && chat.webLLMStatus === 'ready';
-  const isDownloading = chat.webLLMStatus === 'downloading';
-
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       chat.sendMessage();
     }
   };
+
+  const quickPillCategories = isRtl
+    ? [
+        { label: '🏛️ موزه و اینستالیشن', prompt: 'برای موزه یا نمایشگاه چه تجربه‌ای پیشنهاد میدید؟' },
+        { label: '📱 واقعیت افزوده WebAR', prompt: 'چطور محصولاتم رو با WebAR به مشتری نشون بدم؟' },
+        { label: '👓 واقعیت مجازی VR/MR', prompt: 'تفاوت واقعیت مجازی (VR) و ترکیبی (MR) چیه؟' },
+        { label: '⚙️ شبیه‌سازی صنعتی', prompt: 'شبیه‌سازی‌های صنعتی MIGO چه کمکی به شرکت‌ها می‌کنند؟' },
+        { label: '🚀 شروع پروژه و برآورد', prompt: 'چطور می‌توانم یک پروژه با شما شروع کنم؟' },
+      ]
+    : [
+        { label: '🏛️ Museum & Installation', prompt: 'What do you suggest for an interactive museum?' },
+        { label: '📱 Zero-Install WebAR', prompt: 'How can I display products in WebAR?' },
+        { label: '👓 Spatial VR vs MR', prompt: 'What is the difference between VR and MR?' },
+        { label: '⚙️ Industrial Simulation', prompt: 'Can you build an industrial simulation?' },
+        { label: '🚀 Start a Project', prompt: 'How can I start working with MIGO?' },
+      ];
 
   return (
     <div
@@ -88,7 +94,7 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
                 MIGO AI
               </span>
               <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-brand-orange/20 text-brand-orange border border-brand-orange/40 font-bold">
-                PRO
+                CONSULTANT
               </span>
             </div>
             <p className="text-[11px] font-mono text-neutral-400">
@@ -120,71 +126,34 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
         </div>
       </div>
 
-      {/* 2. Engine Status & WebGPU Banner */}
+      {/* 2. Status Banner (Instant Zero-Download) */}
       <div className="px-5 py-2.5 bg-[#0A0D14] border-b border-white/[0.06] flex items-center justify-between text-xs">
         <div className="flex items-center gap-2">
-          {isLocalReady ? (
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>WebGPU Local AI (Qwen 2.5)</span>
-            </span>
-          ) : isDownloading ? (
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-brand-orange">
-              <Loader2 className="w-3 h-3 animate-spin" />
-              <span>در حال بارگیری مدل محلی...</span>
-            </span>
-          ) : (
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-neutral-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-              <span>{isRtl ? 'پایگاه دانش هوشمند استودیو' : 'Studio Knowledge Engine'}</span>
-            </span>
-          )}
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>{isRtl ? 'مشاور هوشمند فعال (پاسخ آنی)' : 'Active Studio Intelligence (Instant)'}</span>
+          </span>
         </div>
 
-        {/* WebGPU Switch / Trigger */}
-        {!isLocalReady && !isDownloading && (
-          <div>
-            {chat.hasWebGPU ? (
-              <button
-                type="button"
-                onClick={() => chat.initializeLocalAI()}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold text-white bg-brand-orange/20 hover:bg-brand-orange border border-brand-orange/40 transition-all"
-                title={isRtl ? 'دانلود مدل محلی و اجرای مستقیم با وب‌جی‌پی‌یو' : 'Download local model to run via WebGPU'}
-              >
-                <Zap className="w-3 h-3 text-brand-orange group-hover:text-white" />
-                <span>{isRtl ? 'فعال‌سازی هوش مصنوعی محلی' : 'Enable Local AI'}</span>
-              </button>
-            ) : (
-              <span className="text-[10px] font-mono text-neutral-500">
-                {isRtl ? 'حالت فوق‌سریع بدون دانلود' : 'Instant Zero-Download'}
-              </span>
-            )}
-          </div>
-        )}
+        <span className="inline-flex items-center gap-1 text-[10px] font-mono text-brand-orange">
+          <Zap className="w-3 h-3" />
+          <span>{isRtl ? 'بدون دانلود / ۱۰۰٪ دقیق' : 'Zero-Download / 100% Accurate'}</span>
+        </span>
       </div>
 
-      {/* 3. Model Download Progress Bar (When initializing) */}
-      {isDownloading && chat.progressReport && (
-        <div className="px-5 py-3 bg-[#11141F] border-b border-brand-orange/30 space-y-2">
-          <div className="flex items-center justify-between text-xs font-mono">
-            <span className="text-white font-bold">
-              {isRtl ? 'بارگذاری مدل Qwen 2.5 در مرورگر' : 'Downloading Qwen 2.5 into Browser Cache'}
-            </span>
-            <span className="text-brand-orange font-bold">
-              {chat.progressReport.progress}%
-            </span>
-          </div>
-          <div className="w-full h-1.5 rounded-full bg-white/[0.08] overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-brand-orange to-amber-300 transition-all duration-300 rounded-full"
-              style={{ width: `${chat.progressReport.progress}%` }}
-            />
-          </div>
-          <p className="text-[10px] font-mono text-neutral-400 line-clamp-1">
-            {chat.progressReport.text}
-          </p>
-        </div>
-      )}
+      {/* 3. Quick Topic Horizontal Carousel */}
+      <div className="px-4 py-2 border-b border-white/[0.05] bg-[#0C0F17]/60 overflow-x-auto no-scrollbar flex items-center gap-2">
+        {quickPillCategories.map((pill, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => chat.sendMessage(pill.prompt)}
+            className="whitespace-nowrap px-3 py-1 rounded-lg bg-white/[0.04] hover:bg-brand-orange/20 text-neutral-300 hover:text-white border border-white/[0.06] hover:border-brand-orange/30 text-[11px] font-mono transition-all shrink-0"
+          >
+            {pill.label}
+          </button>
+        ))}
+      </div>
 
       {/* 4. Conversation Feed */}
       <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
@@ -275,28 +244,7 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* 5. Suggested Prompts (when only 1 welcome message exists) */}
-      {chat.messages.length <= 1 && (
-        <div className="px-4 pb-2">
-          <div className="text-[11px] font-mono text-neutral-400 mb-2 px-1">
-            {isRtl ? 'پرسش‌های پیشنهادی:' : 'Suggested questions:'}
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {chat.suggestedPrompts.slice(0, 3).map((prompt, pIdx) => (
-              <button
-                key={pIdx}
-                type="button"
-                onClick={() => chat.sendMessage(prompt)}
-                className="text-xs px-3 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-neutral-300 hover:text-white border border-white/[0.08] transition-all text-start"
-              >
-                {prompt}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* 6. Message Input Area */}
+      {/* 5. Message Input Area */}
       <div className="p-4 border-t border-white/[0.08] bg-[#0A0C13]">
         <div className="relative flex items-end gap-2 p-2 rounded-2xl bg-[#121620] border border-white/[0.1] focus-within:border-brand-orange transition-all">
           <textarea
@@ -307,7 +255,7 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
             onKeyDown={handleKeyDown}
             placeholder={
               isRtl
-                ? 'پیام خود را بنویسید (مثلاً: برای نمایشگاه چه پیشنهادی دارید؟)...'
+                ? 'پیام خود را بنویسید (مثلاً: برای موزه چه پیشنهادی دارید؟)...'
                 : 'Ask MIGO AI (e.g. Can you create an interactive museum experience?)...'
             }
             className="w-full resize-none bg-transparent px-2 py-1 text-xs sm:text-sm text-white placeholder-neutral-500 focus:outline-none max-h-24 leading-relaxed font-sans"
@@ -324,10 +272,10 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
           </button>
         </div>
 
-        {/* Privacy & Zero-API Notice */}
+        {/* Status notice */}
         <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 pt-2 px-1">
-          <span>{isRtl ? 'بدون وابستگی به API خارجی' : '100% In-Browser / Zero Paid API'}</span>
-          <span>MIGO AI v2.0</span>
+          <span>{isRtl ? 'پاسخ آنی و کاملاً دقیق' : 'Instant & Deterministic'}</span>
+          <span>MIGO AI v2.1</span>
         </div>
       </div>
     </div>

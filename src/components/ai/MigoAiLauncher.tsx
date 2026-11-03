@@ -1,21 +1,15 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, MessageSquare } from 'lucide-react';
 import { getAssetPath } from '@/utils/asset';
 import { useDirection } from '@/components/direction/DirectionProvider';
 
 interface MigoAiLauncherProps {
   isOpen: boolean;
   onClick: () => void;
-  isReadyLocalAI?: boolean;
 }
 
-export function MigoAiLauncher({
-  isOpen,
-  onClick,
-  isReadyLocalAI,
-}: MigoAiLauncherProps) {
+export function MigoAiLauncher({ isOpen, onClick }: MigoAiLauncherProps) {
   const { isRtl } = useDirection();
   const logoEmblem = getAssetPath('/brand/instagram/migo-instagram-avatar-emblem-dark.png');
   const logoFallback = getAssetPath('/migo-logo-transparent.png');
@@ -34,10 +28,10 @@ export function MigoAiLauncher({
         >
           <span className="w-2 h-2 rounded-full bg-brand-orange animate-ping" />
           <span className="text-[11px] font-mono font-bold tracking-wider text-neutral-200 group-hover:text-white">
-            {isRtl ? 'گفتگو با هوش مصنوعی مایگو' : 'Ask MIGO AI'}
+            {isRtl ? 'گفتگو با مشاور MIGO AI' : 'Ask MIGO AI'}
           </span>
-          <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30">
-            {isReadyLocalAI ? 'Local WebGPU' : 'Consultant'}
+          <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-400/15 text-emerald-400 border border-emerald-400/30">
+            {isRtl ? 'پاسخ آنی' : 'Instant AI'}
           </span>
         </div>
       )}
@@ -71,18 +65,13 @@ export function MigoAiLauncher({
             alt="MIGO AI"
             className="w-full h-full object-cover rounded-lg"
             onError={(e) => {
-              // Fallback to logo transparent if emblem fails
               (e.currentTarget as HTMLImageElement).src = logoFallback;
             }}
           />
         </div>
 
         {/* Live Status indicator dot */}
-        <span
-          className={`absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-[#090B0F] ${
-            isReadyLocalAI ? 'bg-emerald-400' : 'bg-brand-orange'
-          }`}
-        />
+        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-[#090B0F] bg-emerald-400" />
       </button>
     </div>
   );

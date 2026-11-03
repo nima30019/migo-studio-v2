@@ -10,14 +10,11 @@ export function MigoAi() {
   const { locale } = useDirection();
   const chat = useMigoAi(locale);
 
-  const isLocalReady = chat.engineMode === 'local-ai' && chat.webLLMStatus === 'ready';
-
   return (
     <>
       <MigoAiLauncher
         isOpen={chat.isOpen}
         onClick={chat.toggleChat}
-        isReadyLocalAI={isLocalReady}
       />
       <MigoAiChatModal chat={chat} />
     </>
