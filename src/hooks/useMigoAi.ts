@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Locale } from '@/data/translations';
+import { GeminiService } from '@/utils/ai/geminiService';
 import {
   MigoAiEngine,
   ChatMessage,
@@ -20,21 +21,42 @@ export interface UseMigoAiReturn {
   clearChat: () => void;
   isStreaming: boolean;
   suggestedPrompts: string[];
+  isGeminiActive: boolean;
+  apiKeyInput: string;
+  setApiKeyInput: (key: string) => void;
+  saveApiKey: (key: string) => void;
+  removeApiKey: () => void;
+  showApiKeyPrompt: boolean;
+  setShowApiKeyPrompt: (show: boolean) => void;
+  engineError: string | null;
 }
 
 export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
   const [isOpen, setIsOpen] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [isGeminiActive, setIsGeminiActive] = useState(false);
+  const [apiKeyInput, setApiKeyInput] = useState('');
+  const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
+  const [engineError, setEngineError] = useState<string | null>(null);
 
-  // Initial welcome message
+  // Check if Gemini key is available on mount
+  useEffect(() => {
+    const hasKey = GeminiService.hasApiKey();
+    setIsGeminiActive(hasKey);
+    if (hasKey) {
+      setApiKeyInput(GeminiService.getApiKey());
+    }
+  }, []);
+
+  // Initial greeting
   const initialGreeting: ChatMessage = {
     id: 'welcome-0',
     role: 'assistant',
     content:
       initialLocale === 'fa'
-        ? `سلام! من **MIGO AI**، مشاور هوشمند فناوری خلاق و رایانش فضایی **استودیو MIGO** هستم.\n\nمن می‌توانم در زمینه انتخاب تکنولوژی، بررسی خدمات (واقعیت مجازی، وب‌واقعیت‌افزوده، اینستالیشن‌های نمایشگاهی، شبیه‌سازی و بازی) و تنظیم بریف اولیه پروژه به شما مشاوره دهم.\n\nچه نوع ایده یا پروژه‌ای در ذهن دارید؟`
-        : `Hello! I am **MIGO AI**, creative technology and spatial engineering consultant for **MIGO Studio**.\n\nI can assist you in selecting technologies, exploring our capabilities (VR/MR, WebAR, Exhibition Installations, Simulations & Games), or preparing a project brief.\n\nWhat kind of experience are you planning to build?`,
+        ? `سلام! من **MIGO AI**، دستیار هوشمند و مشاور فناوری خلاق **استودیو MIGO** هستم.\n\nمن با هوش مصنوعی قدرتمند گوگل Gemini ادغام شده‌ام تا به هر پرسش تخصصی درباره پروژه‌ها، واقعیت مجازی (VR/MR)، وب‌واقعیت‌افزوده (WebAR)، اینستالیشن‌های تعاملی نمایشگاهی و شبیه‌سازی‌های صنعتی پاسخ دهم.\n\nچه ایده یا سوالی در ذهن دارید؟`
+        : `Hello! I am **MIGO AI**, creative technology consultant for **MIGO Studio**.\n\nPowered by Google Gemini, I can assist you with spatial computing (VR/MR), Zero-Install WebAR, museum installations, and industrial simulation architecture.\n\nWhat kind of experience or concept are you planning?`,
     timestamp: Date.now(),
     metadata: {
       topic: 'general',
@@ -42,15 +64,15 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
         initialLocale === 'fa'
           ? [
               'مایگو چه خدماتی ارائه میده؟',
-              'برای موزه یا نمایشگاه چه تجربه‌ای پیشنهاد میدید؟',
-              'چطور محصولاتم رو با WebAR به مشتری نشون بدم؟',
+              'برای موزه یا نمایشگاه چه ایده‌ای پیشنهاد می‌کنی؟',
               'تفاوت واقعیت مجازی (VR) و ترکیبی (MR) چیه؟',
+              'چطور محصولاتم رو با WebAR به مشتری نشون بدم؟',
             ]
           : [
               'What services does MIGO provide?',
               'What do you suggest for an interactive museum?',
-              'How can I display products in WebAR?',
               'What is the difference between VR and MR?',
+              'How can I display products in WebAR?',
             ],
     },
   };
@@ -60,6 +82,10 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
 
   const openChat = useCallback(() => {
     setIsOpen(true);
+    // If no key is set yet, show key prompt once
+    if (!GeminiService.hasApiKey()) {
+      setShowApiKeyPrompt(true);
+    }
   }, []);
 
   const closeChat = useCallback(() => {
@@ -67,7 +93,28 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
   }, []);
 
   const toggleChat = useCallback(() => {
-    setIsOpen((prev) => !prev);
+    setIsOpen((prev) => {
+      const next = !prev;
+      if (next && !GeminiService.hasApiKey()) {
+        setShowApiKeyPrompt(true);
+      }
+      return next;
+    });
+  }, []);
+
+  const saveApiKey = useCallback((key: string) => {
+    GeminiService.setApiKey(key);
+    const hasKey = Boolean(key.trim());
+    setIsGeminiActive(hasKey);
+    setApiKeyInput(key.trim());
+    setShowApiKeyPrompt(false);
+    setEngineError(null);
+  }, []);
+
+  const removeApiKey = useCallback(() => {
+    GeminiService.setApiKey('');
+    setIsGeminiActive(false);
+    setApiKeyInput('');
   }, []);
 
   const clearChat = useCallback(() => {
@@ -87,7 +134,7 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
     ]);
   }, [initialLocale]);
 
-  // Send message with natural streaming token cadence
+  // Send message
   const sendMessage = useCallback(
     async (customText?: string) => {
       const text = (customText !== undefined ? customText : inputValue).trim();
@@ -106,14 +153,8 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
       setMessages(updatedHistory);
       setInputValue('');
       setIsStreaming(true);
+      setEngineError(null);
       streamingAbortRef.current = false;
-
-      // Generate response from MigoAiEngine
-      const engineRes = MigoAiEngine.processQuery(
-        text,
-        updatedHistory,
-        userMsgLocale
-      );
 
       const assistantMsgId = `assistant-${Date.now()}`;
       const placeholderAssistant: ChatMessage = {
@@ -121,23 +162,66 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
         role: 'assistant',
         content: '',
         timestamp: Date.now(),
-        metadata: {
-          topic: engineRes.topic,
-          suggestedActions: engineRes.suggestedActions,
-          followUpOptions: engineRes.followUpOptions,
-        },
       };
 
       setMessages([...updatedHistory, placeholderAssistant]);
 
-      // Stream text smoothly with realistic typing cadence
+      // If Gemini API Key is configured -> use Gemini 1.5 Flash streaming
+      if (GeminiService.hasApiKey()) {
+        try {
+          const geminiHistory = updatedHistory.slice(1, -1).map((m) => ({
+            role: m.role as 'user' | 'assistant',
+            content: m.content,
+          }));
+
+          let accumulated = '';
+          for await (const chunk of GeminiService.streamChat(text, geminiHistory)) {
+            if (streamingAbortRef.current) break;
+            accumulated += chunk;
+            setMessages((prev) =>
+              prev.map((msg) =>
+                msg.id === assistantMsgId ? { ...msg, content: accumulated } : msg
+              )
+            );
+          }
+
+          setIsStreaming(false);
+          return;
+        } catch (err: any) {
+          console.warn('[MIGO AI] Gemini generation error, falling back:', err);
+          if (err?.message === 'API_KEY_INVALID') {
+            setEngineError('API_KEY_INVALID');
+          } else if (err?.message === 'QUOTA_EXCEEDED') {
+            setEngineError('QUOTA_EXCEEDED');
+          }
+          // Continue to fallback below
+        }
+      }
+
+      // Built-in Knowledge Engine Fallback if Gemini key is not provided or fails
+      const engineRes = MigoAiEngine.processQuery(
+        text,
+        updatedHistory,
+        userMsgLocale
+      );
+
       let accumulated = '';
       for await (const token of MigoAiEngine.streamReply(engineRes.reply, 16)) {
         if (streamingAbortRef.current) break;
         accumulated += token;
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === assistantMsgId ? { ...msg, content: accumulated } : msg
+            msg.id === assistantMsgId
+              ? {
+                  ...msg,
+                  content: accumulated,
+                  metadata: {
+                    topic: engineRes.topic,
+                    suggestedActions: engineRes.suggestedActions,
+                    followUpOptions: engineRes.followUpOptions,
+                  },
+                }
+              : msg
           )
         );
       }
@@ -151,7 +235,7 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
     initialLocale === 'fa'
       ? [
           'مایگو چه خدماتی ارائه میده؟',
-          'برای موزه یا نمایشگاه چه راهکاری مناسبه؟',
+          'برای موزه یا نمایشگاه چه ایده‌ای داری؟',
           'چطور محصولاتم رو با WebAR به مشتری نشون بدم؟',
           'تفاوت واقعیت مجازی و ترکیبی چیه؟',
           'می‌خوام یک پروژه جدید شروع کنم',
@@ -176,5 +260,13 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
     clearChat,
     isStreaming,
     suggestedPrompts,
+    isGeminiActive,
+    apiKeyInput,
+    setApiKeyInput,
+    saveApiKey,
+    removeApiKey,
+    showApiKeyPrompt,
+    setShowApiKeyPrompt,
+    engineError,
   };
 }

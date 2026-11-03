@@ -1,13 +1,17 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   X,
   RotateCcw,
   Sparkles,
   Send,
-  Zap,
+  Key,
+  ExternalLink,
+  Check,
+  AlertCircle,
+  HelpCircle,
 } from 'lucide-react';
 import { useDirection } from '@/components/direction/DirectionProvider';
 import { DirectionAwareArrow } from '@/components/direction/DirectionAwareArrow';
@@ -23,9 +27,14 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
   const { isRtl } = useDirection();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [localKey, setLocalKey] = useState(chat.apiKeyInput);
 
   const logoSrc = getAssetPath('/migo-logo-transparent.png');
   const logoEmblem = getAssetPath('/brand/instagram/migo-instagram-avatar-emblem-dark.png');
+
+  useEffect(() => {
+    setLocalKey(chat.apiKeyInput);
+  }, [chat.apiKeyInput]);
 
   // Auto-scroll to bottom on message update or streaming
   useEffect(() => {
@@ -36,12 +45,12 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
 
   // Auto-focus input on modal open
   useEffect(() => {
-    if (chat.isOpen) {
+    if (chat.isOpen && !chat.showApiKeyPrompt) {
       setTimeout(() => {
         inputRef.current?.focus();
       }, 150);
     }
-  }, [chat.isOpen]);
+  }, [chat.isOpen, chat.showApiKeyPrompt]);
 
   if (!chat.isOpen) return null;
 
@@ -94,7 +103,7 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
                 MIGO AI
               </span>
               <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-brand-orange/20 text-brand-orange border border-brand-orange/40 font-bold">
-                CONSULTANT
+                {chat.isGeminiActive ? 'GEMINI' : 'SMART'}
               </span>
             </div>
             <p className="text-[11px] font-mono text-neutral-400">
@@ -104,6 +113,20 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
         </div>
 
         <div className="flex items-center gap-1.5">
+          {/* Key Settings Toggle */}
+          <button
+            type="button"
+            onClick={() => chat.setShowApiKeyPrompt(!chat.showApiKeyPrompt)}
+            title={isRtl ? 'تنظیمات کلید Google Gemini' : 'Google Gemini API Settings'}
+            className={`p-2 rounded-xl transition-all ${
+              chat.isGeminiActive
+                ? 'text-emerald-400 hover:text-white bg-emerald-500/10 hover:bg-emerald-500/20'
+                : 'text-neutral-400 hover:text-white hover:bg-white/[0.06]'
+            }`}
+          >
+            <Key className="w-4 h-4" />
+          </button>
+
           {/* Reset Chat */}
           <button
             type="button"
@@ -126,20 +149,119 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
         </div>
       </div>
 
-      {/* 2. Status Banner (Instant Zero-Download) */}
-      <div className="px-5 py-2.5 bg-[#0A0D14] border-b border-white/[0.06] flex items-center justify-between text-xs">
+      {/* 2. Gemini Status & Settings Drawer */}
+      {chat.showApiKeyPrompt && (
+        <div className="p-4 bg-[#111420] border-b border-brand-orange/30 animate-in slide-in-from-top-4 duration-200">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-brand-orange" />
+              <span>{isRtl ? 'تنظیمات Google Gemini 1.5 Flash' : 'Google Gemini API Settings'}</span>
+            </span>
+            <button
+              type="button"
+              onClick={() => chat.setShowApiKeyPrompt(false)}
+              className="text-neutral-400 hover:text-white"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <p className="text-[11px] text-neutral-300 leading-relaxed mb-3">
+            {isRtl
+              ? 'برای پاسخ‌های کاملاً آزاد، طبیعی و قدرتمند با جیمنای، کلید رایگان خود را وارد کنید:'
+              : 'Enter your free Google Gemini API key to activate natural generative responses:'}
+          </p>
+
+          <div className="flex gap-2 mb-2">
+            <input
+              type="password"
+              value={localKey}
+              onChange={(e) => setLocalKey(e.target.value)}
+              placeholder="AIzaSy..."
+              className="flex-1 px-3 py-1.5 rounded-xl bg-[#090B0F] border border-white/20 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-brand-orange font-mono"
+            />
+            <button
+              type="button"
+              onClick={() => chat.saveApiKey(localKey)}
+              className="px-3.5 py-1.5 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold transition-all shrink-0"
+            >
+              {isRtl ? 'ذخیره' : 'Save'}
+            </button>
+          </div>
+
+          <div className="flex items-center justify-between text-[10px] font-mono text-neutral-400 pt-1">
+            <a
+              href="https://aistudio.google.com/app/apikey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-cyan-400 hover:underline"
+            >
+              <span>{isRtl ? 'دریافت کلید رایگان از Google AI Studio' : 'Get free key from Google AI Studio'}</span>
+              <ExternalLink className="w-2.5 h-2.5" />
+            </a>
+
+            {chat.isGeminiActive && (
+              <button
+                type="button"
+                onClick={chat.removeApiKey}
+                className="text-red-400 hover:underline"
+              >
+                {isRtl ? 'حذف کلید' : 'Remove key'}
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Status Bar */}
+      <div className="px-5 py-2 bg-[#0A0D14] border-b border-white/[0.06] flex items-center justify-between text-xs">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>{isRtl ? 'مشاور هوشمند فعال (پاسخ آنی)' : 'Active Studio Intelligence (Instant)'}</span>
-          </span>
+          {chat.isGeminiActive ? (
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Google Gemini 1.5 Flash</span>
+            </span>
+          ) : (
+            <button
+              type="button"
+              onClick={() => chat.setShowApiKeyPrompt(true)}
+              className="inline-flex items-center gap-1.5 text-[11px] font-mono text-brand-orange hover:underline text-start"
+            >
+              <Sparkles className="w-3 h-3" />
+              <span>{isRtl ? 'فعال‌سازی Gemini با کلید رایگان' : 'Enable Gemini with Free Key'}</span>
+            </button>
+          )}
         </div>
 
-        <span className="inline-flex items-center gap-1 text-[10px] font-mono text-brand-orange">
-          <Zap className="w-3 h-3" />
-          <span>{isRtl ? 'بدون دانلود / ۱۰۰٪ دقیق' : 'Zero-Download / 100% Accurate'}</span>
+        <span className="text-[10px] font-mono text-neutral-400">
+          {chat.isGeminiActive ? (isRtl ? 'متصل' : 'Connected') : (isRtl ? 'پایگاه دانش' : 'Knowledge Engine')}
         </span>
       </div>
+
+      {/* Error notification if API key is invalid */}
+      {chat.engineError && (
+        <div className="px-4 py-2 bg-red-950/60 border-b border-red-500/40 text-xs text-red-200 flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <AlertCircle className="w-3.5 h-3.5 text-red-400 shrink-0" />
+            <span>
+              {chat.engineError === 'API_KEY_INVALID'
+                ? isRtl
+                  ? 'کلید Gemini نامعتبر است. از پایگاه دانش داخلی استفاده شد.'
+                  : 'Invalid Gemini API key. Switched to built-in knowledge.'
+                : isRtl
+                ? 'سهمیه درخواست پر شده است.'
+                : 'Quota exceeded. Switched to built-in knowledge.'}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => chat.setShowApiKeyPrompt(true)}
+            className="text-[10px] font-bold underline hover:text-white"
+          >
+            {isRtl ? 'ویرایش کلید' : 'Edit key'}
+          </button>
+        </div>
+      )}
 
       {/* 3. Quick Topic Horizontal Carousel */}
       <div className="px-4 py-2 border-b border-white/[0.05] bg-[#0C0F17]/60 overflow-x-auto no-scrollbar flex items-center gap-2">
@@ -255,8 +377,8 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
             onKeyDown={handleKeyDown}
             placeholder={
               isRtl
-                ? 'پیام خود را بنویسید (مثلاً: برای موزه چه پیشنهادی دارید؟)...'
-                : 'Ask MIGO AI (e.g. Can you create an interactive museum experience?)...'
+                ? 'هر سوالی از MIGO AI دارید بپرسید...'
+                : 'Ask MIGO AI anything about our creative technologies...'
             }
             className="w-full resize-none bg-transparent px-2 py-1 text-xs sm:text-sm text-white placeholder-neutral-500 focus:outline-none max-h-24 leading-relaxed font-sans"
           />
@@ -272,10 +394,10 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
           </button>
         </div>
 
-        {/* Status notice */}
+        {/* Footer info */}
         <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 pt-2 px-1">
-          <span>{isRtl ? 'پاسخ آنی و کاملاً دقیق' : 'Instant & Deterministic'}</span>
-          <span>MIGO AI v2.1</span>
+          <span>{chat.isGeminiActive ? '✨ Powered by Google Gemini 1.5' : '⚡ MIGO Studio Intelligence'}</span>
+          <span>MIGO AI v2.2</span>
         </div>
       </div>
     </div>
