@@ -2,11 +2,8 @@
 
 import { useState, useCallback, useRef } from 'react';
 import { Locale } from '@/data/translations';
-import {
-  MigoAiEngine,
-  ChatMessage,
-  detectLanguage,
-} from '@/utils/ai/migoAiEngine';
+import { ChatMessage, MigoAiEngine, detectLanguage } from '@/utils/ai/migoAiEngine';
+import { ChatClient } from '@/utils/ai/chatClient';
 
 export interface UseMigoAiReturn {
   isOpen: boolean;
@@ -108,40 +105,32 @@ export function useMigoAi(initialLocale: Locale = 'fa'): UseMigoAiReturn {
       setIsStreaming(true);
       streamingAbortRef.current = false;
 
+      // Extract immediate suggestions based on query
+      const meta = MigoAiEngine.processQuery(text, updatedHistory, userMsgLocale);
+
       const assistantMsgId = `assistant-${Date.now()}`;
       const placeholderAssistant: ChatMessage = {
         id: assistantMsgId,
         role: 'assistant',
         content: '',
         timestamp: Date.now(),
+        metadata: {
+          topic: meta.topic,
+          suggestedActions: meta.suggestedActions,
+          followUpOptions: meta.followUpOptions,
+        },
       };
 
       setMessages([...updatedHistory, placeholderAssistant]);
 
-      // Process query through MigoAiEngine
-      const engineRes = MigoAiEngine.processQuery(
-        text,
-        updatedHistory,
-        userMsgLocale
-      );
-
+      // Stream message via Hybrid Client
       let accumulated = '';
-      for await (const token of MigoAiEngine.streamReply(engineRes.reply, 16)) {
+      for await (const token of ChatClient.streamMessage(text, updatedHistory)) {
         if (streamingAbortRef.current) break;
         accumulated += token;
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === assistantMsgId
-              ? {
-                  ...msg,
-                  content: accumulated,
-                  metadata: {
-                    topic: engineRes.topic,
-                    suggestedActions: engineRes.suggestedActions,
-                    followUpOptions: engineRes.followUpOptions,
-                  },
-                }
-              : msg
+            msg.id === assistantMsgId ? { ...msg, content: accumulated } : msg
           )
         );
       }

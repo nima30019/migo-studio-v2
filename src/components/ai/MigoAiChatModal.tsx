@@ -74,9 +74,9 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
 
   return (
     <div
-      className={`fixed bottom-24 ${
-        isRtl ? 'left-4 sm:left-6' : 'right-4 sm:right-6'
-      } z-50 w-[94vw] sm:w-[460px] md:w-[500px] h-[82vh] max-h-[700px] flex flex-col rounded-3xl bg-[#090B10]/95 backdrop-blur-2xl border border-white/[0.12] shadow-[0_25px_80px_rgba(0,0,0,0.85)] overflow-hidden animate-in fade-in zoom-in-95 duration-200`}
+      className={`fixed bottom-20 sm:bottom-24 ${
+        isRtl ? 'left-3 sm:left-6' : 'right-3 sm:right-6'
+      } z-50 w-[calc(100vw-24px)] sm:w-[460px] md:w-[500px] h-[80vh] sm:h-[82vh] max-h-[700px] flex flex-col rounded-3xl bg-[#090B10]/95 backdrop-blur-2xl border border-white/[0.12] shadow-[0_25px_80px_rgba(0,0,0,0.85)] overflow-hidden animate-in fade-in zoom-in-95 duration-200`}
     >
       {/* 1. Modal Header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.08] bg-[#0D1018]/80">
