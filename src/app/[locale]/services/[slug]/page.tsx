@@ -34,12 +34,21 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Cpu,
 };
 
+function findService(slug: string) {
+  return SERVICES.find((s) => s.slug === slug || s.aliases?.includes(slug));
+}
+
 export function generateStaticParams() {
   const locales: Locale[] = ['fa', 'en'];
   const params: Array<{ locale: Locale; slug: string }> = [];
   for (const locale of locales) {
     for (const service of SERVICES) {
       params.push({ locale, slug: service.slug });
+      if (service.aliases) {
+        for (const alias of service.aliases) {
+          params.push({ locale, slug: alias });
+        }
+      }
     }
   }
   return params;
@@ -50,7 +59,7 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale; slug: string };
 }): Promise<Metadata> {
-  const service = SERVICES.find((s) => s.slug === params.slug);
+  const service = findService(params.slug);
   if (!service) return {};
 
   return createLocalizedMetadata({
@@ -69,7 +78,7 @@ export default function ServiceDetailPage({
   const locale = params.locale === 'en' ? 'en' : 'fa';
   const isRtl = locale === 'fa';
 
-  const service = SERVICES.find((s) => s.slug === params.slug);
+  const service = findService(params.slug);
   if (!service) notFound();
 
   const IconComponent = ICON_MAP[service.icon] || Sparkles;

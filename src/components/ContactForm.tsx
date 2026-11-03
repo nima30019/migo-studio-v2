@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, Mail, Copy, Check } from 'lucide-react';
 import { useDirection } from './direction/DirectionProvider';
 import { useAudio } from './AudioController';
 
@@ -18,8 +18,8 @@ export function ContactForm() {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -43,39 +43,65 @@ export function ContactForm() {
     playClick();
     if (!validate()) return;
 
-    setIsSubmitting(true);
-    // Simulate instantaneous local response
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      playSuccess();
-    }, 600);
+    setIsSubmitted(true);
+    playSuccess();
+  };
+
+  const getMailtoUrl = () => {
+    const subject = encodeURIComponent(`[MIGO Inquiry] ${formData.subject}: ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'N/A'}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`
+    );
+    return `mailto:hello@migo-studio.com?subject=${subject}&body=${body}`;
+  };
+
+  const handleCopy = () => {
+    playClick();
+    const text = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'N/A'}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   if (isSubmitted) {
     return (
-      <div className="p-8 rounded-3xl bg-emerald-950/30 border border-emerald-500/40 text-center space-y-4">
+      <div className="p-8 rounded-3xl bg-emerald-950/30 border border-emerald-500/40 text-center space-y-6">
         <div className="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto">
           <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="font-display font-bold text-2xl text-white">
-          {isRtl ? 'پیام شما با موفقیت دریافت شد!' : 'Message Received!'}
-        </h3>
-        <p className="text-sm text-neutral-300 max-w-md mx-auto leading-relaxed">
-          {isRtl
-            ? 'از تماس شما متشکریم. تیم فنی و مهندسی استودیو MIGO حداکثر ظرف ۲۴ ساعت کاری با شما تماس خواهند گرفت.'
-            : 'Thank you for reaching out. The MIGO engineering leads will review your inquiry and follow up within 24 hours.'}
-        </p>
-        <button
-          onClick={() => {
-            playClick();
-            setIsSubmitted(false);
-            setFormData({ name: '', email: '', phone: '', subject: 'general', message: '' });
-          }}
-          className="mt-4 px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-white/[0.08] hover:bg-white/[0.14] transition-colors"
-        >
-          {isRtl ? 'ارسال پیام جدید' : 'Send Another Message'}
-        </button>
+        <div className="space-y-2">
+          <h3 className="font-display font-bold text-2xl text-white">
+            {isRtl ? 'پیام شما آماده ارسال مستقیم است!' : 'Inquiry Compiled Successfully!'}
+          </h3>
+          <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto leading-relaxed font-light">
+            {isRtl
+              ? 'پیام شما فرمت‌بندی شد. جهت ارتباط بدون واسطه، می‌توانید آن را از طریق نرم‌افزار ایمیل خود ارسال نمایید یا متن آن را کپی کنید.'
+              : 'Your inquiry has been structured. To ensure direct deliverability, launch your mail client or copy the brief below to send to hello@migo-studio.com.'}
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <a
+            href={getMailtoUrl()}
+            onClick={playClick}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs font-bold text-white bg-brand-orange hover:bg-brand-orange-hover shadow-glow-orange transition-all"
+          >
+            <Mail className="w-4 h-4" />
+            <span>{isRtl ? 'ارسال با نرم‌افزار ایمیل (Mailto)' : 'Transmit via Email Client'}</span>
+          </a>
+
+          <button
+            onClick={handleCopy}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs font-bold text-neutral-200 bg-white/[0.08] hover:bg-white/[0.14] border border-white/[0.1] transition-all"
+          >
+            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+            <span>{copied ? (isRtl ? 'کپی شد!' : 'Copied!') : (isRtl ? 'کپی متن پیام' : 'Copy Inquiry')}</span>
+          </button>
+        </div>
+
+        <div className="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-neutral-400">
+          hello@migo-studio.com // RESPONSE SLA &lt; 24H
+        </div>
       </div>
     );
   }
@@ -114,7 +140,7 @@ export function ContactForm() {
             type="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            placeholder={isRtl ? 'name@company.com' : 'name@company.com'}
+            placeholder="name@company.com"
             className={`w-full px-4 py-3 rounded-xl bg-[#0F1218] border ${
               errors.email ? 'border-red-500/80 focus:ring-red-500' : 'border-white/[0.1] focus:border-brand-orange'
             } text-white placeholder-neutral-500 text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange transition-all`}
@@ -165,7 +191,7 @@ export function ContactForm() {
       {/* Message */}
       <div>
         <label className="block text-xs font-mono font-medium text-neutral-300 mb-2">
-          {isRtl ? 'شرح ایده یا پروژه' : 'Project Details & Goals'} *
+          {isRtl ? 'شرح پیام' : 'Message'} *
         </label>
         <textarea
           rows={5}
@@ -173,8 +199,8 @@ export function ContactForm() {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder={
             isRtl
-              ? 'اهداف، زمان‌بندی مورد نظر و جزییات اولیه پروژه خود را توضیح دهید...'
-              : 'Describe your requirements, intended hardware, target launch date, and budget expectations...'
+              ? 'موضوع، سوالات یا شرح مختصر پیام خود را بنویسید...'
+              : 'Write your questions, partnership details, or general inquiry...'
           }
           className={`w-full px-4 py-3 rounded-xl bg-[#0F1218] border ${
             errors.message ? 'border-red-500/80 focus:ring-red-500' : 'border-white/[0.1] focus:border-brand-orange'
@@ -190,17 +216,10 @@ export function ContactForm() {
 
       <button
         type="submit"
-        disabled={isSubmitting}
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-white bg-brand-orange hover:bg-brand-orange-hover shadow-glow-orange hover:shadow-glow-orange-lg transition-all text-sm min-h-[44px] cursor-pointer disabled:opacity-50"
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-white bg-brand-orange hover:bg-brand-orange-hover shadow-glow-orange hover:shadow-glow-orange-lg transition-all text-sm min-h-[44px] cursor-pointer"
       >
-        {isSubmitting ? (
-          <span>{isRtl ? 'در حال ارسال پیام...' : 'Transmitting...'}</span>
-        ) : (
-          <>
-            <span>{isRtl ? 'ارسال پیام به استودیو' : 'Send Inquiry'}</span>
-            <Send className="w-4 h-4" />
-          </>
-        )}
+        <span>{isRtl ? 'آماده‌سازی پیام مستقیم' : 'Prepare Direct Message'}</span>
+        <Send className="w-4 h-4" />
       </button>
     </form>
   );

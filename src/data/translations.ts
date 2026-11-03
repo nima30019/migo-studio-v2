@@ -29,22 +29,22 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     key: 'lab',
-    label: { en: 'Experiments Lab', fa: 'آزمایشگاه تجربی' },
+    label: { en: 'Experiments', fa: 'آزمایشگاه' },
     href: (l) => `/${l}/lab`,
   },
   {
     key: 'about',
-    label: { en: 'About Studio', fa: 'درباره ما' },
+    label: { en: 'Studio', fa: 'استودیو' },
     href: (l) => `/${l}/about`,
   },
   {
     key: 'insights',
-    label: { en: 'Insights', fa: 'مقالات و اخبار' },
+    label: { en: 'Insights', fa: 'مقالات' },
     href: (l) => `/${l}/insights`,
   },
   {
     key: 'contact',
-    label: { en: 'Contact', fa: 'تماس با ما' },
+    label: { en: 'Contact', fa: 'تماس' },
     href: (l) => `/${l}/contact`,
   },
 ];

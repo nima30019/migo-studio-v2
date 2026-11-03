@@ -3,7 +3,9 @@ import { Locale } from './translations';
 export interface ServiceItem {
   id: string;
   slug: string;
+  aliases?: string[];
   title: Record<Locale, string>;
+  family: Record<Locale, string>;
   shortDescription: Record<Locale, string>;
   overview: Record<Locale, string>;
   icon: string;
@@ -22,16 +24,22 @@ export interface ServiceItem {
 }
 
 export const SERVICES: ServiceItem[] = [
+  // 1. Immersive Experiences — VR / MR / XR
   {
-    id: 'vr-mr',
-    slug: 'virtual-reality',
+    id: 'immersive-experiences',
+    slug: 'immersive-experiences',
+    aliases: ['virtual-reality', 'vr-mr'],
     title: {
-      en: 'Virtual Reality & Mixed Reality',
-      fa: 'واقعیت مجازی و واقعیت ترکیبی (VR / MR)',
+      en: 'Immersive Experiences — VR / MR / XR',
+      fa: 'تجربیات غوطه‌ورکننده — VR / MR / XR',
+    },
+    family: {
+      en: 'Spatial Computing',
+      fa: 'رایانش فضایی',
     },
     shortDescription: {
-      en: 'High-fidelity immersive VR and MR environments for enterprise simulations, education, and entertainment.',
-      fa: 'محیط‌های غوطه‌ورکننده با وفاداری بصری بالا برای شبیه‌سازی‌های سازمانی، آموزش پیشرفته و سرگرمی.',
+      en: 'High-fidelity spatial computing, standalone Meta Quest/Pico environments, and tethered PC-VR rigs for enterprise simulations and entertainment.',
+      fa: 'رایانش فضایی با وفاداری بصری بالا، توسعه اپلیکیشن‌های مستقل VR/MR و سیستم‌های قدرتمند PC-VR برای شبیه‌سازی و سرگرمی.',
     },
     overview: {
       en: 'MIGO engineers spatial computing applications that transport users into interactive digital realms. From tetherless standalone headsets to high-performance PC-VR rigs, we craft intuitive physics-driven interactions, realistic spatial audio, and photorealistic 3D environments.',
@@ -39,538 +47,458 @@ export const SERVICES: ServiceItem[] = [
     },
     icon: 'Glasses',
     badge: {
-      en: 'Spatial Computing',
-      fa: 'رایانش فضایی',
+      en: 'VR / MR / XR',
+      fa: 'واقعیت مجازی و ترکیبی',
     },
     capabilities: {
       en: [
-        'Standalone VR application development (Meta Quest, Pico, HTC Vive)',
-        'PC-VR and high-end tethered experiences for industrial centers',
-        'Mixed Reality passthrough and spatial anchoring',
-        'Educational VR & university interactive laboratories',
-        'Industrial VR simulations & hazard-free equipment training',
-        'Virtual architectural walkthroughs with real-time lighting',
-        'Interactive VR games and branded entertainment',
-        'Multi-user collaborative VR meeting spaces',
+        'Standalone VR application development (Meta Quest 3, Pico 4, Apple Vision Pro)',
+        'High-end PC-VR tethered rigs for industrial centers and research labs',
+        'Mixed Reality passthrough and spatial anchoring in real-world spaces',
+        'Multi-user collaborative VR environments with voice synchronization',
+        'Millimeter-accurate physics interactions and tactile haptic feedback',
+        'Virtual architectural walkthroughs with real-time global illumination',
       ],
       fa: [
-        'توسعه اپلیکیشن‌های مستقل VR (Meta Quest، Pico و HTC Vive)',
-        'تجربیات با گرافیک پیشرفته PC-VR برای مراکز صنعتی و نمایشگاهی',
+        'توسعه اپلیکیشن‌های مستقل VR (Meta Quest 3، Pico 4 و Apple Vision Pro)',
+        'تجربیات با گرافیک پیشرفته PC-VR برای مراکز صنعتی و آزمایشگاه‌های پژوهشی',
         'ادغام واقعیت ترکیبی (MR Passthrough) و لنگراندازی فضایی در محیط واقعی',
-        'محیط‌های آموزشی VR و آزمایشگاه‌های مجازی مدارس و دانشگاه‌ها',
-        'شبیه‌سازی‌های صنعتی و آموزش کار با ماشین‌آلات سنگین بدون ریسک',
-        'تورهای مجازی معماری با نورپردازی و متریال بی‌درنگ (Real-time)',
-        'بازی‌های تعاملی VR و محتوای سرگرمی برندها',
-        'فضاهای چندکاربره هم‌زمان برای جلسات و آموزش تیمی در واقعیت مجازی',
+        'محیط‌های همکاری چندکاربره واقعیت مجازی همراه با همگام‌سازی صوت فضایی',
+        'تعاملات فیزیکی با دقت میلی‌متری و بازخورد لرزشی هپتیک',
+        'تورهای مجازی معماری با نورپردازی بی‌درنگ و بازتاب‌های واقع‌گرایانه',
       ],
     },
     useCases: [
       {
-        title: {
-          en: 'Industrial Safety & HSE Training',
-          fa: 'آموزش ایمنی و بهداشت صنعتی (HSE)',
-        },
+        title: { en: 'Enterprise Workforce Training', fa: 'آموزش پرسنل سازمان‌ها' },
         desc: {
-          en: 'Staff train inside virtual hazardous petrochemical facilities without real-world risk or production downtime.',
-          fa: 'پرسنل در تاسیسات پتروشیمی شبیه‌سازی‌شده بدون هیچ‌گونه خطر جانی یا توقف خط تولید، پروتکل‌های اضطراری را تمرین می‌کنند.',
+          en: 'Hazard-free interactive procedures allowing technicians to practice critical operations before touching physical hardware.',
+          fa: 'تمرین سناریوهای حساس و خطرآفرین در محیط مجازی بدون تحمیل کوچک‌ترین ریسک جانی یا خسارت به تجهیزات واقعی.',
         },
       },
       {
-        title: {
-          en: 'Interactive Museum Installations',
-          fa: 'چیدمان‌های تعاملی موزه‌ها و میراث فرهنگی',
-        },
+        title: { en: 'Medical & Healthcare Simulations', fa: 'شبیه‌سازی‌های پزشکی و درمانی' },
         desc: {
-          en: 'Visitors explore reconstructed historical monuments and ancient artifacts at scale with natural gesture controls.',
-          fa: 'بازدیدکنندگان ابنیه تاریخی بازسازی‌شده و آثار کهن را با ابعاد واقعی و به کمک ژست‌های حرکتی دست لمس و کاوش می‌کنند.',
+          en: 'Anatomical exploration and surgical tool manipulation in stereoscopic high-resolution space.',
+          fa: 'آشنایی عمیق با آناتومی و کار با ابزارهای جراحی در فضای استریوسکوپیک با وفاداری بصری بالا.',
         },
       },
       {
-        title: {
-          en: 'Virtual Medical & Surgical Walkthroughs',
-          fa: 'آموزش تجهیزات پزشکی و اتاق عمل',
-        },
+        title: { en: 'Brand Showrooms & Experiences', fa: 'شوروم‌های تعاملی برند' },
         desc: {
-          en: 'Medical students practice equipment manipulation and surgical theater workflows in high-fidelity 3D.',
-          fa: 'دانشجویان پزشکی کار با تجهیزات پیشرفته اتاق عمل و مراحل فرایندهای درمانی را به صورت سه‌بعدی تعاملی می‌آموزند.',
+          en: 'Transporting global audiences into customized virtual worlds showcasing flagship products at scale.',
+          fa: 'انتقال مخاطبان نمایشگاهی به دنیاهای اختصاصی و مقیاس‌پذیر برای لمس قابلیت‌های محصولات شاخص برند.',
         },
       },
     ],
-    technologies: ['Unity', 'Unreal Engine 5', 'Meta XR Core SDK', 'OpenXR', 'WebXR', 'SteamVR', 'Blender'],
-    relevantProjects: ['holo-industrial-vr', 'metaverse-exhibition-hub'],
+    technologies: ['Unreal Engine 5', 'Unity Spatial XR', 'OpenXR', 'Meta XR SDK', 'WebXR'],
+    relevantProjects: ['holo-industrial-vr'],
     faqs: [
       {
         q: {
-          en: 'Which VR headsets do you develop for?',
-          fa: 'برای کدام هدست‌های واقعیت مجازی توسعه می‌دهید؟',
+          en: 'Which VR headsets does MIGO support?',
+          fa: 'استودیو MIGO از چه هدست‌هایی پشتیبانی می‌کند؟',
         },
         a: {
-          en: 'We develop for all major modern platforms using OpenXR standards, including Meta Quest 2/3/Pro, Pico 4, HTC Vive Focus/XR Elite, Apple Vision Pro, and SteamVR PC headsets.',
-          fa: 'ما با استفاده از استانداردهای یکپارچه OpenXR برای تمامی هدست‌های مطرح از جمله Meta Quest 2/3/Pro، Pico 4، HTC Vive و عینک‌های Apple Vision Pro و همچنین سیستم‌های PC-VR نرم‌افزار تولید می‌کنیم.',
+          en: 'We develop natively for Meta Quest (2, 3, Pro), Pico (4, Neo 3), HTC Vive, Valve Index, and Apple Vision Pro via standard OpenXR frameworks.',
+          fa: 'ما به صورت بومی برای Meta Quest، Pico، HTC Vive، Valve Index و Apple Vision Pro با استاندارد OpenXR نرم‌افزار توسعه می‌دهیم.',
         },
       },
       {
         q: {
-          en: 'Can multiple users join the same VR simulation?',
-          fa: 'آیا امکان حضور هم‌زمان چندین کاربر در یک سناریوی مجازی وجود دارد؟',
+          en: 'How do you prevent motion sickness in VR?',
+          fa: 'چگونه از بروز حالت سرگیجه (Motion Sickness) در VR جلوگیری می‌کنید؟',
         },
         a: {
-          en: 'Yes. We build low-latency networked multi-user architecture supporting voice chat, spatial avatars, and synchronized physics interaction.',
-          fa: 'بله، ما از زیرساخت‌های چندکاربره شبکه با تاخیر پایین، آواتارهای فضایی، صوت درون‌برنامه‌ای و تعامل هماهنگ با اشیا برای پروژه‌های گروهی استفاده می‌کنیم.',
+          en: 'We maintain a locked 90/120 FPS render loop, zero latency tracking, 1:1 physical locomotion scaling, and carefully designed comfort teleports.',
+          fa: 'با تضمین نرخ فریم پایدار ۹۰ الی ۱۲۰ هرتز، تاخیر رندرینگ زیر ۲۰ میلی‌ثانیه، تطابق ۱:۱ حرکت سر و سیستم‌های جابجایی تاییدشده ارگونومیک.',
         },
       },
     ],
   },
+
+  // 2. Augmented Reality — AR / WebAR
   {
-    id: 'ar',
+    id: 'augmented-reality',
     slug: 'augmented-reality',
+    aliases: ['ar-webar'],
     title: {
-      en: 'Augmented Reality',
-      fa: 'واقعیت افزوده (AR & WebAR)',
+      en: 'Augmented Reality — AR / WebAR',
+      fa: 'واقعیت افزوده — AR / WebAR',
+    },
+    family: {
+      en: 'Spatial Web & Mobile',
+      fa: 'وب فضایی و موبایل',
     },
     shortDescription: {
-      en: 'Blending digital layers with reality through mobile AR, WebAR, and interactive product placement.',
-      fa: 'پیوند لایه‌های دیجیتال هوشمند با جهان واقعی از طریق واقعیت افزوده موبایل، وب بدون نیاز به نصب اپلیکیشن و جانمایی محصول.',
+      en: 'Zero-install browser WebAR, QR-code activated 3D placements, and native iOS ARKit / Android ARCore applications.',
+      fa: 'تجربیات WebAR بدون نیاز به نصب اپلیکیشن در مرورگر، جانمایی سه‌بعدی محصول با اسکن کد QR و توسعه اپلیکیشن‌های بومی.',
     },
     overview: {
-      en: 'We create intuitive augmented reality solutions that turn physical products, printed media, and physical spaces into interactive touchpoints. Using WebAR, users can experience rich 3D interactions directly inside their mobile browsers without downloading separate apps.',
-      fa: 'ما راهکارهای واقعیت افزوده را به گونه‌ای توسعه می‌دهیم که کالاهای فیزیکی، کاتالوگ‌های چاپی و محیط‌های عمومی را به رسانه‌های زنده تعاملی بدل سازد. به لطف فناوری WebAR، مخاطبان بدون نیاز به دانلود هیچ اپلیکیشنی و تنها با اسکن یک QR کد در مرورگر گوشی تجربه را مشاهده می‌کنند.',
+      en: 'Bridging physical space with intelligent digital layers. MIGO crafts zero-install WebAR that works instantly on standard mobile browsers, as well as native mobile AR applications utilizing LiDAR surface tracking, image recognition, and real-time occlusion.',
+      fa: 'پیوند لایه‌های دیجیتال هوشمند با جهان واقعی. استودیو MIGO راهکارهای WebAR بدون نیاز به نصب را برای دسترسی آنی کاربران موبایل و همچنین اپلیکیشن‌های بومی با ردیابی سطوح، تشخیص تصاویر و انسداد فضایی توسعه می‌دهد.',
     },
     icon: 'Scan',
     badge: {
-      en: 'Connected Reality',
-      fa: 'واقعیت متصل',
+      en: 'AR & WebAR',
+      fa: 'واقعیت افزوده وب',
     },
     capabilities: {
       en: [
-        'WebAR experiences without app installation (instant QR code access)',
-        'Native iOS (ARKit) and Android (ARCore) application development',
-        'Interactive 3D product visualization and accurate spatial scale',
-        'Augmented reality advertising and experiential marketing campaigns',
-        'Image-target and packaging AR tracking',
-        'Geolocation-based outdoor AR tours and treasure hunts',
-        'Face filter and interactive branding effects',
-        'Enterprise maintenance AR assistance and step-by-step guidance',
+        'Zero-install WebAR running seamlessly on iOS Safari and Android Chrome',
+        'Instant launch via physical QR codes printed on packaging or exhibits',
+        'Native AR apps using Apple ARKit and Google ARCore with LiDAR depth',
+        'Marker-based tracking for interactive packaging, books, and prints',
+        'Surface hit-testing for scale-accurate industrial product preview',
+        'Real-time PBR material rendering with environmental HDR reflection',
       ],
       fa: [
-        'تجربیات WebAR بدون نیاز به نصب اپلیکیشن (دسترسی سریع با اسکن کد QR)',
-        'توسعه اپلیکیشن‌های بومی با ARKit (iOS) و ARCore (Android)',
-        'نمایش تعاملی و ابعاد دقیق محصولات صنعتی و تجاری در فضای کاربر',
-        'کمپین‌های تبلیغاتی و بازاریابی تجربی (Experiential Marketing)',
-        'رهگیری کاتالوگ‌ها، بسته‌بندی کالاها و مجلات چاپی',
-        'تورهای مبتنی بر موقعیت مکانی (GPS AR) و بازی‌های محیطی شهری',
-        'فیلترهای تعاملی چهره و تجربیات برندینگ شبکه‌های اجتماعی',
-        'راهنمای بصری AR گام‌به‌گام برای تعمیرات و خدمات پس از فروش سازمانی',
+        'تجربیات WebAR بدون نیاز به نصب اپلیکیشن بر روی سافاری و کروم موبایل',
+        'دسترسی سریع تنها با اسکن کد QR روی بسته‌بندی، پوستر یا غرفه',
+        'توسعه اپلیکیشن‌های بومی با ARKit و ARCore همراه با اسکنرهای LiDAR',
+        'ردیابی بر پایه مارکر برای بروشورها، بسته‌بندی‌ها و کتاب‌های تعاملی',
+        'جانمایی ابعاد دقیق محصولات در فضای واقعی کاربر با تشخیص سطح زمین',
+        'رندر متریال‌های واقع‌گرایانه PBR با بازتاب نور محیط طبیعی',
       ],
     },
     useCases: [
       {
-        title: {
-          en: 'E-commerce & Furniture Placement',
-          fa: 'تجارت الکترونیک و تست پیش از خرید کالا',
-        },
+        title: { en: 'Product E-Commerce & Retail', fa: 'تجارت الکترونیک و فروش محصولات' },
         desc: {
-          en: 'Customers preview true-to-scale furniture and home appliances in their living rooms before purchasing.',
-          fa: 'خریداران می‌توانند لوازم خانگی و مبلمان را با مقیاس کاملاً دقیق ۱:۱ در خانه خود چیدمان و تست کنند.',
+          en: 'Customers inspect photorealistic 3D products in their actual living or workspace before purchase.',
+          fa: 'مشاهده و بررسی ۳۶۰ درجه محصولات با ابعاد واقعی در منزل یا محیط کار مشتری پیش از تصمیم به خرید.',
         },
       },
       {
-        title: {
-          en: 'Interactive Packaging & Consumer Brands',
-          fa: 'بسته‌بندی هوشمند و تعاملی محصولات',
-        },
+        title: { en: 'Interactive Print & Packaging', fa: 'بسته‌بندی و کاتالوگ‌های هوشمند' },
         desc: {
-          en: 'Scanning product packaging launches an animated story, recipes, or interactive prize mini-games.',
-          fa: 'اسکن جعبه محصول توسط مشتری، داستان برند، بازی شانس جایزه‌دار یا مدل سه‌بعدی را نمایش می‌دهد.',
+          en: 'Turning physical brochures and packaging into animated 3D multimedia portals via smartphone cameras.',
+          fa: 'تبدیل کاتالوگ‌ها و بسته‌بندی‌های چاپی به پورتال‌های پویا با انیمیشن‌های سه‌بعدی و ویدیوهای تعاملی.',
         },
       },
       {
-        title: {
-          en: 'Exhibition Stand AR Extension',
-          fa: 'توسعه غرفه‌های نمایشگاهی با واقعیت افزوده',
-        },
+        title: { en: 'On-Site Machine Maintenance Support', fa: 'راهنمای تعمیرات در محل کارخانه' },
         desc: {
-          en: 'Showcase massive industrial machinery inside small booth spaces through full-scale AR projection.',
-          fa: 'نمایش ماشین‌آلات عظیم صنعتی که امکان حمل آن‌ها به غرفه نیست در ابعاد واقعی از طریق تبلت یا موبایل.',
+          en: 'Overlaying step-by-step schematics directly onto physical machinery in real-time.',
+          fa: 'نمایش شماتیک قطعات و راهنمای گام‌به‌گام عیب‌یابی مستقیماً روی بدنه دستگاه‌های صنعتی.',
         },
       },
     ],
-    technologies: ['ARCore', 'ARKit', '8th Wall', 'Three.js', 'MindAR', 'Unity AR Foundation'],
-    relevantProjects: ['webar-luxury-showcase', 'smart-packaging-ar'],
+    technologies: ['Three.js', 'WebXR', '8th Wall', 'Apple ARKit', 'Google ARCore'],
+    relevantProjects: ['webar-luxury-showcase'],
     faqs: [
       {
         q: {
-          en: 'Does WebAR require users to download an app?',
-          fa: 'آیا برای اجرای WebAR کاربران نیازمند دانلود اپلیکیشن هستند؟',
+          en: 'Does WebAR require downloading an app from the App Store?',
+          fa: 'آیا برای اجرای WebAR نیازی به نصب اپلیکیشن است؟',
         },
         a: {
-          en: 'No. WebAR runs directly in standard mobile browsers like Chrome and Safari. A user simply scans a QR code to experience the 3D content instantly.',
-          fa: 'خیر، WebAR بدون نیاز به نصب هرگونه نرم‌افزار مستقیماً در مرورگرهای استانداردی چون کروم و سافاری تنها با اسکن کد QR در چند ثانیه لود می‌شود.',
+          en: 'No. Users simply scan a QR code with their mobile camera; the 3D model opens instantly in Safari or Chrome.',
+          fa: 'خیر. کاربر تنها دوربین گوشی را به سمت QR Code می‌گیرد و مدل سه‌بعدی بی‌درنگ در مرورگر موبایل باز می‌شود.',
         },
       },
     ],
   },
+
+  // 3. Interactive Experiences — Games / Interactive Systems
   {
-    id: 'games',
-    slug: 'game-development',
+    id: 'interactive-experiences',
+    slug: 'interactive-experiences',
+    aliases: ['game-development', 'interactive-software'],
     title: {
-      en: 'Game Development',
-      fa: 'توسعه بازی‌های رایانه‌ای و تعاملی',
+      en: 'Interactive Experiences — Games / Interactive Systems',
+      fa: 'تجربیات تعاملی — بازی‌ها و سیستم‌های تعاملی',
+    },
+    family: {
+      en: 'Game Tech & Software',
+      fa: 'بازی‌سازی و سیستم‌ها',
     },
     shortDescription: {
-      en: 'Custom 2D/3D games, serious games, educational titles, and exhibition event mini-games.',
-      fa: 'طراحی و ساخت بازی‌های دو و سه‌بعدی، بازی‌های جدی آموزشی (Serious Games) و بازی‌های رویدادی و نمایشگاهی.',
+      en: 'Serious games for workforce training, real-time WebGL games, event leaderboards, and bespoke interactive software systems.',
+      fa: 'بازی‌های جدی برای آموزش سازمانی، بازی‌های بی‌درنگ وب، جدول امتیازات رویدادی و نرم‌افزارهای اختصاصی تعاملی.',
     },
     overview: {
-      en: 'We build engaging games with memorable mechanics, responsive controls, and high visual polish. Whether crafting custom serious games for corporate training, viral web games for marketing campaigns, or immersive booth challenges for expo attendees, our game design merges fun with strategic goals.',
-      fa: 'ما بازی‌هایی با مکانیک‌های اعتیادآور، کنترل‌های روان و جلوه‌های بصری خیره‌کننده طراحی و پیاده‌سازی می‌کنیم. از بازی‌های جدی (Serious Games) سازمانی برای آموزش کارکنان گرفته تا بازی‌های وبی وایرال برای کمپین‌های تبلیغاتی و چالش‌های تعاملی غرفه‌های نمایشگاهی.',
+      en: 'We leverage game design mechanics and modern real-time engines to build compelling interactive systems. Whether developing serious games that accelerate learning, branded event challenges, or custom client-facing applications, MIGO ensures seamless 60 FPS performance and intuitive UX.',
+      fa: 'ما با بهره‌گیری از مکانیک‌های بازی‌سازی و انجین‌های پیشرفته، سیستم‌های تعاملی ماندگار خلق می‌کنیم. از بازی‌های جدی آموزشی با بازدهی بالا گرفته تا بازی‌های رقابتی نمایشگاهی و نرم‌افزارهای اختصاصی، استودیو MIGO تضمین‌کننده نرخ فریم ۶۰ و تجربه کاربری روان است.',
     },
     icon: 'Gamepad2',
     badge: {
-      en: 'Interactive Entertainment',
-      fa: 'سرگرمی تعاملی',
+      en: 'Games & Systems',
+      fa: 'بازی‌ها و سیستم‌ها',
     },
     capabilities: {
       en: [
-        'Custom 2D & 3D game development for PC, Mobile, and WebGL',
-        'Interactive exhibition games and competitive booth leaderboards',
-        'Serious games for corporate education and compliance',
-        'Advertising and branded promotional games (Advergames)',
-        'Educational titles designed for children and young adults',
-        'Custom physics systems and touch / motion-control interfaces',
-        'Real-time multiplayer architecture and cloud scoreboards',
-        'Multi-platform porting and optimization',
+        'Development of 2D/3D games for PC, mobile, and web (WebGL/Canvas)',
+        'Serious games for corporate training, compliance, and skills evaluation',
+        'Branded trade show games with live digital leaderboards and prize systems',
+        'Physics-driven game mechanics with custom collision and ragdoll dynamics',
+        'Multiplayer networking and real-time socket synchronization',
+        'Custom interactive software platforms with zero-latency input response',
       ],
       fa: [
         'طراحی و تولید بازی‌های ۲ بعدی و ۳ بعدی برای PC، موبایل و مرورگر (WebGL)',
+        'توسعه بازی‌های جدی (Serious Games) با هدف آموزش سازمانی و ارزیابی مهارت‌ها',
         'بازی‌های اختصاصی نمایشگاهی همراه با جدول امتیازات زنده و چالش‌های جوایز',
-        'بازی‌های جدی (Serious Games) با هدف آموزش سازمانی و ارزیابی مهارت‌ها',
-        'بازی‌های تبلیغاتی برندها (Advergames) جهت ایجاد آگاهی از برند',
-        'بازی‌های آموزشی تعاملی کودکان و نوجوانان با استانداردهای پداگوژیک',
-        'سیستم‌های فیزیک سفارشی و ادغام با نمایشگرهای لمسی و کنترلرهای حرکتی',
-        'معماری چندنفره آنلاین و ثبت نتایج ابری',
-        'بهینه‌سازی حداکثری نرخ فریم (60/120 FPS) برای انواع سخت‌افزارها',
+        'مکانیک‌های بازی فیزیک‌محور با شبیه‌سازی دقیق برخوردها و تعادل',
+        'شبکه‌سازی چندنفره و همگام‌سازی سوکت‌ها به صورت بی‌درنگ',
+        'سیستم‌های نرم‌افزاری تعاملی اختصاصی با پاسخ‌دهی آنی به ورودی‌های کاربر',
       ],
     },
     useCases: [
       {
-        title: {
-          en: 'Crowd-Engaging Exhibition Booth Games',
-          fa: 'بازی‌های جذب جمعیت در غرفه‌های نمایشگاهی',
-        },
+        title: { en: 'Trade Show Gamified Engagement', fa: 'گیمیفیکیشن غرفه‌های رویدادی' },
         desc: {
-          en: 'Fast-paced touch or gesture games that collect leads, display live leaderboards, and award brand merchandise.',
-          fa: 'بازی‌های سریع و مهیج لمسی یا حرکتی که باعث توقف مخاطبان، ثبت شماره تماس و ایجاد صف بازدید در غرفه می‌شوند.',
+          en: 'Drawing massive foot traffic to event booths with competitive 60-second games and digital scoreboards.',
+          fa: 'جذب حداکثری بازدیدکنندگان غرفه نمایشگاهی با بازی‌های چالشی ۶۰ ثانیه‌ای و تابلوهای امتیازات رقابتی.',
         },
       },
       {
-        title: {
-          en: 'Corporate Serious Simulation Games',
-          fa: 'بازی‌های آموزش مدیریتی و سازمانی',
-        },
+        title: { en: 'Employee Onboarding & Safety Drills', fa: 'آموزش سازمانی و مانورهای ایمنی' },
         desc: {
-          en: 'Roleplay simulations testing crisis management, customer service skills, and strategic resource allocation.',
-          fa: 'شبیه‌سازی‌های سناریومحور که توان تصمیم‌گیری بحران، مذاکره و مدیریت منابع پرسنل را در قالب بازی می‌سنجند.',
+          en: 'Gamified learning paths that test hazard recognition and reward correct procedure adherence.',
+          fa: 'مسیرهای یادگیری بازی‌وارسازی‌شده برای ارزیابی واکنش به خطرات کاری و ارتقای بازدهی پرسنل.',
         },
       },
     ],
-    technologies: ['Unity Engine', 'C#', 'Unreal Engine', 'WebGL', 'FMOD', 'Blender', 'Photon Fusion'],
-    relevantProjects: ['cyber-racer-arcade', 'eco-hero-serious-game'],
+    technologies: ['Unity', 'Unreal Engine 5', 'WebGL', 'TypeScript', 'Node.js / WebSockets'],
+    relevantProjects: ['pulse-tactile-terminal'],
     faqs: [
       {
         q: {
-          en: 'Can the game run in a web browser without players installing anything?',
-          fa: 'آیا بازی می‌تواند در بستر مرورگر وب بدون نیاز به نصب اجرا شود؟',
+          en: 'Can the games be customized with our corporate branding?',
+          fa: 'آیا بازی‌ها متناسب با هویت برند ما سفارشی‌سازی می‌شوند؟',
         },
         a: {
-          en: 'Yes. We optimize WebGL builds to load fast on modern desktop and mobile browsers with zero installation requirements.',
-          fa: 'بله، ما بیلد‌های بهینه‌شده WebGL را به نحوی می‌سازیم که با حجم پایین در مرورگر کاربران بدون نیاز به هیچ نصبی اجرا شوند.',
+          en: 'Absolutely. Every asset, color scheme, 3D character, user interface, and leaderboard is engineered to your brand guidelines.',
+          fa: 'بله کاملاً. تمامی المان‌ها، رنگ‌بندی، کاراکترهای سه‌بعدی، رابط کاربری و جدول امتیازات طبق کتابچه برند شما تولید می‌شوند.',
         },
       },
     ],
   },
+
+  // 4. 3D & Visualization — Modeling / Animation / Rendering
   {
-    id: 'exhibitions',
-    slug: 'interactive-exhibitions',
-    title: {
-      en: 'Interactive Exhibition Solutions',
-      fa: 'راهکارهای نمایشگاهی و موزه‌ای تعاملی',
-    },
-    shortDescription: {
-      en: 'Touchscreens, motion-tracking sensors, projection mapping, and digital kiosks for booths and museums.',
-      fa: 'میزها و کیوسک‌های لمسی، سنسورهای ردیابی حرکت، ویدیو مپینگ تعاملی و چیدمان‌های چندرسانه‌ای برای غرفه‌ها و موزه‌ها.',
-    },
-    overview: {
-      en: 'We transform static exhibition booths, cultural centers, and public pavilions into high-impact interactive destinations. Integrating hardware sensors, multi-touch screens, motion tracking, and projection mapping, MIGO builds turnkey installations that stop foot traffic and generate memorable engagement.',
-      fa: 'ما فضاهای نمایشگاهی بی‌روح و غرفه‌های سنتی را به مقصدهای هیجان‌انگیز تعاملی بدل می‌کنیم. با تلفیق سنسورهای ردیابی حرکت، میزهای چندلمسی بزرگ، ویدیو پروژکشن‌های مپ‌شده و کیوسک‌های هوشمند، استودیو MIGO راهکارهای جامع و آماده اجرایی ارائه می‌دهد که نگاه هر بیننده‌ای را به خود جلب می‌کند.',
-    },
-    icon: 'Sparkles',
-    badge: {
-      en: 'Flagship Specialization',
-      fa: 'حوزه تخصصی شاخص',
-    },
-    capabilities: {
-      en: [
-        'Multi-touch interactive kiosks and massive video wall software',
-        'Motion tracking experiences using Kinect, depth cameras, and LiDAR',
-        'Interactive projection mapping on walls, floors, and sculptural objects',
-        'Camera-based face and body engagement filters on big screens',
-        'Interactive digital product catalog tables with tangible token recognition',
-        'Immersive LED tunnel and dome room interactive content',
-        'Real-time visitor lead capture and social sharing stations',
-        'Turnkey on-site hardware setup and dedicated technical support',
-      ],
-      fa: [
-        'توسعه نرم‌افزارهای مالتی‌تاچ برای کیوسک‌ها و ویدیو وال‌های غول‌پیکر نمایشگاهی',
-        'تجارب ردیابی حرکتی بدن با کینکت، دوربین‌های عمق‌سنج و سنسورهای LiDAR',
-        'ویدیو مپینگ تعاملی روی دیوارها، کف زمین و حجم‌های دکوراسیون غرفه',
-        'سیستم‌های آینه هوشمند و فیلترهای بصری چهره روی نمایشگرهای بزرگ',
-        'میزهای لمسی کاتالوگ دیجیتال با قابلیت تشخیص تگ‌های فیزیکی محصولات (Tangible UI)',
-        'تولید محتوای تعاملی تونل‌های نوری LED و اتاق‌های ۳۶۰ درجه غوطه‌ورکننده',
-        'کیوسک‌های دیجیتال جمع‌آوری اطلاعات مخاطبان و ارسال مستقیم عکس/ویدیو یادگاری',
-        'پشتیبانی و اجرای کامل سخت‌افزاری و نرم‌افزاری در محل نمایشگاه یا رویداد',
-      ],
-    },
-    useCases: [
-      {
-        title: {
-          en: 'Flagship Corporate Expo Booth',
-          fa: 'غرفه شاخص نمایشگاه‌های بین‌المللی',
-        },
-        desc: {
-          en: 'A synchronized multi-screen installation where visitor footsteps activate generative animations and product details.',
-          fa: 'سیستم هماهنگ چندنمایشگره که با نزدیک شدن قدم‌های مخاطب، افکت‌های بصری واکنش نشان داده و اطلاعات محصولات ظاهر می‌شوند.',
-        },
-      },
-      {
-        title: {
-          en: 'Permanent Museum Interactive Gallery',
-          fa: 'گالری تعاملی دائمی موزه‌ها',
-        },
-        desc: {
-          en: 'Interactive touchscreen tables allowing visitors to inspect 3D historical artifacts in 360-degree rotation.',
-          fa: 'میزهای تاچ چندکاربره که چندین نفر هم‌زمان می‌توانند اشیای باستانی را به صورت سه‌بعدی بچرخانند و اطلاعات تکمیلی را بخوانند.',
-        },
-      },
-    ],
-    technologies: ['Unity', 'TouchDesigner', 'Azure Kinect', 'LiDAR Sensors', 'Resolume', 'C#', 'DirectShow'],
-    relevantProjects: ['lumina-motion-wall', 'interactive-expo-kiosk'],
-    faqs: [
-      {
-        q: {
-          en: 'Do you provide hardware or only the software?',
-          fa: 'آیا شما سخت‌افزارها را نیز تامین می‌کنید یا فقط نرم‌افزار را می‌سازید؟',
-        },
-        a: {
-          en: 'We provide full turnkey delivery: software engineering, hardware specification guidance, sensor calibration, and on-site deployment during exhibition setup days.',
-          fa: 'ما خدمات صفر تا صد ارائه می‌دهیم: تولید نرم‌افزار، مشاوره و تهیه سخت‌افزارهای استاندارد (سنسورها، تاچ‌ها، سرورها) و کالیبراسیون و استقرار در محل نمایشگاه.',
-        },
-      },
-    ],
-  },
-  {
-    id: '3d-vis',
+    id: '3d-visualization',
     slug: '3d-visualization',
+    aliases: ['modeling-rendering'],
     title: {
-      en: '3D Design & Visualization',
-      fa: 'طراحی، مدل‌سازی و انیمیشن سه‌بعدی',
+      en: '3D & Visualization — Modeling / Animation / Rendering',
+      fa: 'طراحی و بصری‌سازی سه‌بعدی — مدل‌سازی / انیمیشن / رندرینگ',
+    },
+    family: {
+      en: '3D Computer Graphics',
+      fa: 'گرافیک رایانه‌ای سه‌بعدی',
     },
     shortDescription: {
-      en: 'Photorealistic real-time 3D environments, product renders, character modeling, and architectural previews.',
-      fa: 'محیط‌های سه‌بعدی با کیفیت فوتورئال، رندرهای تبلیغاتی محصولات، مدل‌سازی کاراکتر و جلوه‌های سه‌بعدی ریل‌تایم.',
+      en: 'Photorealistic PBR real-time product configurators, architectural spatial walkthroughs, and cinematic real-time 3D animations.',
+      fa: 'پیکربندی‌کننده‌های بی‌درنگ محصولات صنعتی با متریال‌های PBR، انیمیشن‌های سینماتیک سه‌بعدی و تورهای تعاملی معماری.',
     },
     overview: {
-      en: 'We bring concepts to life with meticulous 3D artistry and cutting-edge real-time rendering. Our pipeline spans high-poly hard surface modeling, organic sculpting, procedural texturing in Substance, dynamic character rigging, and optimized real-time assets built for web, games, and cinematic presentations.',
-      fa: 'ما کانسپت‌ها و ایده‌ها را با ظرافت هنری و پیشرفته‌ترین روش‌های رندرینگ بی‌درنگ جان می‌بخشیم. پایپ‌لاین تولید ما شامل مدل‌سازی سطوح سخت (Hard Surface)، اسکالپتینگ ارگانیک، تکسچرینگ پیشرفته در Substance، ریگینگ کاراکتر و تولید است‌های سبک و بهینه‌سازی‌شده برای موتورهای بازی و وب است.',
+      en: 'High-end 3D visual fidelity meeting real-time web performance. MIGO produces ultra-detailed polygon models, physically based rendering (PBR) materials, and cinematic animations engineered for both offline rendering and 60 FPS real-time WebGL engines.',
+      fa: 'تلاقی هنر بصری سه‌بعدی با کارایی ریل‌تایم وب. استودیو MIGO به مدل‌سازی دقیق صنعتی، ساخت متریال‌های فیزیکی PBR و انیمیشن‌های سینماتیک برای رندرهای استاتیک و انجین‌های تعاملی وب می‌پردازد.',
     },
-    icon: 'Layers',
+    icon: 'Box',
     badge: {
-      en: 'Visual Craftsmanship',
-      fa: 'هنر بصری پیشرفته',
+      en: '3D & Rendering',
+      fa: 'طراحی سه‌بعدی',
     },
     capabilities: {
       en: [
-        'Photorealistic 3D product modeling and cinematic rendering',
-        'Real-time low-poly 3D asset optimization for WebGL and mobile',
-        'Realistic environment design (sci-fi, industrial, natural, architectural)',
-        'PBR texturing and procedural shader development',
-        '3D character modeling, rigging, and keyframe / mocap animation',
-        'Interactive 3D web model viewers with lighting configurators',
-        'Architectural pre-visualization with day/night simulations',
-        'Visual VFX and particle dynamics',
+        'Hard-surface industrial modeling and high-to-low poly baking',
+        'Physically Based Rendering (PBR) shader development and lighting setups',
+        'Interactive 3D web configurators with color, material, and exploded view options',
+        'Architectural interior and exterior interactive walkthroughs',
+        'Cinematic 3D technical animations explaining mechanical systems',
+        'Geometry optimization and Draco/Meshopt compression for instant web loads',
       ],
       fa: [
-        'مدل‌سازی سه‌بعدی فوتورئالیستیک محصولات صنعتی و رندرهای تبلیغاتی ویدیویی',
-        'بهینه‌سازی تخصصی مدل‌های سه‌بعدی (Low-Poly) برای وب، WebGL و موبایل',
-        'طراحی محیط‌های وسیع و دقیق (فضاهای علمی-تخیلی، کارخانجات صنعتی و معماری)',
-        'تکسچرینگ مبتنی بر فیزیک نور (PBR) و کدنویسی شیدرهای اختصاصی',
-        'طراحی کاراکتر، اسکلت‌بندی (Rigging) و انیمیشن‌سازی فریم‌به‌فریم و موکپ',
-        'پیاده‌سازی ویوئرهای سه‌بعدی آنلاین در وب با امکان تعویض رنگ و متریال',
-        'پیش‌نمایش معماری مدرن همراه با شبیه‌سازی نور روز و شب',
-        'طراحی جلوه‌های ویژه بصری (VFX) و سیستم‌های ذرات پیشرفته',
+        'مدل‌سازی دقیق سطوح سخت (Hard-Surface) و استخراج نقشه‌های نور و نرمال',
+        'ساخت متریال‌ها و شیدرهای PBR با وفاداری کامل به فیزیک نور',
+        'توسعه کانفیگوراتورهای تعاملی سه‌بعدی محصول با تغییر رنگ، متریال و قطعات',
+        'تورهای سه‌بعدی تعاملی معماری داخلی و نما با امکان گردش آزاد',
+        'انیمیشن‌های سینماتیک فنی جهت تشریح مکانیزم‌های پیچیده مکانیکی',
+        'فشرده‌سازی پیشرفته هندسه مش با Draco جهت بارگذاری آنی در بستر وب',
       ],
     },
     useCases: [
       {
-        title: {
-          en: 'Luxury Product Launch Visuals',
-          fa: 'تصاویر و انیمیشن‌های معرفی محصولات لوکس',
-        },
+        title: { en: 'Luxury & Automotive Product Configurators', fa: 'پیکربندی‌کننده‌های خودرو و کالاهای لوکس' },
         desc: {
-          en: 'Cinematic exploded-view 3D animation showing internal engineering components with hyper-realistic materials.',
-          fa: 'انیمیشن‌های سینمایی با تکنیک Exploded View جهت نمایش اجزا و فناوری‌های درونی قطعات صنعتی با بازتاب‌های نور دقیق.',
+          en: 'Allowing buyers to customize finishes, trims, and wheels in photorealistic real-time 3D before ordering.',
+          fa: 'امکان شخصی‌سازی رنگ بدنه، تودوزی و قطعات خودرو با کیفیت فوق‌العاده واقع‌گرایانه پیش از خرید.',
+        },
+      },
+      {
+        title: { en: 'Industrial Machine Digital Showcases', fa: 'نمایش دیجیتال ماشین‌آلات صنعتی' },
+        desc: {
+          en: 'Visualizing internal engine mechanics and fluid flow through transparent exploded views.',
+          fa: 'به تصویر کشیدن مکانیزم‌های داخلی موتورها و خطوط تولید با نمای انفجاری و برش‌های شفاف.',
         },
       },
     ],
-    technologies: ['Blender', 'Autodesk Maya', 'Substance 3D Painter', 'ZBrush', 'Houdini', 'Three.js'],
-    relevantProjects: ['automotive-configurator-3d', 'future-city-concept'],
+    technologies: ['Blender', 'Substance 3D Painter', 'Three.js', 'Unreal Engine 5', 'GLTF/GLB'],
+    relevantProjects: ['webar-luxury-showcase'],
     faqs: [
       {
         q: {
-          en: 'Can your 3D models be viewed directly on our existing website?',
-          fa: 'آیا مدل‌های سه‌بعدی شما مستقیماً در وب‌سایت کنونی ما قابل نمایش هستند؟',
+          en: 'How do you keep 3D models lightweight for web browsers?',
+          fa: 'چگونه مدل‌های سه‌بعدی را برای وب سبک و کم‌حجم نگه می‌دارید؟',
         },
         a: {
-          en: 'Yes. We deliver lightweight glTF / GLB assets optimized for web browsers and provide ready-to-embed Three.js / WebGL components.',
-          fa: 'بله، ما فایل‌های فوق‌العاده بهینه glTF/GLB همراه با کدهای آماده تعبیه‌شده در وب بر پایه Three.js تحویل می‌دهیم که بدون کندی در هر سایتی لود شوند.',
+          en: 'We retopologize geometries, optimize texture atlases with KTX2/Basis Universal, and apply Draco mesh compression, keeping full scenes under 5 MB.',
+          fa: 'با استفاده از توپولوژی بهینه، فشرده‌سازی بافت‌ها با استانداردهای KTX2 و فشرده‌سازی مش Draco، حجم کل صحنه معمولاً زیر ۵ مگابایت حفظ می‌شود.',
         },
       },
     ],
   },
+
+  // 5. Simulation & Digital Twins — Industrial / Training
   {
-    id: 'simulation',
-    slug: 'simulation',
+    id: 'simulation-digital-twins',
+    slug: 'simulation-digital-twins',
+    aliases: ['simulation', 'industrial-simulation'],
     title: {
-      en: 'Simulation & Interactive Training',
-      fa: 'شبیه‌سازی صنعتی و آموزش تعاملی',
+      en: 'Simulation & Digital Twins — Industrial / Training',
+      fa: 'شبیه‌سازی و دوقلوهای دیجیتال — صنعتی / آموزشی',
+    },
+    family: {
+      en: 'Industrial Simulation',
+      fa: 'شبیه‌سازی صنعتی',
     },
     shortDescription: {
-      en: 'High-precision physics simulations, HSE procedures, and virtual equipment operations for enterprises.',
-      fa: 'شبیه‌سازی دقیق فیزیکی فرایندهای تولید، سناریوهای ایمنی HSE و کار با ماشین‌آلات پیچیده برای سازمان‌ها.',
+      en: 'Mission-critical industrial drills, millimeter-accurate physics engines, hazard-free safety training, and real-time digital twins.',
+      fa: 'مانورهای ایمنی محیط‌های پرخطر، موتورهای فیزیک با دقت میلی‌متری، آموزش بدون ریسک جانی و دوقلوهای دیجیتال صنعتی.',
     },
     overview: {
-      en: 'MIGO develops mission-critical simulation software designed to replace dangerous or cost-prohibitive physical training. Our simulators replicate real-world physical dynamics, complex machinery consoles, emergency fire-and-leak procedures, and step-by-step assembly sequences with full scoring and error tracking.',
-      fa: 'استودیو MIGO نرم‌افزارهای شبیه‌ساز صنعتی طراحی می‌کند که آموزش‌های پرهزینه، خطرناک یا ناممکن در دنیای فیزیکی را بدون هیچ‌گونه استهلاک تجهیزات ممکن می‌سازد. سیستم‌های ما شامل شبیه‌سازی دقیق فیزیک مواد، پنل‌های کنترلی ماشین‌آلات، سناریوهای اطفای حریق و خطایابی همراه با سیستم ارزیابی کارنامه اپراتور است.',
-    },
-    icon: 'Activity',
-    badge: {
-      en: 'Mission Critical',
-      fa: 'صنعتی و استراتژیک',
-    },
-    capabilities: {
-      en: [
-        'Industrial process and chemical factory pipeline simulations',
-        'Health, Safety, and Environmental (HSE) disaster training',
-        'Heavy machinery and crane operator simulation rigs',
-        'Educational physics and science experiment software',
-        'Step-by-step procedural training with error penalty scoring',
-        'Scenario-based assessment tools with telemetry tracking',
-        'Digital twin integrations reflecting live sensor telemetry',
-        'VR/Desktop dual-mode training deployment',
-      ],
-      fa: [
-        'شبیه‌سازی خطوط تولید صنعتی، پایپ‌لاین‌های نفتی و کارخانجات',
-        'آموزش‌های جامع مدیریت حوادث، آتش‌سوزی و ایمنی محیط کار (HSE)',
-        'شبیه‌ساز کار با جرثقیل‌ها، لیفتراک‌ها و تجهیزات سنگین ترابری',
-        'نرم‌افزارهای آموزش آزمایشگاهی فیزیک، شیمی و مهندسی',
-        'فرایندهای گام‌به‌گام تعمیر و نگهداری با سیستم امتیازدهی و سنجش خطا',
-        'سیستم‌های گزارش‌گیری و صدور گواهی مجازی برای مدیران منابع انسانی',
-        'قابلیت پیوند با داده‌های واقعی سنسورها (Digital Twin)',
-        'امکان اجرای دوگانه هم روی هدست‌های VR و هم روی مانیتورهای استاندارد',
-      ],
-    },
-    useCases: [
-      {
-        title: {
-          en: 'Refinery Emergency Shut-Down Protocol',
-          fa: 'پروتکل قطعی اضطراری پالایشگاهی',
-        },
-        desc: {
-          en: 'Technicians practice emergency valve shutdowns and hazardous leak mitigation in a realistic virtual model.',
-          fa: 'تکنسین‌ها بستن شیرهای اضطراری و اقدامات مقابله با نشت مواد سمی را در یک ماکت دقیق دیجیتالی بارها تمرین می‌کنند.',
-        },
-      },
-    ],
-    technologies: ['Unity Simulation', 'PhysX', 'C#', 'OpenXR', 'Custom Telemetry Backend'],
-    relevantProjects: ['petrochem-hse-sim', 'precision-crane-trainer'],
-    faqs: [
-      {
-        q: {
-          en: 'How are trainee errors and scores recorded?',
-          fa: 'نمرات و خطاهای پرسنل چگونه ثبت و گزارش می‌شوند؟',
-        },
-        a: {
-          en: 'Our simulators generate detailed PDF reports, log execution timelines, record reaction speeds, and integrate with enterprise LMS via SCORM or xAPI.',
-          fa: 'شبیه‌سازهای ما گزارش‌های دقیق PDF و دیتابیس زمان واکنش و نوع خطاها را ذخیره کرده و به سادگی با سامانه‌های LMS سازمانی از طریق استاندارد SCORM یکپارچه می‌شوند.',
-        },
-      },
-    ],
-  },
-  {
-    id: 'interactive-sw',
-    slug: 'interactive-software',
-    title: {
-      en: 'Interactive Software & Digital Experiences',
-      fa: 'نرم‌افزارهای تعاملی و تجربیات دیجیتال',
-    },
-    shortDescription: {
-      en: 'Custom 3D web applications, digital product catalogs, virtual showrooms, and enterprise configurators.',
-      fa: 'اپلیکیشن‌های وب سه‌بعدی تعاملی، کاتالوگ‌های دیجیتال، شوروم‌های مجازی و کانفیگوراتورهای پیشرفته سازمانی.',
-    },
-    overview: {
-      en: 'We craft bespoke web-based interactive applications and spatial software that captivate audiences and elevate digital commerce. From real-time 3D product configurators to virtual flagship showrooms and creative microsites, we engineer fast, responsive, and aesthetically commanding software.',
-      fa: 'ما اپلیکیشن‌های وب سه‌بعدی و نرم‌افزارهای سفارشی نوآورانه‌ای می‌سازیم که مشتریان را مجذوب و فروش دیجیتال را متحول می‌سازد. از کانفیگوراتورهای سه‌بعدی کالا گرفته تا شوروم‌های مجازی آنلاین و مایکروسایت‌های تعاملی رویدادها، تخصص ما در ارائه نرم‌افزارهای چشمگیر و با کارایی بالاست.',
+      en: 'Engineering real-time physics engines and digital replicas of industrial infrastructure. MIGO builds safety simulation environments, aeronautical turbine maintenance trainers, and oil & gas pipeline emergency scenarios with zero physical hazard.',
+      fa: 'مهندسی موتورهای فیزیک ریل‌تایم و نمونه‌های دیجیتال زیرساخت‌های صنعتی. استودیو MIGO محیط‌های شبیه‌سازی ایمنی HSE، تعمیر و نگهداری توربین‌های هوایی و سناریوهای اضطراری نفت و گاز را بدون کوچک‌ترین خطر جانی بازآفرینی می‌کند.',
     },
     icon: 'Cpu',
     badge: {
-      en: 'Custom Digital Systems',
-      fa: 'سیستم‌های دیجیتال سفارشی',
+      en: 'Simulation & Twins',
+      fa: 'شبیه‌سازی و دوقلوها',
     },
     capabilities: {
       en: [
-        'Real-time 3D product configurators with live pricing calculations',
-        'Virtual showrooms with interactive guided tours',
-        'Custom interactive web applications powered by Three.js & WebGL',
-        'Interactive digital catalogs for high-end automotive and architectural brands',
-        'Interactive data visualization dashboards for complex analytics',
-        'Creative landing experiences for high-profile product announcements',
-        'Custom interactive touch software for smart retail spaces',
-        'End-to-end cloud backend and CRM integration',
+        'Physics-accurate simulation of heavy machinery and hazardous industrial systems',
+        'HSE safety virtual drills (fire, chemical leaks, high-voltage maintenance)',
+        'Aeronautics and maritime operator training with procedural evaluation',
+        'Real-time IoT telemetry synchronization with 3D digital twins',
+        'Automated scoring, trainee error tracking, and performance analytics',
+        'Turnkey simulation control desks and replica physical hardware cockpits',
       ],
       fa: [
-        'کانفیگوراتورهای سه‌بعدی محصولات با محاسبه قیمت زنده و شخصی‌سازی آپشن‌ها',
-        'شوروم‌های مجازی اختصاصی با تورهای تعاملی و نقاط لمسی اطلاعاتی',
-        'اپلیکیشن‌های وب سه‌بعدی مدرن با فریم‌ورک‌های Next.js و Three.js',
-        'کاتالوگ‌های دیجیتال لوکس برای برندهای خودروسازی، معماری و تجهیزات',
-        'داشبوردهای بصری‌سازی داده‌های پیچیده در قالب نمودارهای تعاملی ۳ بعدی',
-        'لندینگ‌پیج‌های تعاملی خلاقانه برای رونمایی و معرفی محصولات جدید',
-        'نرم‌افزارهای لمسی فروشگاهی برای نمایشگرهای شعب فیزیکی',
-        'یکپارچه‌سازی کامل با سیستم‌های ابری، CRM و پایگاه‌های داده سازمان',
+        'شبیه‌سازی دقیق فیزیک ماشین‌آلات سنگین و سیستم‌های صنعتی پرخطر',
+        'مانورهای واقعیت مجازی ایمنی HSE (اطفای حریق، نشت گاز، برق فشار قوی)',
+        'آموزش اپراتورهای هوانوردی و دریانوردی همراه با ارزیابی سیستمی خطاها',
+        'اتصال داده‌های تله‌متری سنسورهای IoT به دوقلوی دیجیتال سه‌بعدی به صورت زنده',
+        'ثبت خودکار گزارش عملکرد، سنجش زمان عکس‌العمل و تحلیل آماری یادگیری',
+        'ساخت کنسول‌های فیزیکی کنترل شبیه‌ساز و کابین‌های آموزشی ترن‌کی',
       ],
     },
     useCases: [
       {
-        title: {
-          en: 'Virtual Luxury Automotive Showroom',
-          fa: 'شوروم مجازی خودروهای لوکس',
-        },
+        title: { en: 'Oil, Gas & Energy Emergency Drills', fa: 'مانورهای اضطراری صنایع نفت و گاز' },
         desc: {
-          en: 'Prospective buyers customize paint finishes, wheel rims, and interior leather in full 360-degree real-time 3D.',
-          fa: 'مشتریان می‌توانند رنگ بدنه، رینگ‌ها، تریم چرم داخلی خودرو را به صورت ۳۶۰ درجه و زنده شخصی‌سازی و مشاهده کنند.',
+          en: 'Allowing refinery engineers to resolve catastrophic pipeline blowouts in virtual reality without risking lives.',
+          fa: 'آموزش پرسنل پالایشگاه‌ها در مدیریت حوادث غیرمترقبه و نشت خطوط لوله بدون به خطر افتادن جان افراد.',
+        },
+      },
+      {
+        title: { en: 'Aeronautics Turbine Maintenance', fa: 'تعمیر و اورهال توربین‌های هوایی' },
+        desc: {
+          en: 'Disassembling complex jet propulsion components with millimeter-precise procedural guidance.',
+          fa: 'باز و بست و بازرسی قطعات حساس موتور جت با راهنمای گام‌به‌گام و بررسی سایش قطعات.',
         },
       },
     ],
-    technologies: ['Next.js', 'React', 'Three.js', 'WebGL', 'Tailwind CSS', 'TypeScript', 'Node.js'],
-    relevantProjects: ['automotive-configurator-3d', 'virtual-art-gallery'],
+    technologies: ['Unreal Engine 5', 'Chaos Physics Engine', 'NVIDIA PhysX', 'Unity', 'OpenXR'],
+    relevantProjects: ['holo-industrial-vr'],
     faqs: [
       {
         q: {
-          en: 'Will these interactive 3D web apps run smoothly on mobile phones?',
-          fa: 'آیا این اپلیکیشن‌های وب سه‌بعدی روی گوشی‌های موبایل هم روان اجرا می‌شوند؟',
+          en: 'How accurate is the physical interaction inside the simulation?',
+          fa: 'دقت فیزیک تعاملات در شبیه‌ساز چقدر به دنیای واقعی نزدیک است؟',
         },
         a: {
-          en: 'Absolutely. We implement adaptive quality scaling, asset compression, and mobile-specific shader pipelines to guarantee silky-smooth performance.',
-          fa: 'کاملاً. ما با سیستم فشرده‌سازی پیشرفته، مقیاس‌پذیری خودکار کیفیت با توجه به توان پردازنده کاربر، و شیدرهای بهینه موبایل، روانی کامل را تضمین می‌کنیم.',
+          en: 'We calibrate mass, friction, center of gravity, and torque constraints according to actual engineering datasheets.',
+          fa: 'ضرایب اصطکاک، جرم قطعات، مرکز ثقل و محدودیت‌های چرخش طبق مستندات دقیق مهندسی و دفترچه‌های سازنده کالیبره می‌شوند.',
+        },
+      },
+    ],
+  },
+
+  // 6. Interactive Installations — Exhibitions / Sensors / Kiosks
+  {
+    id: 'interactive-installations',
+    slug: 'interactive-installations',
+    aliases: ['interactive-exhibitions', 'exhibition-tech'],
+    title: {
+      en: 'Interactive Installations — Exhibitions / Sensors / Kiosks',
+      fa: 'چیدمان‌های تعاملی — نمایشگاهی / سنسورها / کیوسک‌ها',
+    },
+    family: {
+      en: 'Physical Computing',
+      fa: 'پردازش فیزیکی و فضا',
+    },
+    shortDescription: {
+      en: 'Kinetic video walls, multi-touch kiosks, body tracking with LiDAR and Kinect, and turnkey hardware-software integration.',
+      fa: 'دیوارهای ویدیویی حرکتی، کیوسک‌های مالتی‌تاچ غول‌پیکر، ردیابی حرکات بدن با LiDAR و کینکت، و اجرای صفر تا صد سخت‌افزار و نرم‌افزار.',
+    },
+    overview: {
+      en: 'Transforming architectural spaces, museums, and trade shows into living responsive digital canvases. MIGO engineers kinetic video walls, depth-sensor gesture installations, interactive projection mapping, and custom multi-touch kiosk software.',
+      fa: 'تبدیل فضاهای نمایشگاهی، موزه‌ها و شوروم‌ها به استیج‌های زنده و تعاملی دیجیتال. استودیو MIGO به طراحی دیوارهای ویدیویی حساس به حرکت، سنسورهای عمق‌سنج، ویدیو مپینگ تعاملی و نرم‌افزارهای مالتی‌تاچ کیوسک می‌پردازد.',
+    },
+    icon: 'Sparkles',
+    badge: {
+      en: 'Installations & Kiosks',
+      fa: 'کیوسک‌ها و چیدمان‌ها',
+    },
+    capabilities: {
+      en: [
+        'Development of multi-touch software for large exhibition video walls and kiosks',
+        'Full-body spatial tracking with Azure Kinect, LiDAR, and depth cameras',
+        'Interactive projection mapping responding to visitor touch and footsteps',
+        'Physical computing integration with custom microcontrollers and sensors',
+        'TouchDesigner and Notch real-time generative visual pipelines',
+        'Autonomous turnkey delivery: hardware sourcing, installation, and 24/7 reliability',
+      ],
+      fa: [
+        'توسعه نرم‌افزارهای مالتی‌تاچ برای کیوسک‌ها و ویدیو وال‌های غول‌پیکر نمایشگاهی',
+        'ردیابی حرکتی بدن و ژست دست با Azure Kinect، سنسورهای LiDAR و دوربین‌های عمق‌سنج',
+        'ویدیو مپینگ تعاملی روی دیوارها، کف زمین و حجم‌های دکوراسیون غرفه',
+        'اتصال سخت‌افزارهای پردازش فیزیکی با میکروکنترلرها و حسگرهای الکترونیکی',
+        'پایپ‌لاین‌های گرافیکی بی‌درنگ و جنریتیو با TouchDesigner و Notch',
+        'اجرای صفر تا صد (Turnkey): تامین سخت‌افزار، نصب در محل و پایداری مداوم ۲۴/۷',
+      ],
+    },
+    useCases: [
+      {
+        title: { en: 'Trade Show Flagship Kinetic Wall', fa: 'دیوار تعاملی شاخص غرفه‌های نمایشگاهی' },
+        desc: {
+          en: 'A massive 10-meter video wall that reacts in real-time as visitors walk past, displaying dynamic brand shaders.',
+          fa: 'دیوار ویدیویی ۱۰ متری که با راه رفتن مخاطبان در غرفه، امواج نور و محتوای هوشمند ایجاد می‌کند.',
+        },
+      },
+      {
+        title: { en: 'Museum & Heritage Interactive Galleries', fa: 'گالری‌های لمسی و غوطه‌ورکننده موزه' },
+        desc: {
+          en: 'Visitors interact with virtual historical artifacts on multi-touch smart tables without physical wear.',
+          fa: 'کاوش و لمس مجازی اشیای تاریخی بر روی میزهای لمسی هوشمند بدون ایجاد استهلاک فیزیکی.',
+        },
+      },
+    ],
+    technologies: ['TouchDesigner', 'Azure Kinect', 'LiDAR Sensors', 'Unity', 'WebGL'],
+    relevantProjects: ['lumina-motion-wall'],
+    faqs: [
+      {
+        q: {
+          en: 'Does MIGO handle the physical hardware as well as the code?',
+          fa: 'آیا استودیو MIGO بخش سخت‌افزار را هم همراه با نرم‌افزار ارائه می‌دهد؟',
+        },
+        a: {
+          en: 'Yes. We offer 100% turnkey delivery: we specify, calibrate, and mount the sensors, touch screens, and computing units on-site.',
+          fa: 'بله. ما خدمات کاملاً ترن‌کی (Turnkey) ارائه می‌دهیم؛ تامین تجهیزات، کالیبراسیون سنسورها، نصب و راه‌اندازی در محل بر عهده تیم ماست.',
         },
       },
     ],

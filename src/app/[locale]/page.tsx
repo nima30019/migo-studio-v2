@@ -6,16 +6,12 @@ import {
   Zap,
   Activity,
   ShieldCheck,
-  Cpu,
-  Layers,
-  ArrowRight,
 } from 'lucide-react';
 import { Locale, UI_STRINGS } from '@/data/translations';
 import { SERVICES } from '@/data/services';
 import { PROJECTS } from '@/data/projects';
 import { LAB_EXPERIMENTS } from '@/data/lab';
 import { ARTICLES } from '@/data/articles';
-import { INDUSTRIES } from '@/data/general';
 import { HeroV2 } from '@/components/HeroV2';
 import { ServiceCard } from '@/components/ServiceCard';
 import { ProjectCard } from '@/components/ProjectCard';
@@ -83,48 +79,75 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
     'HIGH-PRECISION DIGITAL TWINS',
   ];
 
-  const methodologySteps = [
-    {
-      step: '01',
-      title: { en: 'Technical Architecture & Discovery', fa: 'کشف و معماری فنی' },
-      desc: {
-        en: 'Analyzing hardware limits, framerate budgets, sensory requirements, and spatial footprint.',
-        fa: 'بررسی محدودیت‌های سخت‌افزاری، بودجه فریم‌ریت، الزامات سنسورها و مساحت فیزیکی اجرا.',
-      },
-    },
-    {
-      step: '02',
-      title: { en: 'Spatial Prototype & Physics Loop', fa: 'پروتوتایپ فضایی و حلقه فیزیک' },
-      desc: {
-        en: 'Building rapid interactive grayboxes in Unity or WebGL to prove mechanics and user ergonomics.',
-        fa: 'تولید سریع نمونه اولیه تعاملی در موتور بازی جهت اعتبارسنجی مکانیک و ارگونومی کاربر.',
-      },
-    },
-    {
-      step: '03',
-      title: { en: 'Real-Time Shader & PBR Production', fa: 'تولید شیدرهای ریل‌تایم و متریال PBR' },
-      desc: {
-        en: 'Crafting photorealistic lighting, spatial 3D audio, particle simulations, and tactile haptics.',
-        fa: 'نورپردازی واقع‌گرایانه، صدای سه‌بعدی فضایی، شبیه‌سازی ذرات و بازخوردهای لمسی.',
-      },
-    },
-    {
-      step: '04',
-      title: { en: 'Turnkey Hardware & Deployment', fa: 'استقرار سخت‌افزاری و اجرای عملیاتی' },
-      desc: {
-        en: 'On-site sensor calibration, kiosk stress testing, kiosk locking, and real-time remote telemetry.',
-        fa: 'کالیبراسیون سنسورها در محل، تست استرس کیوسک‌ها، قفل سیستمی و مانیتورینگ تله‌متری.',
-      },
-    },
-  ];
-
   return (
-    <div className="space-y-28 sm:space-y-36 pb-24">
-      {/* 1. Hero Section */}
+    <div className="space-y-24 sm:space-y-32 pb-24">
+      {/* 1. Hero Experience */}
       <HeroV2 />
 
-      {/* 2. Infinite Ticker Marquee */}
-      <div className="space-y-16">
+      {/* 2. Selected Works */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
+          <div className="max-w-2xl">
+            <div className="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider text-brand-orange bg-brand-orange/10 border border-brand-orange/20 mb-3">
+              {isRtl ? 'پروژه‌های اجرایی' : 'Selected Projects'}
+            </div>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
+              {UI_STRINGS.selectedWork[locale]}
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-neutral-300 font-light">
+              {UI_STRINGS.selectedWorkDesc[locale]}
+            </p>
+          </div>
+
+          <Link
+            href={`/${locale}/work`}
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-orange hover:text-white transition-colors"
+          >
+            <span>{UI_STRINGS.viewAllWork[locale]}</span>
+            <DirectionAwareArrow type="arrow" className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </section>
+
+      {/* 3. Services Overview */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
+          <div className="max-w-2xl">
+            <div className="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider text-brand-orange bg-brand-orange/10 border border-brand-orange/20 mb-3">
+              {isRtl ? 'زمینه‌های فعالیت و خدمات تخصصی' : 'Specialized Capabilities'}
+            </div>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
+              {UI_STRINGS.whatWeDo[locale]}
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-neutral-300 font-light">
+              {UI_STRINGS.whatWeDoDesc[locale]}
+            </p>
+          </div>
+
+          <Link
+            href={`/${locale}/services`}
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-orange hover:text-white transition-colors"
+          >
+            <span>{isRtl ? 'مشاهده همه خدمات' : 'Explore All Services'}</span>
+            <DirectionAwareArrow type="arrow" className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {SERVICES.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
+        </div>
+      </section>
+
+      {/* 4. Interactive Capabilities */}
+      <div className="space-y-12">
         <div className="w-full overflow-hidden border-y border-white/[0.08] bg-[#090B0F]/90 py-4 relative">
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#090B0F] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#090B0F] to-transparent z-10 pointer-events-none" />
@@ -140,7 +163,6 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
           </div>
         </div>
 
-        {/* 3. Studio Performance Benchmarks */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <SpotlightCard className="p-6 flex flex-col justify-between">
@@ -198,28 +220,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
         </div>
       </div>
 
-      {/* 4. Core Specializations Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-12 sm:mb-16 mx-auto text-center">
-          <div className="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider text-brand-orange bg-brand-orange/10 border border-brand-orange/20 mb-3">
-            {isRtl ? 'زمینه‌های فعالیت و خدمات تخصصی' : 'Specialized Capabilities'}
-          </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
-            {UI_STRINGS.whatWeDo[locale]}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-neutral-300 leading-relaxed font-light">
-            {UI_STRINGS.whatWeDoDesc[locale]}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {SERVICES.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </div>
-      </section>
-
-      {/* 5. Experiments Lab Foundation Showcase */}
+      {/* 5. Experiments Lab Preview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SpotlightCard className="p-8 sm:p-12 border-cyan-500/30 bg-gradient-to-b from-[#09101A] to-[#07080B] shadow-[0_0_50px_rgba(0,242,254,0.1)]">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-10 pb-8 border-b border-white/[0.08]">
@@ -253,96 +254,97 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
         </SpotlightCard>
       </section>
 
-      {/* 6. Selected Client Case Studies */}
+      {/* 6. Studio Introduction */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
-          <div className="max-w-2xl">
-            <div className="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider text-brand-orange bg-brand-orange/10 border border-brand-orange/20 mb-3">
-              {isRtl ? 'پروژه‌های اجرایی' : 'Selected Projects'}
+        <SpotlightCard className="p-8 sm:p-14 border-white/[0.08] bg-gradient-to-br from-[#0B0E14] via-[#090C11] to-[#07090D] relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider text-brand-orange bg-brand-orange/10 border border-brand-orange/20">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{isRtl ? 'درباره استودیو MIGO' : 'The Creative Technology Studio'}</span>
+              </div>
+              <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+                {isRtl
+                  ? 'پیوند هنر تعاملی با مهندسی بلادرنگ گرافیک'
+                  : 'Bridging Spatial Architecture & Real-Time Graphics'}
+              </h2>
+              <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
+                {isRtl
+                  ? 'استودیو MIGO یک استودیوی پیشرو در فناوری‌های تعاملی، واقعیت مجازی، واقعیت افزوده و اینستالیشن‌های فیزیکی-دیجیتال است. ما با رویکرد مهندسی دقیق و زیبایی‌شناسی معاصر، تجربیاتی می‌سازیم که مرز میان جهان فیزیکی و داده‌های دیجیتال را در هم می‌شکند.'
+                  : 'MIGO is an independent creative technology studio engineering immersive VR/MR environments, lightweight zero-install WebAR, and sensory exhibition architecture. We fuse hardware sensor engineering with cutting-edge real-time 3D pipelines.'}
+              </p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {[
+                  'Unreal Engine 5',
+                  'Unity Spatial XR',
+                  'WebGPU / Three.js',
+                  'TouchDesigner',
+                  'LiDAR & Computer Vision',
+                  'Physical Sensors',
+                ].map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-xs font-mono px-3 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-neutral-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="pt-4">
+                <Link
+                  href={`/${locale}/about`}
+                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-white/[0.08] hover:bg-brand-orange hover:text-white border border-white/[0.12] transition-all"
+                >
+                  <span>{isRtl ? 'آشنایی با فلسفه، تیم و محیط استودیو' : 'Discover Studio Philosophy & Approach'}</span>
+                  <DirectionAwareArrow type="arrow" className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
-              {UI_STRINGS.selectedWork[locale]}
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-neutral-300 font-light">
-              {UI_STRINGS.selectedWorkDesc[locale]}
-            </p>
-          </div>
 
-          <Link
-            href={`/${locale}/work`}
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-orange hover:text-white transition-colors"
-          >
-            <span>{UI_STRINGS.viewAllWork[locale]}</span>
-            <DirectionAwareArrow type="arrow" className="w-4 h-4" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-      </section>
-
-      {/* 7. Engineering Methodology */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-12 sm:mb-16 mx-auto text-center">
-          <div className="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider text-brand-orange bg-brand-orange/10 border border-brand-orange/20 mb-3">
-            {isRtl ? 'روش‌شناسی و فرآیند مهندسی' : 'Engineering Pipeline'}
-          </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
-            {UI_STRINGS.ourApproach[locale]}
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-neutral-300 font-light">
-            {UI_STRINGS.ourApproachDesc[locale]}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {methodologySteps.map((step) => (
-            <SpotlightCard key={step.step} className="p-6 sm:p-7 flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-3xl sm:text-4xl font-extrabold text-brand-orange/40 block mb-4">
-                  {step.step}
-                </span>
-                <h3 className="font-display font-bold text-lg text-white mb-2">
-                  {step.title[locale]}
-                </h3>
-                <p className="text-xs text-neutral-300 font-light leading-relaxed">
-                  {step.desc[locale]}
+            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+              <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
+                <span className="font-mono text-3xl font-extrabold text-brand-orange">4+</span>
+                <h4 className="font-display font-bold text-sm text-white">
+                  {isRtl ? 'حوزه تخصصی عمیق' : 'Core Disciplines'}
+                </h4>
+                <p className="text-xs text-neutral-400 font-light leading-relaxed">
+                  {isRtl ? 'رایانش فضایی، وب‌تری‌دی، گیم و اینستالیشن' : 'Spatial computing, Web3D, gaming & interactive spaces'}
                 </p>
               </div>
-            </SpotlightCard>
-          ))}
-        </div>
-      </section>
-
-      {/* 8. Industries We Empower */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-12 mx-auto text-center">
-          <h2 className="font-display font-bold text-2xl sm:text-3xl text-white">
-            {UI_STRINGS.industries[locale]}
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {INDUSTRIES.map((ind) => (
-            <div
-              key={ind.id}
-              className="p-5 rounded-2xl bg-[#0C0E14] border border-white/[0.08] hover:border-brand-orange/40 transition-all text-center space-y-2 group"
-            >
-              <h3 className="font-display font-bold text-xs sm:text-sm text-white group-hover:text-brand-orange transition-colors">
-                {ind.name[locale]}
-              </h3>
-              <p className="text-[11px] text-neutral-400 font-light line-clamp-2">
-                {ind.desc[locale]}
-              </p>
+              <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
+                <span className="font-mono text-3xl font-extrabold text-cyan-400">100%</span>
+                <h4 className="font-display font-bold text-sm text-white">
+                  {isRtl ? 'کدنویسی درون‌استودیویی' : 'In-House Production'}
+                </h4>
+                <p className="text-xs text-neutral-400 font-light leading-relaxed">
+                  {isRtl ? 'بدون برون‌سپاری، کنترل کامل بر کیفیت فریم و سنسور' : 'Zero outsourcing, total control over framerate and hardware'}
+                </p>
+              </div>
+              <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
+                <span className="font-mono text-3xl font-extrabold text-emerald-400">&lt;5MB</span>
+                <h4 className="font-display font-bold text-sm text-white">
+                  {isRtl ? 'بهینه‌سازی وب' : 'Ultra-Light Payloads'}
+                </h4>
+                <p className="text-xs text-neutral-400 font-light leading-relaxed">
+                  {isRtl ? 'فشرده‌سازی بافت‌های KTX2 و هندسه Draco' : 'Compressed textures & Draco geometry'}
+                </p>
+              </div>
+              <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
+                <span className="font-mono text-3xl font-extrabold text-purple-400">24/7</span>
+                <h4 className="font-display font-bold text-sm text-white">
+                  {isRtl ? 'پایداری نمایشگاهی' : 'Hardware Telemetry'}
+                </h4>
+                <p className="text-xs text-neutral-400 font-light leading-relaxed">
+                  {isRtl ? 'مانیتورینگ ریموت و سلامت سیستم‌های فیزیکی' : 'Remote kiosk monitoring & watchdog auto-recovery'}
+                </p>
+              </div>
             </div>
-          ))}
-        </div>
+          </div>
+        </SpotlightCard>
       </section>
 
-      {/* 9. Latest Insights */}
+      {/* 7. Selected Insights */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
           <div>
@@ -393,7 +395,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
         </div>
       </section>
 
-      {/* 10. Final Architectural CTA */}
+      {/* 8. Final Architectural CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SpotlightCard className="p-8 sm:p-16 text-center space-y-6 relative overflow-hidden bg-gradient-to-b from-[#121622] to-[#0A0C10]">
           <div className="max-w-2xl mx-auto space-y-4">
