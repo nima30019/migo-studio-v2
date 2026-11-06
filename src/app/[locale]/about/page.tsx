@@ -52,26 +52,26 @@ export default function StudioPage({ params }: { params: { locale: Locale } }) {
   const philosophyPillars = [
     {
       icon: Zap,
-      title: { en: 'Performance as a Feature', fa: 'پایداری فریم‌ریت، اصل بنیادین ما' },
+      title: { en: 'Performance as a Feature', fa: 'سرعت بالا و اجرای روان (۶۰ FPS)' },
       desc: {
         en: 'We reject bloated templates. Every shader, polygon, and draw call is budgeted for locked 60+ FPS to guarantee zero motion sickness in VR and instantaneous Web loads.',
-        fa: 'ما قالب‌های آماده و کدهای سنگین را کنار می‌گذاریم. هر شیدر گرافیکی و مش هندسی با انضباط سخت‌گیرانه برای نرخ فریم پایدار ۶۰+ فریم بر ثانیه بهینه‌سازی می‌شود تا تجربه کاربر در واقعیت مجازی و وب، روان و بدون تاخیر باشد.',
+        fa: 'ما کدهای سنگین و قالب‌های آماده را کنار می‌گذاریم. نرم‌افزارها و مدل‌های سه‌بعدی طوری بهینه‌سازی می‌شوند که با نرخ فریم ۶۰+ کاملاً روان و بدون تاخیر در وب یا هدست واقعیت مجازی اجرا شوند.',
       },
     },
     {
       icon: Cpu,
-      title: { en: 'The Physical-Digital Continuum', fa: 'پیوند بی‌واسطه فیزیک و تصویر' },
+      title: { en: 'The Physical-Digital Continuum', fa: 'فراتر از نمایشگر؛ تعامل با محیط واقعی' },
       desc: {
         en: 'Digital experiences should not remain trapped behind flat screens. We link code to physical computing, spatial sensors, depth cameras, and tactile actuators.',
-        fa: 'دنیای دیجیتال نباید در حصار نمایشگرهای تخت محدود بماند. ما نرم‌افزار را به سنسورهای لیزری لایدار، دوربین‌های عمق‌سنج و حسگرهای فیزیکی پیوند می‌زنیم تا فضا به تجربه‌ای زنده و تعاملی بدل شود.',
+        fa: 'دنیای دیجیتال نباید در مانیتورهای تخت محدود بماند. ما نرم‌افزار را به سنسورهای لیزری لایدار، دوربین‌های عمق‌سنج و حسگرهای فیزیکی متصل می‌کنیم تا محیط غرفه زنده و تعاملی شود.',
       },
     },
     {
       icon: ShieldCheck,
-      title: { en: 'Autonomous Turnkey Stability', fa: 'پایداری بی‌وقفه در شلوغ‌ترین رویدادها' },
+      title: { en: 'Autonomous Turnkey Stability', fa: 'پایداری مداوم در طول روزهای رویداد' },
       desc: {
         en: 'Our trade show installations and enterprise training platforms operate autonomously for weeks under heavy visitor loads with zero memory leaks.',
-        fa: 'سیستم‌های نمایشگاهی و شبیه‌سازهای سازمانی استودیو MIGO برای کارکرد شبانه‌روزی زیر بار ترافیک هزاران بازدیدکننده مهندسی شده‌اند؛ بدون افت فریم، بدون کرش و با اطمینان ۱۰۰ درصدی.',
+        fa: 'تجهیزات و نرم‌افزارهای نمایشگاهی استودیو MIGO برای کارکرد مداوم در شلوغ‌ترین ساعات نمایشگاه طراحی شده‌اند؛ بدون هنگ، بدون کرش و با اطمینان کامل.',
       },
     },
   ];
@@ -80,26 +80,26 @@ export default function StudioPage({ params }: { params: { locale: Locale } }) {
   const creativePrinciples = [
     {
       num: '01',
-      title: { en: 'Spatial-First Ergonomics', fa: 'ارگونومی فضایی و انسان‌محور' },
+      title: { en: 'Spatial-First Ergonomics', fa: 'کاربری ساده و طبیعی برای همه' },
       desc: {
         en: 'Designing intuitive physical gestures and natural spatial scales rather than porting legacy 2D UI paradigms into 3D environments.',
-        fa: 'طراحی ژست‌های حرکتی طبیعی و مقیاس‌های فضایی متناسب با رفتار طبیعی انسان، به جای انتقال فرم‌های سنتی دوبعدی به دنیای سه‌بعدی.',
+        fa: 'طراحی حرکات و رابط‌های کاربری به شکلی که هر بازدیدکننده‌ای در هر سنی بتواند بدون نیاز به آموزش، فوراً با بازی یا سیستم تعامل برقرار کند.',
       },
     },
     {
       num: '02',
-      title: { en: 'Physics-Grounded Feedback', fa: 'شبیه‌سازی دقیق فیزیک و بازخورد حسی' },
+      title: { en: 'Physics-Grounded Feedback', fa: 'شبیه‌سازی طبیعی فیزیک و صدا' },
       desc: {
         en: 'Simulating true mass, momentum, collision impulse, and spatial 3D audio so every interaction feels tactile and authentic.',
-        fa: 'محاسبه دقیق اینرسی، جرم، اصطکاک و صدای فضایی سه‌بعدی؛ به طوری که هر تعامل در دنیای مجازی، اصیل، ملموس و قابل‌باور احساس شود.',
+        fa: 'شبیه‌سازی طبیعی وزن، ضربه، حرکت اشیا و صدای محیطی سه‌بعدی؛ به‌گونه‌ای که هر تعامل در دنیای سه‌بعدی، واقعی و باورپذیر به نظر برسد.',
       },
     },
     {
       num: '03',
-      title: { en: 'Zero-Friction Accessibility', fa: 'دسترسی آنی با حداقل پیچیدگی' },
+      title: { en: 'Zero-Friction Accessibility', fa: 'دسترسی سریع و بدون دردسر' },
       desc: {
         en: 'From instant WebAR activated by a single packaging QR scan to tetherless standalone VR headsets requiring no complex setups.',
-        fa: 'از وب‌آر (WebAR) بدون نیاز به نصب اپلیکیشن تنها با اسکن یک QR کد، تا هدست‌های مستقل واقعیت مجازی که بدون کابل یا تنظیمات پیچیده، کاربر را بلافاصله وارد تجربه می‌کنند.',
+        fa: 'از واقعیت افزوده وب (WebAR) تنها با اسکن یک کیو‌آر کد بدون نیاز به نصب برنامه، تا هدست‌های بی‌سیم واقعیت مجازی که بلافاصله آماده استفاده‌اند.',
       },
     },
   ];
@@ -107,19 +107,19 @@ export default function StudioPage({ params }: { params: { locale: Locale } }) {
   // Section 3: Core Technologies Matrix
   const techCategories = [
     {
-      category: { en: 'Game Engines & Real-Time Rigs', fa: 'انجین‌های ریل‌تایم و بازی‌سازی' },
+      category: { en: 'Game Engines & Real-Time Rigs', fa: 'موتورهای بازی‌سازی و رندر زنده' },
       items: ['Unreal Engine 5 (Nanite & Lumen)', 'Unity Spatial XR Engine', 'Chaos Physics Engine', 'NVIDIA PhysX'],
     },
     {
-      category: { en: 'Web Graphics & Spatial Web', fa: 'گرافیک وب و وب فضایی' },
+      category: { en: 'Web Graphics & Spatial Web', fa: 'گرافیک وب و سه‌بعدی آنلاین' },
       items: ['WebGL 2.0 & WebGPU', 'Three.js Pipeline', 'Custom GLSL Shaders', 'WebXR Device API', 'Draco Compression'],
     },
     {
-      category: { en: 'Sensors & Physical Hardware', fa: 'سنسورها و پردازش فیزیکی' },
+      category: { en: 'Sensors & Physical Hardware', fa: 'سنسورها و تجهیزات سخت‌افزاری' },
       items: ['Azure Kinect & Intel RealSense', 'Industrial Solid-State LiDAR', 'TouchDesigner & Notch', 'Custom Arduino/ESP32 Hubs'],
     },
     {
-      category: { en: '3D Computer Graphics Pipelines', fa: 'پایپ‌لاین مدلسازی و PBR' },
+      category: { en: '3D Computer Graphics Pipelines', fa: 'مدل‌سازی سه‌بعدی و بافت‌دهی' },
       items: ['Blender Industrial Hard-Surface', 'Substance 3D Painter', 'KTX2 / Basis Universal Textures', 'GLTF/GLB PBR Standards'],
     },
   ];
@@ -127,34 +127,34 @@ export default function StudioPage({ params }: { params: { locale: Locale } }) {
   // Section 4: Team & Disciplinary Architecture
   const teamDisciplines = [
     {
-      role: { en: 'Spatial Computing Architects', fa: 'معماران رایانش فضایی و VR/MR' },
+      role: { en: 'Spatial Computing Architects', fa: 'متخصصان واقعیت مجازی و ترکیبی (VR/MR)' },
       desc: {
         en: 'Leads responsible for OpenXR integrations, tracking latency budgets, comfort locomotion, and spatial UI ergonomics.',
-        fa: 'متخصصان یکپارچه‌سازی OpenXR، بهینه‌سازی تاخیر ردیابی سر و طراحی ارگونومی ناوبری فضایی.',
+        fa: 'متخصصان توسعه نرم‌افزارهای هدست، کاهش تاخیر حرکتی و جلوگیری از سرگیجه در محیط‌های مجازی.',
       },
       skills: ['OpenXR', 'Meta SDK', 'Apple VisionOS', 'Spatial Audio'],
     },
     {
-      role: { en: 'GPU Shader & Physics Engineers', fa: 'مهندسان شیدر GPU و فیزیک' },
+      role: { en: 'GPU Shader & Physics Engineers', fa: 'توسعه‌دهندگان گرافیک و فیزیک نرم‌افزار' },
       desc: {
         en: 'Crafting mathematical noise shaders, fluid dynamics, collision solvers, and rigid-body constraints locked at 60 FPS.',
-        fa: 'توسعه شیدرهای محاسباتی GPU، دینامیک سیالات، حل‌کننده‌های برخورد و پایپ‌لاین‌های ریل‌تایم.',
+        fa: 'برنامه‌نویسی نورپردازی زنده، شبیه‌سازی حرکت مایعات، فیزیک برخورد اشیا و اجرای روان روی کارت گرافیک.',
       },
       skills: ['GLSL / HLSL', 'Compute Shaders', 'Chaos Physics', 'Optimization'],
     },
     {
-      role: { en: 'Hardware & Sensor Integration Leads', fa: 'سرپرستان سخت‌افزار و سنسورهای تعاملی' },
+      role: { en: 'Hardware & Sensor Integration Leads', fa: 'کارشناسان سخت‌افزار و سنسورهای تعاملی' },
       desc: {
         en: 'Engineering communication protocols for LiDAR, depth cameras, multi-touch video walls, and custom microcontrollers.',
-        fa: 'طراحی پروتکل‌های ارتباطی سنسورهای لایدار، دوربین‌های عمق‌سنج، ویدیو وال‌ها و میکروکنترلرها.',
+        fa: 'اتصال و کالیبراسیون سنسورهای لایدار، دوربین‌های حرکتی، دیوارهای لمسی و بردهای الکترونیکی.',
       },
       skills: ['LiDAR Telemetry', 'TouchDesigner', 'Kinect SDK', 'Turnkey Kiosks'],
     },
     {
-      role: { en: 'Real-Time 3D Technical Artists', fa: 'طراحان و آرتیست‌های تکنیکال سه‌بعدی' },
+      role: { en: 'Real-Time 3D Technical Artists', fa: 'طراحان سه‌بعدی و متخصصان انیمیشن' },
       desc: {
         en: 'High-to-low poly baking, physically based lighting, texture memory packing, and cinematic mechanical animations.',
-        fa: 'مدل‌سازی صنعتی، متریال‌سازی PBR، بهینه‌سازی بافت‌ها و انیمیشن‌های دقیق مکانیکی.',
+        fa: 'مدل‌سازی دقیق صنعتی، نورپردازی واقع‌گرایانه، بهینه‌سازی حجم فایل‌ها و انیمیشن‌های روان.',
       },
       skills: ['Hard-Surface PBR', 'Lighting & VFX', 'Draco Meshopt', 'Cinematics'],
     },
@@ -164,34 +164,34 @@ export default function StudioPage({ params }: { params: { locale: Locale } }) {
   const workflowPhases = [
     {
       step: '01',
-      title: { en: 'Technical Discovery & Feasibility', fa: 'کشف و ارزیابی معماری فنی' },
+      title: { en: 'Technical Discovery & Feasibility', fa: 'بررسی نیازها و امکان‌سنجی فنی' },
       desc: {
         en: 'We dissect spatial constraints, hardware budgets, sensor telemetry specs, and target frame rates.',
-        fa: 'تحلیل دقیق محدودیت‌های محیط، سخت‌افزارهای هدف، مشخصات تله‌متری سنسورها و بودجه فریم‌ریت.',
+        fa: 'بررسی دقیق فضای نمایشگاه یا رویداد، انتخاب سخت‌افزارهای مناسب و تعیین پیش‌نیازهای نرم‌افزاری.',
       },
     },
     {
       step: '02',
-      title: { en: 'Rapid Interactive Spatial Graybox', fa: 'پروتوتایپ تعاملی سریع (Graybox)' },
+      title: { en: 'Rapid Interactive Spatial Graybox', fa: 'ساخت نمونه اولیه تعاملی (پروتوتایپ)' },
       desc: {
         en: 'Before final 3D artwork, we validate physics loops, scale, and ergonomics in interactive graybox engines.',
-        fa: 'پیش از تولید مدل‌های نهایی، حلقه فیزیک و تعاملات ارگونومیک با پروتوتایپ سریع اعتبارسنجی می‌شود.',
+        fa: 'پیش از نهایی کردن گرافیک، نحوه حرکت، سادگی کاربری و سرعت بازی با یک نسخه اولیه تست می‌شود.',
       },
     },
     {
       step: '03',
-      title: { en: 'High-Fidelity Engine Production', fa: 'تولید وفادارانه شیدر و متریال' },
+      title: { en: 'High-Fidelity Engine Production', fa: 'تولید گرافیک نهایی با بالاترین کیفیت' },
       desc: {
         en: 'PBR shading, volumetric lighting, spatial audio cues, and multi-user network synchronization.',
-        fa: 'پیاده‌سازی شیدرهای PBR، نورپردازی حجمی، افکت‌های صوتی فضایی و همگام‌سازی چندکاربره تحت شبکه.',
+        fa: 'طراحی مدل‌های سه‌بعدی با کیفیت بالا، متریال‌های طبیعی، نورپردازی، صداگذاری و قابلیت اتصال هم‌زمان چند کاربر.',
       },
     },
     {
       step: '04',
-      title: { en: 'On-Site Calibration & Turnkey Deployment', fa: 'کالیبراسیون در محل و استقرار ترن‌کی' },
+      title: { en: 'On-Site Calibration & Turnkey Deployment', fa: 'نصب، راه‌اندازی و تست در محل رویداد' },
       desc: {
         en: 'Mounting sensors, zero-drift spatial calibration, hardware stress-testing, and autonomous remote monitoring.',
-        fa: 'نصب سخت‌افزارها، کالیبراسیون بدون خطای سنسورها، تست استرس ممتد و راه‌اندازی تله‌متری مانیتورینگ.',
+        fa: 'نصب سنسورها و نمایشگرها در غرفه، تنظیم دقیق بدون خطا، تست نهایی عملکرد و حضور در طول برگزاری نمایشگاه.',
       },
     },
   ];

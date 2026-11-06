@@ -43,7 +43,7 @@ export function HeroV2() {
               </span>
               <span className="text-neutral-500">•</span>
               <span className="text-xs text-neutral-300 font-light">
-                {isRtl ? 'فناوری‌های خلاق و رایانش فضایی' : 'Creative Technology & Spatial XR'}
+                {isRtl ? 'فناوری‌های تعاملی و واقعیت مجازی' : 'Creative Technology & Spatial XR'}
               </span>
             </div>
 

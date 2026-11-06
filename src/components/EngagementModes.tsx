@@ -15,15 +15,15 @@ export function EngagementModes() {
   const modes = [
     {
       id: 'event-activation',
-      badge: { en: 'Rapid Turnaround', fa: 'تحویل و استقرار سریع' },
+      badge: { en: 'Rapid Turnaround', fa: 'آماده‌سازی و تحویل سریع' },
       title: {
         en: 'Exhibition & Event Activation',
-        fa: 'اکتیویشن و بازی‌های رویدادی',
+        fa: 'بازی‌ها و فناوری‌های غرفه نمایشگاهی',
       },
       duration: { en: '3 to 7 Days Expo', fa: 'نمایشگاه‌های ۳ تا ۷ روزه' },
       desc: {
         en: 'Turnkey interactive crowd magnets engineered for high-density trade shows and corporate conventions. Deployed in days with guaranteed local offline reliability and automated lead capture.',
-        fa: 'راهکارهای تعاملی و پرانرژی برای شلوغ‌ترین غرفه‌های نمایشگاهی و همایش‌ها؛ تحویل سریع در چند روز با عملکرد ۱۰۰٪ آفلاین، لیدربورد زنده و ثبت خودکار لیدهای تجاری.',
+        fa: 'اجرای بازی‌های تعاملی و پرانرژی برای شلوغ کردن غرفه‌های نمایشگاهی و همایش‌ها؛ تحویل در چند روز با عملکرد ۱۰۰٪ آفلاین و ثبت شماره تماس و اطلاعات بازدیدکنندگان.',
       },
       icon: Calendar,
       accentColor: 'text-brand-orange',
@@ -36,26 +36,26 @@ export function EngagementModes() {
           'Complete turnkey delivery: on-site hardware mounting and expo standby',
         ],
         fa: [
-          'موتورهای بازی آزمایش‌شده و سفارشی‌سازی‌شده طبق رنگ، لوگو و کاراکتر برند شما',
-          'دروازه ثبت لید آنی با ذخیره شماره موبایل و ارسال پیامک خودکار به بازدیدکننده',
-          'اجرای ۱۰۰٪ محلی و آفلاین (بدون وابستگی به اینترنت ناپایدار سالن نمایشگاه)',
-          'تحویل ترن‌کی در محل: نصب سنسورها، کالیبراسیون و حضور کارشناس پشتیبان در ایام رویداد',
+          'بازی‌های آماده و تست‌شده با اعمال لوگو، رنگ و جوایز اختصاصی برند شما',
+          'ثبت سریع شماره تماس بازدیدکننده همراه با ارسال خودکار پیامک هدیه',
+          'اجرای کاملاً آفلاین و بدون وابستگی به اینترنت ناپایدار سالن نمایشگاه',
+          'نصب، کالیبراسیون و حضور کارشناس فنی در تمام روزهای نمایشگاه',
         ],
       },
-      ctaText: { en: 'Book Exhibition Activation', fa: 'سفارش اکتیویشن نمایشگاهی' },
+      ctaText: { en: 'Book Exhibition Activation', fa: 'سفارش بازی برای غرفه نمایشگاهی' },
       ctaHref: `/${locale}/start-project?mode=event`,
     },
     {
       id: 'custom-innovation',
-      badge: { en: 'Bespoke Engineering', fa: 'مهندسی کاملاً اختصاصی' },
+      badge: { en: 'Bespoke Engineering', fa: 'طراحی و توسعه اختصاصی' },
       title: {
         en: 'Custom Innovation & R&D',
-        fa: 'پروژه‌های سفارشی و R&D',
+        fa: 'پروژه‌های سفارشی، شبیه‌سازها و R&D',
       },
       duration: { en: '4 to 12 Weeks', fa: 'پروژه‌های ۴ تا ۱۲ هفته' },
       desc: {
         en: 'Zero-template creative engineering for flagship marketing campaigns, hazardous industrial training simulators, and multi-sensor kinetic spaces designed from scratch.',
-        fa: 'مهندسی اختصاصی نرم‌افزار و سخت‌افزار برای کمپین‌های شاخص، شبیه‌سازهای صنعتی HSE، دوقلوهای دیجیتال و اینستالیشن‌های حرکتی چندسنسوره بدون استفاده از قالب‌های آماده.',
+        fa: 'برنامه‌نویسی و ساخت اختصاصی سیستم‌های تعاملی، شبیه‌سازهای آموزشی واقعیت مجازی و سازه‌های تعاملی چندسنسوره متناسب با نیاز دقیق سازمان شما.',
       },
       icon: Cpu,
       accentColor: 'text-cyan-400',
@@ -68,26 +68,26 @@ export function EngagementModes() {
           'Full intellectual property transfer, technical source files, and QA docs',
         ],
         fa: [
-          'کدنویسی موتور فیزیک اختصاصی، شیدرهای ریاضی GLSL و بهینه‌سازی ۶۰+ فریم وب',
-          'تلفیق چند سنسور: پرده‌های لیزری لایدار، دوربین‌های کینکت و کنترلرهای فیزیکی',
-          'شبیه‌سازی فضایی واقعیت مجازی با دقت میلی‌متری برای مانورهای بحرانی و آموزش پرسنل',
-          'انتقال کامل مالکیت معنوی، سورس‌کدهای نرم‌افزار و مستندات معماری سیستم',
+          'طراحی گرافیک و فیزیک اختصاصی با سرعت اجرای فوق‌العاده روان (۶۰ فریم)',
+          'اتصال سنسورهای پیشرفته حرکتی: لیزرهای لایدار، دوربین‌های کینکت و کنترلرها',
+          'شبیه‌سازی‌های آموزشی واقعیت مجازی برای کاهش خطرات کار پرسنل',
+          'تحویل کامل کدهای پروژه و مستندات فنی به کارفرما',
         ],
       },
-      ctaText: { en: 'Initiate R&D Inquiry', fa: 'درخواست امکان‌سنجی و R&D' },
+      ctaText: { en: 'Initiate R&D Inquiry', fa: 'مشاوره پروژه سفارشی و R&D' },
       ctaHref: `/${locale}/start-project?mode=custom`,
     },
     {
       id: 'permanent-installation',
-      badge: { en: 'Permanent Architecture', fa: 'چیدمان دائمی و شوروم' },
+      badge: { en: 'Permanent Architecture', fa: 'اجرای دائمی و ثابت' },
       title: {
         en: 'Permanent Showrooms & Museums',
-        fa: 'چیدمان‌های دائمی معماری و موزه',
+        fa: 'شوروم‌های سازمانی، موزه‌ها و مراکز علمی',
       },
       duration: { en: 'Long-Term / 24/7 Autonomy', fa: 'پایداری مداوم شبانه‌روزی' },
       desc: {
         en: 'Enduring interactive architecture for corporate flagship centers, science discovery museums, luxury showrooms, and commercial atriums engineered for continuous years of operation.',
-        fa: 'معماری تعاملی ماندگار برای شوروم‌های لوکس سازمانی، موزه‌های علمی و تاریخی و لابی‌های مدرن که برای سال‌ها کارکرد بی‌وقفه بدون استهلاک طراحی می‌شوند.',
+        fa: 'طراحی و ساخت فضاهای تعاملی دائمی برای شوروم‌های لوکس شرکتی، موزه‌ها و لابی‌ها؛ ساخته‌شده برای سال‌ها کارکرد مداوم بدون استهلاک.',
       },
       icon: Landmark,
       accentColor: 'text-purple-400',
@@ -100,13 +100,13 @@ export function EngagementModes() {
           'Scheduled maintenance contracts, content CMS updates, and 24/7 SLA support',
         ],
         fa: [
-          'ویدیو مپینگ چندکاناله، نمایشگرهای لمسی شفاف و دیوارهای عظیم LED',
-          'معماری نرم‌افزاری Watchdog خودکار با پایش از راه دور و بازیابی سلامت کیوسک',
-          'تامین قطعات صنعتی فوق‌مقاوم مناسب برای استهلاک مداوم صدها بازدیدکننده روزانه',
-          'قراردادهای نگهداری دوره‌ای، به‌روزرسانی پنل محتوا (CMS) و پشتیبانی SLA',
+          'پروژکشن مپینگ دیواری و کف، مانیتورهای لمسی بزرگ و دیوارهای ویدیویی',
+          'سیستم خودکار روشن/خاموش شدن و عیب‌یابی هوشمند از راه دور',
+          'سخت‌افزارهای صنعتی با طول عمر بالا در برابر استفاده مداوم صدها بازدیدکننده',
+          'پشتیبانی فنی دوره‌ای و امکان به‌روزرسانی آسان محتوا',
         ],
       },
-      ctaText: { en: 'Consult for Permanent Space', fa: 'مشاوره چیدمان دائمی' },
+      ctaText: { en: 'Consult for Permanent Space', fa: 'مشاوره طراحی شوروم دائمی' },
       ctaHref: `/${locale}/start-project?mode=permanent`,
     },
   ];
@@ -124,7 +124,7 @@ export function EngagementModes() {
           </h2>
           <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
             {isRtl
-              ? 'چه به دنبال یک بازی مگنت پرانرژی برای غرفه نمایشگاهی ۴ روزه باشید، چه یک پروژه اختصاصی R&D یا چیدمان دائمی موزه، معماری اجرایی متناسب با بودجه و زمان‌بندی شما آماده است.'
+              ? 'چه به دنبال یک بازی تعاملی پرانرژی برای شلوغ کردن غرفه نمایشگاهی ۴ روزه باشید، چه یک پروژه اختصاصی R&D یا تجهیز دائمی موزه، فرآیند اجرای استودیو متناسب با بودجه و زمان‌بندی شما آماده است.'
               : 'Whether you require a high-energy crowd magnet for a 4-day trade show, a ground-up R&D breakthrough, or a permanent museum centerpiece, we have an engineered delivery pipeline.'}
           </p>
         </div>

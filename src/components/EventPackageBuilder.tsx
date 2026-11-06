@@ -43,44 +43,44 @@ export function EventPackageBuilder() {
       id: 'motion-arena',
       title: {
         en: 'Touchless Motion Arena (LiDAR / Kinect)',
-        fa: 'میدان حرکتی بدون لمس (سنسورهای LiDAR و کینکت)',
+        fa: 'بازی‌های حرکتی بدون لمس (سنسور لایدار و کینکت)',
       },
-      badge: { en: 'Crowd Magnet', fa: 'جاذبه جمعیتی راهرو' },
+      badge: { en: 'Crowd Magnet', fa: 'جذب جمعیت و شلوغی غرفه' },
       desc: {
         en: 'Visitors control real-time 3D games through full-body movement without touching screens. Ideal for packed exhibition aisles.',
-        fa: 'کنترل کامل بازی‌های سه‌بعدی با حرکات طبیعی بدن و دست در فاصله چند متری از وال بدون نیاز به لمس صفحه؛ مگنت اصلی جذب تماشاچیان راهرو.',
+        fa: 'بازدیدکنندگان با حرکات دست و بدن در برابر مانیتور یا دیوار LED بازی می‌کنند، بدون نیاز به دست زدن به صفحه؛ بهترین روش برای جلب توجه رهگذران و شلوغ کردن غرفه.',
       },
       icon: Gamepad2,
       setupDays: 5,
-      highlightKpi: { en: '4x Dwell Time', fa: '۴ برابر افزایش ماندگاری' },
+      highlightKpi: { en: '4x Dwell Time', fa: '۴ برابر ماندگاری در غرفه' },
       category: 'motion',
     },
     {
       id: 'fortune-wheel',
       title: {
         en: '3D Fortune Matrix & Lucky Prize Wheel',
-        fa: 'گردونه شانس ۳ بعدی و جوایز هوشمند دیجیتال',
+        fa: 'گردونه شانس سه‌بعدی و قرعه‌کشی دیجیتال',
       },
-      badge: { en: 'High Lead Capture', fa: 'ثبت حداکثری لید' },
+      badge: { en: 'High Lead Capture', fa: 'دریافت شماره تماس مخاطبان' },
       desc: {
         en: 'Photorealistic WebGL physics wheel tied to verified mobile phone input and instant automated SMS voucher dispatch.',
-        fa: 'گردونه سه‌بعدی با شبیه‌سازی فیزیک نور و حرکت، مشروط به ثبت شماره موبایل و ارسال آنی کد هدیه/تخفیف از طریق پیامک به گوشی بازدیدکننده.',
+        fa: 'یک گردونه شانس سه‌بعدی جذاب؛ کاربر ابتدا شماره موبایل خود را وارد می‌کند، سپس گردونه می‌چرخد و بلافاصله کد هدیه یا پیامک برای او ارسال می‌شود.',
       },
       icon: Trophy,
       setupDays: 4,
-      highlightKpi: { en: '85%+ Lead Opt-in', fa: 'ثبت لید بیش از ۸۵٪' },
+      highlightKpi: { en: '85%+ Lead Opt-in', fa: 'ثبت شماره تماس بیش از ۸۵٪' },
       category: 'gamification',
     },
     {
       id: 'live-leaderboard',
       title: {
         en: 'Apex Competitive Live Leaderboard',
-        fa: 'مسابقات رکوردی زنده و تابلوی امتیازات دیجیتال',
+        fa: 'مسابقات رکوردی با تابلوی امتیازات زنده (لیدربورد)',
       },
       badge: { en: 'High Retention', fa: 'ایجاد رقابت و هیجان' },
       desc: {
         en: 'High-energy 45-second challenges with live rankings broadcast across the booth LED wall, driving repeated visitor returns.',
-        fa: 'چالش‌های رکوردی هیجان‌انگیز ۴۵ ثانیه‌ای با تابلوی زنده امتیازات روی ال‌ای‌دی‌وال غرفه که باعث می‌شود بازدیدکنندگان برای ثبت رکورد بازگردند.',
+        fa: 'مسابقات کوتاه و پرهیجان ۴۵ ثانیه‌ای؛ رکوردهای برتر به صورت زنده روی نمایشگر بزرگ غرفه نمایش داده می‌شوند و افراد را برای ثبت رکورد بهتر ترغیب می‌کنند.',
       },
       icon: Zap,
       setupDays: 5,
@@ -91,48 +91,48 @@ export function EventPackageBuilder() {
       id: 'brand-trivia',
       title: {
         en: 'Interactive Multi-Touch Brand Trivia',
-        fa: 'کوییز و چالش اطلاعاتی لمسی برند',
+        fa: 'مسابقه و کوییز اطلاعاتی روی مانیتور لمسی',
       },
-      badge: { en: 'Education & USP', fa: 'آموزش مفاهیم برند' },
+      badge: { en: 'Education & USP', fa: 'معرفی خدمات و محصولات' },
       desc: {
         en: 'Engaging touchscreen quiz mechanics that educate visitors on key product advantages and value propositions.',
-        fa: 'آزمون‌های چندلمسی سریع و سرگرم‌کننده که مزایا و خدمات متمایز شرکت شما را به شیوه‌ای بازی‌گونه در ذهن مخاطب حک می‌کنند.',
+        fa: 'یک بازی جذاب چندگزینه‌ای روی مانیتور لمسی؛ مزایا و خدمات شرکت شما را به شکلی سرگرم‌کننده به بازدیدکنندگان معرفی می‌کند.',
       },
       icon: HelpCircle,
       setupDays: 3,
-      highlightKpi: { en: 'High Brand Recall', fa: 'ماندگاری پیام برند' },
+      highlightKpi: { en: 'High Brand Recall', fa: 'ماندگاری پیام برند در ذهن' },
       category: 'kiosk',
     },
     {
       id: 'webar-portal',
       title: {
         en: 'Zero-Install WebAR 3D Product Portal',
-        fa: 'پرتال واقعیت افزوده وب (WebAR) بدون نیاز به نصب',
+        fa: 'واقعیت افزوده وب بدون نیاز به نصب برنامه (WebAR)',
       },
-      badge: { en: 'Viral Mobile Share', fa: 'اشتراک‌گذاری موبایل' },
+      badge: { en: 'Viral Mobile Share', fa: 'مشاهده سه‌بعدی روی گوشی' },
       desc: {
         en: 'Instant 3D product view launched via QR scan directly in Safari and Chrome with PBR lighting and real-world scale.',
-        fa: 'مشاهده مدل ۳ بعدی محصول در فضای واقعی تنها با اسکن سریع کد QR بدون نیاز به دانلود اپلیکیشن در مرورگرهای سافاری و کروم.',
+        fa: 'مشتری تنها با اسکن یک QR کد با دوربین گوشی، مدل سه‌بعدی محصولات شما را با ابعاد واقعی در محیط خانه یا نمایشگاه مشاهده می‌کند.',
       },
       icon: QrCode,
       setupDays: 4,
-      highlightKpi: { en: 'Zero Friction', fa: 'دسترسی در ۲ ثانیه' },
+      highlightKpi: { en: 'Zero Friction', fa: 'اجرای سریع بدون نصب برنامه' },
       category: 'spatial',
     },
     {
       id: 'vr-quest-station',
       title: {
         en: 'Standalone VR Rig (Meta Quest 3)',
-        fa: 'ایستگاه شبیه‌ساز واقعیت مجازی Meta Quest 3',
+        fa: 'ایستگاه واقعیت مجازی با هدست مستقل (Meta Quest 3)',
       },
-      badge: { en: 'Ultimate Immersion', fa: 'غوطه‌وری تمام‌عیار' },
+      badge: { en: 'Ultimate Immersion', fa: 'تجربه عمیق و هیجان‌انگیز' },
       desc: {
         en: 'High-fidelity standalone virtual walkthroughs or hazardous factory drills with zero cables and dedicated spectator casting screens.',
-        fa: 'تورهای مجازی شگفت‌انگیز معماری یا شبیه‌سازهای صنعتی ایمنی با هدست‌های بی‌سیم بدون کابل همراه با پخش زنده روی تلویزیون تماشاچیان.',
+        fa: 'تورهای مجازی و شبیه‌سازی‌های آموزشی با هدست‌های بی‌سیم، به همراه پخش زنده تصویر عینک روی تلویزیون برای تماشای سایر حاضرین.',
       },
       icon: Glasses,
       setupDays: 6,
-      highlightKpi: { en: '100% Wow Factor', fa: 'حداکثر تاثیرگذاری' },
+      highlightKpi: { en: '100% Wow Factor', fa: 'جذابیت فوق‌العاده برای مخاطب' },
       category: 'spatial',
     },
   ];
@@ -163,16 +163,16 @@ export function EventPackageBuilder() {
         <div className="max-w-3xl space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider text-cyan-300 bg-cyan-950/60 border border-cyan-400/40">
             <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            <span>{isRtl ? 'ابزار تعاملی پکیج‌ساز غرفه نمایشگاهی' : 'Interactive Exhibition Tech Builder'}</span>
+            <span>{isRtl ? 'پکیج‌ساز هوشمند غرفه نمایشگاهی' : 'Interactive Exhibition Tech Builder'}</span>
           </div>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
             {isRtl
-              ? 'پکیج فناوری و بازی‌های غرفه خود را بسازید'
+              ? 'انتخاب و ساخت پکیج فناوری غرفه شما'
               : 'Build Your Custom Exhibition Tech Activation'}
           </h2>
           <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
             {isRtl
-              ? 'ماژول‌های تعاملی موردنیاز غرفه خود را انتخاب کنید؛ سیستم تخمین زمان تحویل و مزایای بازدهی تجاری (ROI) را به صورت بلادرنگ برای شما محاسبه می‌کند.'
+              ? 'امکانات موردنیاز غرفه خود را انتخاب کنید؛ زمان آماده‌سازی و نحوه جذب بازدیدکنندگان به صورت خودکار محاسبه می‌شود.'
               : 'Select the interactive components for your exhibition stand. Review estimated turnaround, lead mechanics, and submit a tailored brief in one click.'}
           </p>
         </div>
@@ -260,14 +260,14 @@ export function EventPackageBuilder() {
           <SpotlightCard className="p-7 rounded-3xl border-cyan-500/40 bg-gradient-to-b from-[#0E1422] to-[#080B12] shadow-2xl space-y-6">
             <div className="space-y-2 pb-5 border-b border-white/[0.08]">
               <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">
-                // {isRtl ? 'خلاصه پیکربندی غرفه' : 'Booth Architecture Summary'}
+                // {isRtl ? 'خلاصه پکیج غرفه' : 'Booth Architecture Summary'}
               </span>
               <h3 className="font-display font-extrabold text-2xl text-white">
-                {isRtl ? 'پکیج انتخابی شما' : 'Your Configured Package'}
+                {isRtl ? 'پکیج اختصاصی غرفه شما' : 'Your Configured Package'}
               </h3>
               <p className="text-xs text-neutral-300 font-light">
                 {isRtl
-                  ? `${selectedIds.length} ماژول تعاملی برای استقرار در غرفه انتخاب شده است.`
+                  ? `${selectedIds.length} قابلیت برای غرفه شما انتخاب شده است.`
                   : `${selectedIds.length} interactive modules selected for on-site activation.`}
               </p>
             </div>
@@ -275,7 +275,7 @@ export function EventPackageBuilder() {
             {/* Selected Modules List */}
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-wider block">
-                {isRtl ? 'ماژول‌های فعال:' : 'Active Modules:'}
+                {isRtl ? 'امکانات انتخاب‌شده:' : 'Active Modules:'}
               </span>
               <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
                 {selectedModules.map((m) => (
@@ -297,7 +297,7 @@ export function EventPackageBuilder() {
               <div className="flex items-center justify-between text-neutral-300">
                 <span className="flex items-center gap-1.5">
                   <Zap className="w-3.5 h-3.5 text-brand-orange" />
-                  <span>{isRtl ? 'زمان تحویل و کالیبراسیون:' : 'Estimated Turnaround:'}</span>
+                  <span>{isRtl ? 'مدت زمان آماده‌سازی و نصب:' : 'Estimated Turnaround:'}</span>
                 </span>
                 <span className="font-bold text-white">
                   {estimatedDays} {isRtl ? 'روز کاری' : 'Business Days'}
@@ -307,20 +307,20 @@ export function EventPackageBuilder() {
               <div className="flex items-center justify-between text-neutral-300">
                 <span className="flex items-center gap-1.5">
                   <Users className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>{isRtl ? 'قابلیت جذب و ثبت لید:' : 'Lead Capture System:'}</span>
+                  <span>{isRtl ? 'دریافت شماره تماس بازدیدکنندگان:' : 'Lead Capture System:'}</span>
                 </span>
                 <span className="font-bold text-emerald-400">
-                  {isRtl ? '۱۰۰٪ خودکار (SMS/CRM)' : 'Automated (SMS/CRM)'}
+                  {isRtl ? 'اتصال خودکار به پیامک و CRM' : 'Automated (SMS/CRM)'}
                 </span>
               </div>
 
               <div className="flex items-center justify-between text-neutral-300">
                 <span className="flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
-                  <span>{isRtl ? 'پایداری در محل رویداد:' : 'On-Site Reliability:'}</span>
+                  <span>{isRtl ? 'پایداری در سالن نمایشگاه:' : 'On-Site Reliability:'}</span>
                 </span>
                 <span className="font-bold text-purple-300">
-                  {isRtl ? '۱۰۰٪ آفلاین (بدون قطعی)' : '100% Offline Cache'}
+                  {isRtl ? '۱۰۰٪ آفلاین (بدون نیاز به اینترنت)' : '100% Offline Cache'}
                 </span>
               </div>
             </div>
@@ -334,13 +334,13 @@ export function EventPackageBuilder() {
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-sm text-black bg-cyan-300 hover:bg-cyan-200 transition-all shadow-[0_0_25px_rgba(0,242,254,0.35)] group hover:scale-[1.02] active:scale-95"
               >
                 <Send className="w-4 h-4 text-black" />
-                <span>{isRtl ? 'ارسال بریف این پکیج به استودیو' : 'Submit Configured Brief'}</span>
+                <span>{isRtl ? 'دریافت پیش‌فاکتور و مشاوره این پکیج' : 'Submit Configured Brief'}</span>
                 <DirectionAwareArrow type="up-right" className="w-4 h-4" />
               </Link>
 
               <p className="text-[10px] text-neutral-400 text-center font-light leading-relaxed">
                 {isRtl
-                  ? 'تیم فنی MIGO ظرف ۲۴ ساعت پروپوزال، زمان‌بندی دقیق و مشاوره معماری غرفه را ارسال می‌کند.'
+                  ? 'تیم MIGO ظرف ۲۴ ساعت پیش‌فاکتور، زمان‌بندی دقیق و مشاوره را در اختیارتان قرار می‌دهد.'
                   : 'MIGO technical leads will review your configured modules and schedule a discovery call within 24 hours.'}
               </p>
             </div>

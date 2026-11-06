@@ -72,15 +72,15 @@ export const UI_STRINGS = {
   },
   heroSubheadline: {
     en: '// Spatial Computing • Virtual Reality (VR/MR) • WebAR • Serious Games',
-    fa: '// رایانش فضایی • واقعیت مجازی و ترکیبی (VR/MR) • وب‌آر (WebAR) • بازی‌های تعاملی و جدی',
+    fa: '// واقعیت مجازی و ترکیبی (VR/MR) • وب‌آر بدون نیاز به نصب • بازی‌های تعاملی نمایشگاه',
   },
   heroDescription: {
     en: 'MIGO blends real-time 3D graphics, spatial computing, tactile hardware sensors, and simulation physics to engineer extraordinary digital brand experiences and mission-critical training tools.',
-    fa: 'استودیو MIGO پیوندگاه هنر دیجیتال، مهندسی ریل‌تایم و پردازش فیزیکی است. ما با تلفیق گرافیک سه‌بعدی بی‌درنگ، واقعیت مجازی و سنسورهای تعاملی، غرفه‌های نمایشگاهی شاخص، شبیه‌سازهای صنعتی و تجربیات فضایی ماندگار خلق می‌کنیم.',
+    fa: 'استودیو فناوری خلاق MIGO؛ طراح و مجری تجربیات نوین دیجیتال. ما با ترکیب گرافیک سه‌بعدی، واقعیت مجازی، بازی‌های غرفه و سنسورهای تعاملی، رویدادها، غرفه‌های نمایشگاهی و شبیه‌سازهای صنعتی را به تجربه‌ای متفاوت، پربازدید و ماندگار تبدیل می‌کنیم.',
   },
   exploreWork: {
     en: 'Explore Case Studies',
-    fa: 'کاوش در پروژه‌ها',
+    fa: 'مشاهده پروژه‌ها',
   },
   exploreLab: {
     en: 'Enter Experiments Lab',
@@ -88,15 +88,15 @@ export const UI_STRINGS = {
   },
   startProject: {
     en: 'Start a Project',
-    fa: 'آغاز همکاری و پروژه',
+    fa: 'سفارش و آغاز همکاری',
   },
   whatWeDo: {
     en: 'Core Specializations',
-    fa: 'تخصص‌ها و حوزه‌های فعالیت',
+    fa: 'خدمات و حوزه‌های فعالیت',
   },
   whatWeDoDesc: {
     en: 'We craft high-performance interactive experiences bridging physical architecture and digital imagination.',
-    fa: 'آفرینش تجربیات تعاملی و چندحسی که مرز میان فضای فیزیکی و دنیای دیجیتال را محو می‌کنند.',
+    fa: 'طراحی تجربیات تعاملی متفاوتی که فاصله میان فضای فیزیکی و دنیای سه‌بعدی را از میان برمی‌دارند.',
   },
   selectedWork: {
     en: 'Selected Client Work',
@@ -104,7 +104,7 @@ export const UI_STRINGS = {
   },
   selectedWorkDesc: {
     en: 'Production deployments spanning virtual reality rigs, WebAR configurators, interactive exhibitions, and simulation engines.',
-    fa: 'نمونه‌ای از سیستم‌های عملیاتی استودیو شامل شبیه‌سازهای پیشرفته VR، کانفیگوراتورهای سه‌بعدی WebAR و چیدمان‌های تعاملی نمایشگاهی.',
+    fa: 'نمونه‌ای از پروژه‌های استودیو شامل شبیه‌سازهای واقعیت مجازی، کاتالوگ‌های سه‌بعدی تعاملی و تجهیزات هوشمند نمایشگاهی.',
   },
   viewAllWork: {
     en: 'View All Projects',
@@ -116,15 +116,15 @@ export const UI_STRINGS = {
   },
   labDesc: {
     en: 'Interactive research, real-time WebGL shaders, kinetic typography, and physical computing prototypes pushed directly to your browser.',
-    fa: 'کاوش در مرزهای گرافیک وب؛ آزمایش‌های تعاملی با شیدرهای بی‌درنگ WebGL، تایپوگرافی زنده و تعاملات نوین مستقیماً در مرورگر شما.',
+    fa: 'کاوش در مرزهای گرافیک وب؛ آزمایش‌های تعاملی با شیدرهای سه‌بعدی WebGL و نوآوری‌های تکنولوژی مستقیماً در مرورگر شما.',
   },
   ourApproach: {
     en: 'From Concept to Deployment',
-    fa: 'از خلق کانسپت تا استقرار عملیاتی',
+    fa: 'از ایده تا تحویل نهایی',
   },
   ourApproachDesc: {
     en: 'Our four-stage engineering methodology guarantees high-fidelity visuals, 60+ FPS performance, and hardware stability.',
-    fa: 'فرآیند مهندسی چهارگانه MIGO تضمین‌کننده خروجی بصری سینماتیک، فریم‌ریت پایدار ۶۰+ و کارکرد بی‌نقص در شلوغ‌ترین رویدادهاست.',
+    fa: 'فرآیند اجرای چهارگانه استودیو تضمین‌کننده کیفیت گرافیکی سینمایی، سرعت کاملاً روان و عملکرد پایدار و بدون وقفه در رویدادهاست.',
   },
   industries: {
     en: 'Industries We Empower',
@@ -136,7 +136,7 @@ export const UI_STRINGS = {
   },
   techStackDesc: {
     en: 'Built on Unreal Engine 5, Unity Spatial XR, WebGL/Three.js, LiDAR sensors, and custom microcontrollers.',
-    fa: 'توسعه اختصاصی بر پایه Unreal Engine 5، یونیتی، Three.js، سنسورهای لیزری لایدار و پردازنده‌های سخت‌افزاری تعبیه شده.',
+    fa: 'توسعه اختصاصی بر پایه Unreal Engine 5، یونیتی، Three.js، سنسورهای لیزری لایدار و بردهای سخت‌افزاری تعاملی.',
   },
   aboutPreviewHeadline: {
     en: 'Where Precision Engineering Meets Digital Artistry.',
@@ -144,7 +144,7 @@ export const UI_STRINGS = {
   },
   aboutPreviewText: {
     en: 'MIGO is an independent creative technology studio based in Tehran with international delivery capability. We reject generic templates in favor of tailored real-time engines, sensory interactions, and memorable spatial computing.',
-    fa: 'استودیو فناوری خلاق MIGO با تمرکز بر مرزهای تعامل انسان و کامپیوتر متولد شده است. ما قالب‌های آماده و سنتی را کنار می‌گذاریم تا با مهندسی اختصاصی انجین‌های سه‌بعدی و سخت‌افزارهای حسگر، تجربیاتی نو، جسورانه و ماندگار برای برندهای پیشرو خلق کنیم.',
+    fa: 'استودیو فناوری خلاق MIGO با تمرکز بر تعاملات مدرن انسان و کامپیوتر فعالیت می‌کند. ما قالب‌های آماده و سنتی را کنار می‌گذاریم تا با توسعه اختصاصی نرم‌افزارهای سه‌بعدی و اتصال سنسورهای هوشمند، تجربیاتی جذاب و اثرگذار برای برندهای پیشرو خلق کنیم.',
   },
   learnMoreAboutUs: {
     en: 'Learn More About Studio',
@@ -156,15 +156,15 @@ export const UI_STRINGS = {
   },
   finalCtaHeadline: {
     en: 'Ready to Build Something Unprecedented?',
-    fa: 'آماده‌اید تجربه‌ای بی‌سابقه خلق کنیم؟',
+    fa: 'آماده‌اید تجربه‌ای متفاوت خلق کنیم؟',
   },
   finalCtaDesc: {
     en: 'Whether you need a trade show showstopper, an enterprise VR training platform, or zero-install WebAR, let’s talk architecture.',
-    fa: 'اگر در اندیشه خلق یک غرفه نمایشگاهی پربازدید، شبیه‌ساز آموزش صنعتی یا پرتال واقعیت افزوده سه‌بعدی هستید، برای معماری و امکان‌سنجی فنی پروژه همراه شما هستیم.',
+    fa: 'اگر در اندیشه ساخت یک غرفه نمایشگاهی پربازدید، شبیه‌ساز آموزش صنعتی یا کاتالوگ واقعیت افزوده سه‌بعدی هستید، برای تحلیل فنی و اجرای پروژه همراه شما هستیم.',
   },
   footerDesc: {
     en: 'MIGO is a premier creative technology studio engineering next-generation VR/MR, WebAR, kinetic exhibition walls, serious games, and real-time 3D simulation.',
-    fa: 'استودیو فناوری خلاق MIGO؛ پیشرو در مهندسی واقعیت مجازی و ترکیبی (VR/MR)، وب‌آر بدون نیاز به نصب، اینستالیشن‌های حرکتی نمایشگاهی و شبیه‌سازی صنعتی.',
+    fa: 'استودیو فناوری خلاق MIGO؛ پیشرو در تولید واقعیت مجازی و ترکیبی (VR/MR)، وب‌آر بدون نیاز به نصب، بازی‌ها و سازه‌های تعاملی نمایشگاه و شبیه‌سازی صنعتی.',
   },
   rightsReserved: {
     en: 'All rights reserved.',
@@ -216,7 +216,7 @@ export const UI_STRINGS = {
   },
   technicalImplementation: {
     en: 'Technical Pipeline',
-    fa: 'پایپ‌لاین فنی و معماری نرم‌افزار',
+    fa: 'مراحل فنی و معماری نرم‌افزار',
   },
   outcomes: {
     en: 'Measured Impact',
@@ -248,7 +248,7 @@ export const UI_STRINGS = {
   },
   webglFallbackNotice: {
     en: 'Interactive 3D preview running in optimized 2D fallback mode. For the full real-time shader experience, enable WebGL hardware acceleration.',
-    fa: 'پیش‌نمایش تعاملی در حالت بهینه دومرحله‌ای رندر می‌شود. برای فعال‌سازی کامل شیدرهای گرافیکی، شتاب‌دهنده سخت‌افزاری مرورگر خود را فعال کنید.',
+    fa: 'پیش‌نمایش تعاملی در حالت بهینه اجرا می‌شود. برای تجربه کیفیت کامل گرافیک سه‌بعدی، شتاب‌دهنده سخت‌افزاری (Hardware Acceleration) مرورگر خود را فعال کنید.',
   },
   soundOn: {
     en: 'Sound FX: ON',

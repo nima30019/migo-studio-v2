@@ -31,19 +31,19 @@ export const SERVICES: ServiceItem[] = [
     aliases: ['virtual-reality', 'vr-mr'],
     title: {
       en: 'Immersive Experiences — VR / MR / XR',
-      fa: 'تجربیات غوطه‌ور و فضایی — VR / MR / XR',
+      fa: 'واقعیت مجازی و واقعیت ترکیبی — VR / MR / XR',
     },
     family: {
       en: 'Spatial Computing',
-      fa: 'رایانش فضایی',
+      fa: 'فناوری‌های سه‌بعدی و فضایی (Spatial Tech)',
     },
     shortDescription: {
       en: 'High-fidelity spatial computing, standalone Meta Quest/Pico environments, and tethered PC-VR rigs for enterprise simulations and entertainment.',
-      fa: 'رایانش فضایی با کیفیت بصری سینماتیک، توسعه نرم‌افزارهای مستقل VR/MR و سیستم‌های قدرتمند شبیه‌سازی و سرگرمی.',
+      fa: 'توسعه نرم‌افزارهای واقعیت مجازی و ترکیبی (VR/MR) با گرافیک باکیفیت و شبیه‌سازهای تعاملی سازمانی و سرگرمی.',
     },
     overview: {
       en: 'MIGO engineers spatial computing applications that transport users into interactive digital realms. From tetherless standalone headsets to high-performance PC-VR rigs, we craft intuitive physics-driven interactions, realistic spatial audio, and photorealistic 3D environments.',
-      fa: 'استودیو MIGO نرم‌افزارهای رایانش فضایی (Spatial Computing) را با تکیه بر تعاملات فیزیکی طبیعی، صدای سه‌بعدی و محیط‌های فوتورئال مهندسی می‌کند. از هدست‌های مستقل بی‌سیم تا سیستم‌های سنگین صنعتی PC-VR، ما مرز میان کاربر و جهان دیجیتال را به تجربه‌ای زیسته و ملموس بدل می‌سازیم.',
+      fa: 'استودیو MIGO نرم‌افزارهای واقعیت مجازی و ترکیبی را با شبیه‌سازی دقیق فیزیک، صدای سه‌بعدی محیطی و گرافیک واقع‌گرایانه تولید می‌کند. از هدست‌های بی‌سیم سبک گرفته تا سیستم‌های سنگین صنعتی، ما ابزارهایی می‌سازیم که کاربر کاملاً احساس حضور واقعی در محیط را تجربه کند.',
     },
     icon: 'Glasses',
     badge: {
@@ -62,10 +62,10 @@ export const SERVICES: ServiceItem[] = [
       fa: [
         'توسعه اپلیکیشن‌های مستقل VR (Meta Quest 3، Pico 4 و Apple Vision Pro)',
         'تجربیات با گرافیک پیشرفته PC-VR برای مراکز صنعتی و آزمایشگاه‌های پژوهشی',
-        'ادغام واقعیت ترکیبی (MR Passthrough) و لنگراندازی فضایی در محیط واقعی',
+        'ترکیب واقعیت ترکیبی (MR) و قرارگیری دقیق اشیای سه‌بعدی در فضای واقعی اتاق',
         'محیط‌های همکاری چندکاربره واقعیت مجازی همراه با همگام‌سازی صوت فضایی',
-        'تعاملات فیزیکی با دقت میلی‌متری و بازخورد لرزشی هپتیک',
-        'تورهای مجازی معماری با نورپردازی بی‌درنگ و بازتاب‌های واقع‌گرایانه',
+        'تعاملات فیزیکی با دقت بالا و بازخورد لرزشی دسته‌ها (Haptic)',
+        'تورهای مجازی معماری با نورپردازی طبیعی و بازتاب‌های واقع‌گرایانه',
       ],
     },
     useCases: [
@@ -80,14 +80,14 @@ export const SERVICES: ServiceItem[] = [
         title: { en: 'Medical & Healthcare Simulations', fa: 'شبیه‌سازی‌های پزشکی و درمانی' },
         desc: {
           en: 'Anatomical exploration and surgical tool manipulation in stereoscopic high-resolution space.',
-          fa: 'آشنایی عمیق با آناتومی و کار با ابزارهای جراحی در فضای استریوسکوپیک با وفاداری بصری بالا.',
+          fa: 'بررسی دقیق آناتومی و تمرین کار با ابزارهای جراحی با کیفیت گرافیکی سه‌بعدی بسیار بالا.',
         },
       },
       {
-        title: { en: 'Brand Showrooms & Experiences', fa: 'شوروم‌های تعاملی و فضاهای پرچمدار برند' },
+        title: { en: 'Brand Showrooms & Experiences', fa: 'شوروم‌های تعاملی و فضاهای نمایشگاهی برند' },
         desc: {
           en: 'Transporting global audiences into customized virtual worlds showcasing flagship products at scale.',
-          fa: 'انتقال مخاطبان نمایشگاهی به دنیاهای اختصاصی و مقیاس‌پذیر برای لمس قابلیت‌های محصولات شاخص برند.',
+          fa: 'بردن مخاطبان نمایشگاهی به دنیاهای اختصاصی و جذاب برای آشنایی و لمس قابلیت‌های محصولات شاخص شرکت.',
         },
       },
     ],
@@ -136,12 +136,12 @@ export const SERVICES: ServiceItem[] = [
     },
     overview: {
       en: 'Bridging physical space with intelligent digital layers. MIGO crafts zero-install WebAR that works instantly on standard mobile browsers, as well as native mobile AR applications utilizing LiDAR surface tracking, image recognition, and real-time occlusion.',
-      fa: 'پیوند لایه‌های دیجیتال هوشمند با جهان واقعی؛ استودیو MIGO با توسعه تجربیات WebAR بدون نیاز به نصب، دسترسی به مدل‌های سه‌بعدی را از طریق اسکن سریع کد QR در مرورگرهای موبایل ممکن می‌سازد. همچنین با بهره‌گیری از اسکنرهای LiDAR در اپلیکیشن‌های بومی، جانمایی دقیق قطعات و انسداد فضایی فوتورئال را در اختیار صنایع و برندها قرار می‌دهد.',
+      fa: 'پیوند لایه‌های دیجیتال هوشمند با جهان واقعی؛ استودیو MIGO با توسعه تجربیات WebAR بدون نیاز به نصب، دسترسی به مدل‌های سه‌بعدی را از طریق اسکن سریع کد QR در مرورگرهای موبایل ممکن می‌سازد. همچنین با بهره‌گیری از سنسورهای LiDAR در اپلیکیشن‌های موبایل، امکان نمایش دقیق محصولات در اندازه واقعی و قرار گرفتن طبیعی مدل‌های سه‌بعدی در پشت موانع محیطی را فراهم می‌کند.',
     },
     icon: 'Scan',
     badge: {
       en: 'AR & WebAR',
-      fa: 'واقعیت افزوده وب',
+      fa: 'واقعیت افزوده و WebAR',
     },
     capabilities: {
       en: [
@@ -173,7 +173,7 @@ export const SERVICES: ServiceItem[] = [
         title: { en: 'Interactive Print & Packaging', fa: 'بسته‌بندی و کاتالوگ‌های هوشمند' },
         desc: {
           en: 'Turning physical brochures and packaging into animated 3D multimedia portals via smartphone cameras.',
-          fa: 'تبدیل کاتالوگ‌ها و بسته‌بندی‌های چاپی به پورتال‌های پویا با انیمیشن‌های سه‌بعدی و ویدیوهای تعاملی.',
+          fa: 'تبدیل کاتالوگ‌ها و بسته‌بندی‌های چاپی به صفحات تعاملی با انیمیشن‌های سه‌بعدی و ویدیوهای جذاب تنها با اسکن دوربین گوشی.',
         },
       },
       {
@@ -207,19 +207,19 @@ export const SERVICES: ServiceItem[] = [
     aliases: ['game-development', 'interactive-software', 'serious-games', 'gamification'],
     title: {
       en: 'Interactive Experiences — Games / Gamification & Serious Systems',
-      fa: 'تجربیات تعاملی — بازی‌ها، گیمیفیکیشن و سیستم‌های تعاملی',
+      fa: 'بازی‌ها و سیستم‌های تعاملی — گیمیفیکیشن رویداد و آموزش',
     },
     family: {
       en: 'Game Tech & Software',
-      fa: 'بازی‌سازی و سیستم‌ها',
+      fa: 'بازی‌سازی و سیستم‌های تعاملی',
     },
     shortDescription: {
       en: 'Serious games for corporate training, exhibition gamification, 3D interactive lucky wheels, competitive event leaderboards, and bespoke WebGL software.',
-      fa: 'بازی‌های جدی برای آموزش سازمانی، گیمیفیکیشن نمایشگاهی، گردونه‌های شانس سه‌بعدی، لیدربورد رقابتی و نرم‌افزارهای اختصاصی وب.',
+      fa: 'بازی‌های تعاملی برای آموزش سازمانی، بازی‌های غرفه نمایشگاهی، گردونه‌های شانس سه‌بعدی، ثبت لید و نرم‌افزارهای اختصاصی وب.',
     },
     overview: {
       en: 'We leverage game design mechanics, behavioral psychology, and modern real-time engines to build compelling interactive systems. Whether creating serious games that accelerate enterprise learning, exhibition activations with live leaderboards and lead capture, or bespoke WebGL applications, MIGO guarantees locked 60 FPS performance, intuitive UX, and measurable business ROI.',
-      fa: 'ما با تلفیق مکانیک‌های بازی‌سازی، روانشناسی انگیزش و انجین‌های بی‌درنگ، سیستم‌های تعاملی ماندگار خلق می‌کنیم. از بازی‌های جدی آموزش سازمانی گرفته تا گیمیفیکیشن نمایشگاهی با لیدربورد زنده و سیستم جذب لید (Lead Capture)، استودیو MIGO تضمین‌کننده نرخ فریم ۶۰، تجربه کاربری روان و بازگشت سرمایه ملموس است.',
+      fa: 'ما با تلفیق مکانیک‌های جذاب بازی‌سازی و موتورهای پیشرفته نرم‌افزاری، تجربیات تعاملی ماندگار خلق می‌کنیم. از بازی‌های جدی آموزش سازمانی گرفته تا بازی‌های غرفه نمایشگاه با تابلوی رکوردهای زنده و سیستم دریافت شماره تماس مخاطبان، استودیو MIGO تضمین‌کننده سرعت روان، کاربری ساده و جلب توجه حداکثری است.',
     },
     icon: 'Gamepad2',
     badge: {
@@ -240,32 +240,32 @@ export const SERVICES: ServiceItem[] = [
         'طراحی و تولید بازی‌های ۲ بعدی و ۳ بعدی برای PC، موبایل و مرورگر (WebGL)',
         'توسعه بازی‌های جدی (Serious Games) با هدف آموزش سازمانی و ارزیابی مهارت‌ها',
         'بازی‌های اختصاصی نمایشگاهی همراه با جدول امتیازات زنده و سیستم جوایز خودکار',
-        'گردونه‌های شانس سه‌بعدی و قرعه‌کشی تعاملی متصل به ثبت لید و CRM',
-        'چالش‌های آرکید حرکتی با وب‌کم و سنسورهای عمق‌سنج بدون نیاز به لمس',
-        'شبکه‌سازی چندنفره و همگام‌سازی سوکت‌ها برای مسابقات زنده بین مخاطبان',
+        'گردونه شانس سه‌بعدی و قرعه‌کشی دیجیتال با قابلیت ثبت شماره تماس و اتصال به CRM',
+        'چالش‌های حرکتی هیجان‌انگیز با وب‌کم و سنسورهای عمق‌سنج بدون نیاز به لمس',
+        'امکان اجرای مسابقات زنده گروهی و رقابت هم‌زمان چند کاربر با هم',
         'سیستم‌های نرم‌افزاری تعاملی اختصاصی با پاسخ‌دهی آنی به ورودی‌های کاربر',
       ],
     },
     useCases: [
       {
-        title: { en: 'Trade Show Lead Generation & Dwell Time', fa: 'جذب لید و افزایش پاخور غرفه نمایشگاهی' },
+        title: { en: 'Trade Show Lead Generation & Dwell Time', fa: 'شلوغ کردن غرفه و دریافت اطلاعات تماس مشتریان بالقوه' },
         desc: {
           en: 'Boosting booth dwell time by up to 400% through high-energy 45-second branded challenges, capturing verified visitor contact details in exchange for leaderboard ranking and rewards.',
-          fa: 'افزایش ۴ برابری زمان حضور بازدیدکننده در غرفه با چالش‌های هیجان‌انگیز ۴۵ ثانیه‌ای و ثبت لیدهای معتبر تجاری در ازای رقابت و دریافت جوایز هوشمند.',
+          fa: 'افزایش بیش از ۴ برابری توقف افراد در غرفه با بازی‌های پرهیجان ۴۵ ثانیه‌ای و دریافت شماره تماس بازدیدکنندگان مشتاق در ازای رقابت و جوایز.',
         },
       },
       {
         title: { en: 'Employee Onboarding & Safety Compliance', fa: 'آموزش سازمانی و مانورهای ایمنی پرسنل' },
         desc: {
           en: 'Gamified learning paths that test hazard recognition, decision branches, and reward correct operational adherence with immediate feedback loops.',
-          fa: 'مسیرهای یادگیری بازی‌وارسازی‌شده برای ارزیابی واکنش به خطرات کاری، تصمیم‌گیری چندشاخه و نهادینه‌سازی پروتکل‌ها در ذهن کارکنان.',
+          fa: 'آموزش پرسنل با بازی‌های شبیه‌سازی برای یادگیری واکنش سریع به خطرات کاری، تصمیم‌گیری در شرایط بحرانی و رعایت اصول ایمنی.',
         },
       },
       {
-        title: { en: 'Brand Activations & Retail Gamification', fa: 'اکتیویشن برند و کمپین‌های وفاداری مشتری' },
+        title: { en: 'Brand Activations & Retail Gamification', fa: 'معرفی جذاب برند و کمپین‌های جذب مشتری' },
         desc: {
           en: 'Deploying interactive 3D lucky wheels and skill mini-games in retail stores and pop-up events to drive immediate purchases and social sharing.',
-          fa: 'اجرای گردونه‌های شانس سه‌بعدی و مینی‌گیم‌های مهارتی در فروشگاه‌ها و رویدادهای پاپ‌آپ جهت تحریک خرید آنی و بازنشر ویروسی در شبکه‌های اجتماعی.',
+          fa: 'اجرای گردونه‌های شانس سه‌بعدی و بازی‌های مهارتی در فروشگاه‌ها و رویدادها جهت ترغیب به خرید و اشتراک‌گذاری گسترده توسط مخاطبان.',
         },
       },
     ],
@@ -275,7 +275,7 @@ export const SERVICES: ServiceItem[] = [
       {
         q: {
           en: 'How does an exhibition game capture qualified leads?',
-          fa: 'چگونه یک بازی نمایشگاهی لید و اطلاعات تماس بازدیدکنندگان را جمع‌آوری می‌کند؟',
+          fa: 'چگونه یک بازی نمایشگاهی شماره تماس و اطلاعات بازدیدکنندگان را دریافت می‌کند؟',
         },
         a: {
           en: 'Before starting the game or claiming rewards, attendees enter their contact details (mobile/email/company) on a sleek companion tablet or QR portal. Data is validated in real-time, instantly synchronized with your CRM, and optional SMS vouchers are dispatched automatically.',
@@ -289,7 +289,7 @@ export const SERVICES: ServiceItem[] = [
         },
         a: {
           en: 'Yes. Our exhibition builds feature local cache failovers. The game engine and leaderboards run seamlessly offline on the local display hardware, and queued lead submissions sync automatically once connectivity is restored.',
-          fa: 'بله. معماری بازی‌های نمایشگاهی MIGO دارای سیستم ذخیره‌سازی محلی (Local Cache) است. بازی و لیدربورد بدون نیاز به اینترنت با حداکثر سرعت اجرا می‌شوند و لیدهای ثبت‌شده به محض برقراری اتصال با سرور همگام‌سازی می‌گردند.',
+          fa: 'بله. معماری بازی‌های نمایشگاهی MIGO دارای سیستم ذخیره‌سازی محلی (Local Cache) است. بازی و جدول امتیازات بدون نیاز به اینترنت با حداکثر سرعت اجرا می‌شوند و شماره‌ها و اطلاعات ثبت‌شده به محض برقراری اتصال با سرور همگام‌سازی می‌گردند.',
         },
       },
       {
@@ -312,24 +312,24 @@ export const SERVICES: ServiceItem[] = [
     aliases: ['modeling-rendering'],
     title: {
       en: '3D & Visualization — Modeling / Animation / Rendering',
-      fa: 'طراحی و بصری‌سازی سه‌بعدی — مدل‌سازی / انیمیشن / رندرینگ',
+      fa: 'طراحی و مدل‌سازی سه‌بعدی — رندرینگ و انیمیشن',
     },
     family: {
       en: '3D Computer Graphics',
-      fa: 'گرافیک رایانه‌ای سه‌بعدی',
+      fa: 'طراحی سه‌بعدی و گرافیک کامپیوتری',
     },
     shortDescription: {
       en: 'Photorealistic PBR real-time product configurators, architectural spatial walkthroughs, and cinematic real-time 3D animations.',
-      fa: 'پیکربندی‌کننده‌های بی‌درنگ محصولات صنعتی با متریال‌های PBR، انیمیشن‌های سینماتیک سه‌بعدی و تورهای تعاملی معماری.',
+      fa: 'کاتالوگ‌های سه‌بعدی تعاملی محصولات با امکان تغییر رنگ و قطعات، انیمیشن‌های روان و تورهای مجازی معماری.',
     },
     overview: {
       en: 'High-end 3D visual fidelity meeting real-time web performance. MIGO produces ultra-detailed polygon models, physically based rendering (PBR) materials, and cinematic animations engineered for both offline rendering and 60 FPS real-time WebGL engines.',
-      fa: 'تلاقی هنر بصری سه‌بعدی با کارایی فوق‌العاده وب؛ استودیو MIGO با مدل‌سازی دقیق صنعتی، شیدرهای فیزیکی PBR و انیمیشن‌های تعاملی، رندرهایی خیره‌کننده با فریم‌ریت پایدار ۶۰ هرتز در مرورگرها خلق می‌کند.',
+      fa: 'کیفیت بصری سینمایی همراه با اجرای فوق‌العاده روان در وب؛ استودیو MIGO با مدل‌سازی دقیق صنعتی، نورپردازی طبیعی و انیمیشن‌های باکیفیت، مدل‌های سه‌بعدی جذابی می‌سازد که بدون افت سرعت در مرورگر و موبایل اجرا می‌شوند.',
     },
     icon: 'Box',
     badge: {
       en: '3D & Rendering',
-      fa: 'طراحی سه‌بعدی',
+      fa: 'طراحی و رندرینگ سه‌بعدی',
     },
     capabilities: {
       en: [
@@ -341,27 +341,27 @@ export const SERVICES: ServiceItem[] = [
         'Geometry optimization and Draco/Meshopt compression for instant web loads',
       ],
       fa: [
-        'مدل‌سازی دقیق سطوح سخت (Hard-Surface) و استخراج نقشه‌های نور و نرمال',
-        'ساخت متریال‌ها و شیدرهای PBR با وفاداری کامل به فیزیک نور',
-        'توسعه کانفیگوراتورهای تعاملی سه‌بعدی محصول با تغییر رنگ، متریال و قطعات',
+        'مدل‌سازی دقیق صنعتی، قطعات مهندسی و محصولات تجاری',
+        'ساخت بافت‌ها و متریال‌های واقع‌گرایانه با بازتاب طبیعی نور',
+        'کاتالوگ سه‌بعدی و تعاملی محصول با امکان تعویض رنگ، جنس بدنه و قطعات',
         'تورهای سه‌بعدی تعاملی معماری داخلی و نما با امکان گردش آزاد',
-        'انیمیشن‌های سینماتیک فنی جهت تشریح مکانیزم‌های پیچیده مکانیکی',
-        'فشرده‌سازی پیشرفته هندسه مش با Draco جهت بارگذاری آنی در بستر وب',
+        'انیمیشن‌های سه‌بعدی جهت تشریح سازوکار و مکانیزم‌های پیچیده',
+        'فشرده‌سازی پیشرفته مدل‌ها جهت باز شدن آنی در مرورگر موبایل و وب',
       ],
     },
     useCases: [
       {
-        title: { en: 'Luxury & Automotive Product Configurators', fa: 'پیکربندی‌کننده‌های خودرو و کالاهای لوکس' },
+        title: { en: 'Luxury & Automotive Product Configurators', fa: 'کاتالوگ تعاملی سفارشی‌سازی خودرو و کالاهای لوکس' },
         desc: {
           en: 'Allowing buyers to customize finishes, trims, and wheels in photorealistic real-time 3D before ordering.',
-          fa: 'امکان شخصی‌سازی رنگ بدنه، تودوزی و قطعات خودرو با کیفیت فوق‌العاده واقع‌گرایانه پیش از خرید.',
+          fa: 'امکان شخصی‌سازی رنگ بدنه، تودوزی و قطعات با کیفیت فوق‌العاده واقع‌گرایانه پیش از خرید نهایی.',
         },
       },
       {
-        title: { en: 'Industrial Machine Digital Showcases', fa: 'نمایش دیجیتال ماشین‌آلات صنعتی' },
+        title: { en: 'Industrial Machine Digital Showcases', fa: 'نمایش دیجیتال و تعاملی ماشین‌آلات صنعتی' },
         desc: {
           en: 'Visualizing internal engine mechanics and fluid flow through transparent exploded views.',
-          fa: 'به تصویر کشیدن مکانیزم‌های داخلی موتورها و خطوط تولید با نمای انفجاری و برش‌های شفاف.',
+          fa: 'به تصویر کشیدن سازوکار داخلی موتورها و خطوط تولید با نمای تفکیک‌شده قطعات (Exploded View) و برش‌های شفاف.',
         },
       },
     ],
@@ -422,7 +422,7 @@ export const SERVICES: ServiceItem[] = [
         'آموزش اپراتورهای هوانوردی و دریانوردی همراه با ارزیابی سیستمی خطاها',
         'اتصال داده‌های تله‌متری سنسورهای IoT به دوقلوی دیجیتال سه‌بعدی به صورت زنده',
         'ثبت خودکار گزارش عملکرد، سنجش زمان عکس‌العمل و تحلیل آماری یادگیری',
-        'ساخت کنسول‌های فیزیکی کنترل شبیه‌ساز و کابین‌های آموزشی ترن‌کی',
+        'ساخت کنسول‌های فیزیکی کنترل و کابین‌های آموزشی شبیه‌ساز با تحویل کامل صفر تا صد',
       ],
     },
     useCases: [
@@ -464,24 +464,24 @@ export const SERVICES: ServiceItem[] = [
     aliases: ['interactive-exhibitions', 'exhibition-tech', 'booth-installations', 'kinetic-walls'],
     title: {
       en: 'Interactive Installations — Exhibitions / Sensors / Kiosks',
-      fa: 'چیدمان‌های تعاملی — نمایشگاهی / سنسورها / کیوسک‌ها',
+      fa: 'سازه و تجهیزات تعاملی — نمایشگاهی / سنسورها / کیوسک‌ها',
     },
     family: {
       en: 'Physical Computing',
-      fa: 'پردازش فیزیکی و فضا',
+      fa: 'سیستم‌های تعاملی و تجهیزات محیطی',
     },
     shortDescription: {
       en: 'Kinetic video walls, LiDAR multi-touch surfaces, touchless body tracking, trade show crowd magnets, and turnkey hardware-software integration.',
-      fa: 'دیوارهای ویدیویی حرکتی، سطوح مالتی‌تاچ لایدار، ردیابی حرکات بدن بدون لمس، جاذبه‌های جمعیتی غرفه نمایشگاه و اجرای ترن‌کی سخت‌افزار و نرم‌افزار.',
+      fa: 'دیوارهای تصویری حساس به حرکت، صفحات لمسی بزرگ با سنسور لایدار، بازی‌های بدون لمس، جلب توجه رهگذران غرفه و اجرای کامل سخت‌افزار و نرم‌افزار.',
     },
     overview: {
       en: 'Transforming architectural spaces, museums, and trade shows into living responsive digital canvases. MIGO engineers kinetic video walls, depth-sensor gesture installations, LiDAR laser touch surfaces, interactive projection mapping, and custom multi-touch kiosk software built to withstand intense event foot traffic.',
-      fa: 'تبدیل فضاهای نمایشگاهی، موزه‌ها و شوروم‌ها به استیج‌های زنده و تعاملی دیجیتال. استودیو MIGO به طراحی دیوارهای ویدیویی حساس به حرکت، سنسورهای عمق‌سنج، تبدیل دیوارهای غول‌پیکر به صفحات لمسی با لیزر لایدار، ویدیو مپینگ تعاملی و نرم‌افزارهای مالتی‌تاچ کیوسک با مقاومت در برابر حجم بالای بازدیدکنندگان می‌پردازد.',
+      fa: 'تبدیل فضاهای نمایشگاهی، موزه‌ها و شوروم‌ها به استیج‌های زنده و تعاملی دیجیتال؛ استودیو MIGO با طراحی دیوارهای تصویری حساس به حرکت، سنسورهای عمق‌سنج، تبدیل دیوارهای بزرگ به صفحات لمسی با سنسورهای لایدار، ویدیو مپینگ تعاملی و کیوسک‌های لمسی، غرفه شما را به پربازدیدترین نقطه رویداد تبدیل می‌کند.',
     },
     icon: 'Sparkles',
     badge: {
       en: 'Installations & Kiosks',
-      fa: 'کیوسک‌ها و چیدمان‌ها',
+      fa: 'کیوسک‌ها و سازه‌های تعاملی',
     },
     capabilities: {
       en: [
@@ -497,13 +497,13 @@ export const SERVICES: ServiceItem[] = [
         'ردیابی حرکتی بدن و ژست دست با Azure Kinect، سنسورهای رادار و دوربین‌های عمق‌سنج بدون نیاز به لمس',
         'ویدیو مپینگ تعاملی روی دیوارها، کف زمین و حجم‌های دکوراسیون با واکنش بلادرنگ به گام‌های مخاطب',
         'توسعه نرم‌افزارهای مالتی‌تاچ برای کیوسک‌ها، استندهای هوشمند و میزهای لمسی نمایشگاهی',
-        'پایپ‌لاین‌های گرافیکی بی‌درنگ و جنریتیو با TouchDesigner و Notch با نرخ فریم پایدار ۶۰ هرتز',
-        'اجرای صفر تا صد (Turnkey): تامین سخت‌افزار، نصب و کالیبراسیون در محل و حضور پشتیبان فنی در تمام روزهای نمایشگاه',
+        'تولید افکت‌ها و تصاویر گرافیکی زنده و پویا با TouchDesigner و ابزارهای روز با نرخ ۶۰ فریم',
+        'اجرای صفر تا صد: تامین سخت‌افزار، نصب و تنظیم در محل و حضور پشتیبان فنی در تمام روزهای نمایشگاه',
       ],
     },
     useCases: [
       {
-        title: { en: 'Trade Show Flagship Kinetic Wall & Crowd Magnet', fa: 'دیوار تعاملی شاخص غرفه و مگنت جذب جمعیت' },
+        title: { en: 'Trade Show Flagship Kinetic Wall & Crowd Magnet', fa: 'دیوار تعاملی شاخص غرفه برای شلوغ کردن و جلب توجه بازدیدکنندگان' },
         desc: {
           en: 'A massive 10-meter video wall that reacts in real-time as visitors walk past, transforming passersby into engaged participants through dynamic brand shaders.',
           fa: 'دیوار ویدیویی ۱۰ متری که با راه رفتن مخاطبان در غرفه امواج نوری و محتوای هوشمند تولید کرده و رهگذران سالن را به سمت داخل غرفه جذب می‌کند.',
@@ -517,7 +517,7 @@ export const SERVICES: ServiceItem[] = [
         },
       },
       {
-        title: { en: 'Museum & Heritage Interactive Galleries', fa: 'گالری‌های لمسی و غوطه‌ورکننده موزه' },
+        title: { en: 'Museum & Heritage Interactive Galleries', fa: 'نمایشگاه‌های لمسی و تعاملی موزه' },
         desc: {
           en: 'Visitors interact with virtual historical artifacts on multi-touch smart tables without physical wear.',
           fa: 'کاوش و لمس مجازی اشیای تاریخی بر روی میزهای لمسی هوشمند بدون ایجاد استهلاک فیزیکی.',
@@ -544,7 +544,7 @@ export const SERVICES: ServiceItem[] = [
         },
         a: {
           en: 'Yes. We offer 100% turnkey delivery: we specify, calibrate, and mount the sensors, touch screens, and computing units on-site.',
-          fa: 'بله. ما خدمات کاملاً ترن‌کی (Turnkey) ارائه می‌دهیم؛ تامین تجهیزات، کالیبراسیون سنسورها، نصب و راه‌اندازی در محل بر عهده تیم ماست.',
+          fa: 'بله. ما خدمات را صفر تا صد ارائه می‌دهیم؛ تامین تجهیزات، تنظیم دقیق سنسورها، نصب و راه‌اندازی در محل غرفه کاملاً بر عهده تیم ماست.',
         },
       },
       {

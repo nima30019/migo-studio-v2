@@ -264,12 +264,12 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
               </div>
               <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
                 {isRtl
-                  ? 'پیوند معماری فضایی با مهندسی گرافیک بی‌درنگ'
+                  ? 'خلق تجربیات مدرن با گرافیک سه‌بعدی و تعاملی'
                   : 'Bridging Spatial Architecture & Real-Time Graphics'}
               </h2>
               <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
                 {isRtl
-                  ? 'استودیو فناوری خلاق MIGO، کانون آفرینش تجربیات تعاملی، واقعیت مجازی و اینستالیشن‌های چندحسی است. ما با تلفیق مهندسی دقیق سخت‌افزار و رندرهای سه‌بعدی بی‌درنگ، فاصله میان جهان فیزیکی و خیال دیجیتال را از میان برمی‌داریم.'
+                  ? 'استودیو فناوری خلاق MIGO؛ طراح و مجری تجربیات تعاملی، واقعیت مجازی و سازه‌های هوشمند نمایشگاهی است. ما با ترکیب هنر سه‌بعدی، برنامه‌نویسی نرم‌افزار و سنسورهای تعاملی، فاصله میان دنیای فیزیکی و ایده‌های نوآورانه برندها را پر می‌کنیم.'
                   : 'MIGO is an independent creative technology studio engineering immersive VR/MR environments, lightweight zero-install WebAR, and sensory exhibition architecture. We fuse hardware sensor engineering with cutting-edge real-time 3D pipelines.'}
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
@@ -307,7 +307,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   {isRtl ? 'حوزه تخصصی عمیق' : 'Core Disciplines'}
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                  {isRtl ? 'رایانش فضایی، وب سه‌بعدی، گیم و اینستالیشن' : 'Spatial computing, Web3D, gaming & interactive spaces'}
+                  {isRtl ? 'واقعیت مجازی، وب سه‌بعدی، بازی‌سازی و سازه‌های تعاملی' : 'Spatial computing, Web3D, gaming & interactive spaces'}
                 </p>
               </div>
               <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
@@ -316,7 +316,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   {isRtl ? 'کدنویسی درون‌استودیویی' : 'In-House Production'}
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                  {isRtl ? 'توسعه ۱۰۰٪ درون‌استودیویی، کنترل کامل بر فریم‌ریت و سخت‌افزار' : 'Zero outsourcing, total control over framerate and hardware'}
+                  {isRtl ? 'تمام مراحل توسط تیم داخلی انجام می‌شود؛ بدون واسطه و با تضمین کیفیت' : 'Zero outsourcing, total control over framerate and hardware'}
                 </p>
               </div>
               <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
@@ -325,7 +325,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   {isRtl ? 'بهینه‌سازی وب' : 'Ultra-Light Payloads'}
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                  {isRtl ? 'فشرده‌سازی بافت‌های KTX2 و بهینه‌سازی هندسه Draco' : 'Compressed textures & Draco geometry'}
+                  {isRtl ? 'اجرای سبک و باز شدن آنی در مرورگر موبایل بدون معطلی' : 'Compressed textures & Draco geometry'}
                 </p>
               </div>
               <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
@@ -334,7 +334,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   {isRtl ? 'پایداری نمایشگاهی' : 'Hardware Telemetry'}
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                  {isRtl ? 'پایش مداوم ریموت و بازیابی خودکار سلامت کیوسک‌ها' : 'Remote kiosk monitoring & watchdog auto-recovery'}
+                  {isRtl ? 'کارکرد مداوم، بدون قطعی و پایش هوشمند تجهیزات در طول رویداد' : 'Remote kiosk monitoring & watchdog auto-recovery'}
                 </p>
               </div>
             </div>
