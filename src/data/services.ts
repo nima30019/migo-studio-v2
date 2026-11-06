@@ -204,65 +204,94 @@ export const SERVICES: ServiceItem[] = [
   {
     id: 'interactive-experiences',
     slug: 'interactive-experiences',
-    aliases: ['game-development', 'interactive-software'],
+    aliases: ['game-development', 'interactive-software', 'serious-games', 'gamification'],
     title: {
-      en: 'Interactive Experiences — Games / Interactive Systems',
-      fa: 'تجربیات تعاملی — بازی‌ها و سیستم‌های تعاملی',
+      en: 'Interactive Experiences — Games / Gamification & Serious Systems',
+      fa: 'تجربیات تعاملی — بازی‌ها، گیمیفیکیشن و سیستم‌های تعاملی',
     },
     family: {
       en: 'Game Tech & Software',
       fa: 'بازی‌سازی و سیستم‌ها',
     },
     shortDescription: {
-      en: 'Serious games for workforce training, real-time WebGL games, event leaderboards, and bespoke interactive software systems.',
-      fa: 'بازی‌های جدی برای آموزش سازمانی، بازی‌های بی‌درنگ وب، جدول امتیازات رویدادی و نرم‌افزارهای اختصاصی تعاملی.',
+      en: 'Serious games for corporate training, exhibition gamification, 3D interactive lucky wheels, competitive event leaderboards, and bespoke WebGL software.',
+      fa: 'بازی‌های جدی برای آموزش سازمانی، گیمیفیکیشن نمایشگاهی، گردونه‌های شانس سه‌بعدی، لیدربورد رقابتی و نرم‌افزارهای اختصاصی وب.',
     },
     overview: {
-      en: 'We leverage game design mechanics and modern real-time engines to build compelling interactive systems. Whether developing serious games that accelerate learning, branded event challenges, or custom client-facing applications, MIGO ensures seamless 60 FPS performance and intuitive UX.',
-      fa: 'ما با بهره‌گیری از مکانیک‌های بازی‌سازی و انجین‌های پیشرفته، سیستم‌های تعاملی ماندگار خلق می‌کنیم. از بازی‌های جدی آموزشی با بازدهی بالا گرفته تا بازی‌های رقابتی نمایشگاهی و نرم‌افزارهای اختصاصی، استودیو MIGO تضمین‌کننده نرخ فریم ۶۰ و تجربه کاربری روان است.',
+      en: 'We leverage game design mechanics, behavioral psychology, and modern real-time engines to build compelling interactive systems. Whether creating serious games that accelerate enterprise learning, exhibition activations with live leaderboards and lead capture, or bespoke WebGL applications, MIGO guarantees locked 60 FPS performance, intuitive UX, and measurable business ROI.',
+      fa: 'ما با تلفیق مکانیک‌های بازی‌سازی، روانشناسی انگیزش و انجین‌های بی‌درنگ، سیستم‌های تعاملی ماندگار خلق می‌کنیم. از بازی‌های جدی آموزش سازمانی گرفته تا گیمیفیکیشن نمایشگاهی با لیدربورد زنده و سیستم جذب لید (Lead Capture)، استودیو MIGO تضمین‌کننده نرخ فریم ۶۰، تجربه کاربری روان و بازگشت سرمایه ملموس است.',
     },
     icon: 'Gamepad2',
     badge: {
-      en: 'Games & Systems',
-      fa: 'بازی‌ها و سیستم‌ها',
+      en: 'Games & Gamification',
+      fa: 'بازی‌ها و گیمیفیکیشن',
     },
     capabilities: {
       en: [
         'Development of 2D/3D games for PC, mobile, and web (WebGL/Canvas)',
         'Serious games for corporate training, compliance, and skills evaluation',
-        'Branded trade show games with live digital leaderboards and prize systems',
-        'Physics-driven game mechanics with custom collision and ragdoll dynamics',
-        'Multiplayer networking and real-time socket synchronization',
+        'Branded trade show games with live digital leaderboards and automated prize loops',
+        'Interactive 3D lucky wheel and digital raffle systems connected to CRM lead capture',
+        'Motion-controlled arcade challenges using webcams and depth tracking',
+        'Multiplayer networking and real-time socket synchronization for live crowds',
         'Custom interactive software platforms with zero-latency input response',
       ],
       fa: [
         'طراحی و تولید بازی‌های ۲ بعدی و ۳ بعدی برای PC، موبایل و مرورگر (WebGL)',
         'توسعه بازی‌های جدی (Serious Games) با هدف آموزش سازمانی و ارزیابی مهارت‌ها',
-        'بازی‌های اختصاصی نمایشگاهی همراه با جدول امتیازات زنده و چالش‌های جوایز',
-        'مکانیک‌های بازی فیزیک‌محور با شبیه‌سازی دقیق برخوردها و تعادل',
-        'شبکه‌سازی چندنفره و همگام‌سازی سوکت‌ها به صورت بی‌درنگ',
+        'بازی‌های اختصاصی نمایشگاهی همراه با جدول امتیازات زنده و سیستم جوایز خودکار',
+        'گردونه‌های شانس سه‌بعدی و قرعه‌کشی تعاملی متصل به ثبت لید و CRM',
+        'چالش‌های آرکید حرکتی با وب‌کم و سنسورهای عمق‌سنج بدون نیاز به لمس',
+        'شبکه‌سازی چندنفره و همگام‌سازی سوکت‌ها برای مسابقات زنده بین مخاطبان',
         'سیستم‌های نرم‌افزاری تعاملی اختصاصی با پاسخ‌دهی آنی به ورودی‌های کاربر',
       ],
     },
     useCases: [
       {
-        title: { en: 'Trade Show Gamified Engagement', fa: 'گیمیفیکیشن غرفه‌های رویدادی' },
+        title: { en: 'Trade Show Lead Generation & Dwell Time', fa: 'جذب لید و افزایش پاخور غرفه نمایشگاهی' },
         desc: {
-          en: 'Drawing massive foot traffic to event booths with competitive 60-second games and digital scoreboards.',
-          fa: 'جذب حداکثری بازدیدکنندگان غرفه نمایشگاهی با بازی‌های چالشی ۶۰ ثانیه‌ای و تابلوهای امتیازات رقابتی.',
+          en: 'Boosting booth dwell time by up to 400% through high-energy 45-second branded challenges, capturing verified visitor contact details in exchange for leaderboard ranking and rewards.',
+          fa: 'افزایش ۴ برابری زمان حضور بازدیدکننده در غرفه با چالش‌های هیجان‌انگیز ۴۵ ثانیه‌ای و ثبت لیدهای معتبر تجاری در ازای رقابت و دریافت جوایز هوشمند.',
         },
       },
       {
-        title: { en: 'Employee Onboarding & Safety Drills', fa: 'آموزش سازمانی و مانورهای ایمنی' },
+        title: { en: 'Employee Onboarding & Safety Compliance', fa: 'آموزش سازمانی و مانورهای ایمنی پرسنل' },
         desc: {
-          en: 'Gamified learning paths that test hazard recognition and reward correct procedure adherence.',
-          fa: 'مسیرهای یادگیری بازی‌وارسازی‌شده برای ارزیابی واکنش به خطرات کاری و ارتقای بازدهی پرسنل.',
+          en: 'Gamified learning paths that test hazard recognition, decision branches, and reward correct operational adherence with immediate feedback loops.',
+          fa: 'مسیرهای یادگیری بازی‌وارسازی‌شده برای ارزیابی واکنش به خطرات کاری، تصمیم‌گیری چندشاخه و نهادینه‌سازی پروتکل‌ها در ذهن کارکنان.',
+        },
+      },
+      {
+        title: { en: 'Brand Activations & Retail Gamification', fa: 'اکتیویشن برند و کمپین‌های وفاداری مشتری' },
+        desc: {
+          en: 'Deploying interactive 3D lucky wheels and skill mini-games in retail stores and pop-up events to drive immediate purchases and social sharing.',
+          fa: 'اجرای گردونه‌های شانس سه‌بعدی و مینی‌گیم‌های مهارتی در فروشگاه‌ها و رویدادهای پاپ‌آپ جهت تحریک خرید آنی و بازنشر ویروسی در شبکه‌های اجتماعی.',
         },
       },
     ],
-    technologies: ['Unity', 'Unreal Engine 5', 'WebGL', 'TypeScript', 'Node.js / WebSockets'],
+    technologies: ['Unity', 'Unreal Engine 5', 'WebGL', 'TypeScript', 'Node.js / WebSockets', 'PostgreSQL / Supabase'],
     relevantProjects: ['pulse-tactile-terminal'],
     faqs: [
+      {
+        q: {
+          en: 'How does an exhibition game capture qualified leads?',
+          fa: 'چگونه یک بازی نمایشگاهی لید و اطلاعات تماس بازدیدکنندگان را جمع‌آوری می‌کند؟',
+        },
+        a: {
+          en: 'Before starting the game or claiming rewards, attendees enter their contact details (mobile/email/company) on a sleek companion tablet or QR portal. Data is validated in real-time, instantly synchronized with your CRM, and optional SMS vouchers are dispatched automatically.',
+          fa: 'پیش از شروع بازی یا دریافت جایزه، بازدیدکننده شماره موبایل، نام و سازمان خود را در تبلت یا پرتال ثبت می‌کند. داده‌ها با اعتبارسنجی آنی در دیتابیس CRM ذخیره شده و کدهای تخفیف یا کارت‌های ویزیت دیجیتال بلافاصله از طریق پیامک برای مخاطب ارسال می‌شوند.',
+        },
+      },
+      {
+        q: {
+          en: 'Can the games operate completely offline if the venue has poor internet?',
+          fa: 'آیا بازی در صورت قطعی یا کندی اینترنت سالن نمایشگاه به صورت آفلاین کار می‌کند؟',
+        },
+        a: {
+          en: 'Yes. Our exhibition builds feature local cache failovers. The game engine and leaderboards run seamlessly offline on the local display hardware, and queued lead submissions sync automatically once connectivity is restored.',
+          fa: 'بله. معماری بازی‌های نمایشگاهی MIGO دارای سیستم ذخیره‌سازی محلی (Local Cache) است. بازی و لیدربورد بدون نیاز به اینترنت با حداکثر سرعت اجرا می‌شوند و لیدهای ثبت‌شده به محض برقراری اتصال با سرور همگام‌سازی می‌گردند.',
+        },
+      },
       {
         q: {
           en: 'Can the games be customized with our corporate branding?',
@@ -432,7 +461,7 @@ export const SERVICES: ServiceItem[] = [
   {
     id: 'interactive-installations',
     slug: 'interactive-installations',
-    aliases: ['interactive-exhibitions', 'exhibition-tech'],
+    aliases: ['interactive-exhibitions', 'exhibition-tech', 'booth-installations', 'kinetic-walls'],
     title: {
       en: 'Interactive Installations — Exhibitions / Sensors / Kiosks',
       fa: 'چیدمان‌های تعاملی — نمایشگاهی / سنسورها / کیوسک‌ها',
@@ -442,12 +471,12 @@ export const SERVICES: ServiceItem[] = [
       fa: 'پردازش فیزیکی و فضا',
     },
     shortDescription: {
-      en: 'Kinetic video walls, multi-touch kiosks, body tracking with LiDAR and Kinect, and turnkey hardware-software integration.',
-      fa: 'دیوارهای ویدیویی حرکتی، کیوسک‌های مالتی‌تاچ غول‌پیکر، ردیابی حرکات بدن با LiDAR و کینکت، و اجرای صفر تا صد سخت‌افزار و نرم‌افزار.',
+      en: 'Kinetic video walls, LiDAR multi-touch surfaces, touchless body tracking, trade show crowd magnets, and turnkey hardware-software integration.',
+      fa: 'دیوارهای ویدیویی حرکتی، سطوح مالتی‌تاچ لایدار، ردیابی حرکات بدن بدون لمس، جاذبه‌های جمعیتی غرفه نمایشگاه و اجرای ترن‌کی سخت‌افزار و نرم‌افزار.',
     },
     overview: {
-      en: 'Transforming architectural spaces, museums, and trade shows into living responsive digital canvases. MIGO engineers kinetic video walls, depth-sensor gesture installations, interactive projection mapping, and custom multi-touch kiosk software.',
-      fa: 'تبدیل فضاهای نمایشگاهی، موزه‌ها و شوروم‌ها به استیج‌های زنده و تعاملی دیجیتال. استودیو MIGO به طراحی دیوارهای ویدیویی حساس به حرکت، سنسورهای عمق‌سنج، ویدیو مپینگ تعاملی و نرم‌افزارهای مالتی‌تاچ کیوسک می‌پردازد.',
+      en: 'Transforming architectural spaces, museums, and trade shows into living responsive digital canvases. MIGO engineers kinetic video walls, depth-sensor gesture installations, LiDAR laser touch surfaces, interactive projection mapping, and custom multi-touch kiosk software built to withstand intense event foot traffic.',
+      fa: 'تبدیل فضاهای نمایشگاهی، موزه‌ها و شوروم‌ها به استیج‌های زنده و تعاملی دیجیتال. استودیو MIGO به طراحی دیوارهای ویدیویی حساس به حرکت، سنسورهای عمق‌سنج، تبدیل دیوارهای غول‌پیکر به صفحات لمسی با لیزر لایدار، ویدیو مپینگ تعاملی و نرم‌افزارهای مالتی‌تاچ کیوسک با مقاومت در برابر حجم بالای بازدیدکنندگان می‌پردازد.',
     },
     icon: 'Sparkles',
     badge: {
@@ -456,28 +485,35 @@ export const SERVICES: ServiceItem[] = [
     },
     capabilities: {
       en: [
-        'Development of multi-touch software for large exhibition video walls and kiosks',
-        'Full-body spatial tracking with Azure Kinect, LiDAR, and depth cameras',
-        'Interactive projection mapping responding to visitor touch and footsteps',
-        'Physical computing integration with custom microcontrollers and sensors',
-        'TouchDesigner and Notch real-time generative visual pipelines',
-        'Autonomous turnkey delivery: hardware sourcing, installation, and 24/7 reliability',
+        'LiDAR laser tracking converting standard LED walls and partitions into massive multi-touch screens',
+        'Touchless body tracking with Azure Kinect, depth cameras, and radar sensors for sanitary public interaction',
+        'Interactive projection mapping responding in real time to visitor footsteps and physical touches',
+        'Development of multi-touch software for large exhibition video walls, smart tables, and kiosks',
+        'TouchDesigner and Notch real-time generative visual pipelines running at locked 60 FPS',
+        'Autonomous turnkey delivery: hardware sourcing, mount calibration, on-site setup, and 24/7 expo standby',
       ],
       fa: [
-        'توسعه نرم‌افزارهای مالتی‌تاچ برای کیوسک‌ها و ویدیو وال‌های غول‌پیکر نمایشگاهی',
-        'ردیابی حرکتی بدن و ژست دست با Azure Kinect، سنسورهای LiDAR و دوربین‌های عمق‌سنج',
-        'ویدیو مپینگ تعاملی روی دیوارها، کف زمین و حجم‌های دکوراسیون غرفه',
-        'اتصال سخت‌افزارهای پردازش فیزیکی با میکروکنترلرها و حسگرهای الکترونیکی',
-        'پایپ‌لاین‌های گرافیکی بی‌درنگ و جنریتیو با TouchDesigner و Notch',
-        'اجرای صفر تا صد (Turnkey): تامین سخت‌افزار، نصب در محل و پایداری مداوم ۲۴/۷',
+        'تبدیل ویدیووال‌ها و دیوارهای عادی غرفه به صفحات لمسی غول‌پیکر با سنسورهای لیزری لایدار (LiDAR)',
+        'ردیابی حرکتی بدن و ژست دست با Azure Kinect، سنسورهای رادار و دوربین‌های عمق‌سنج بدون نیاز به لمس',
+        'ویدیو مپینگ تعاملی روی دیوارها، کف زمین و حجم‌های دکوراسیون با واکنش بلادرنگ به گام‌های مخاطب',
+        'توسعه نرم‌افزارهای مالتی‌تاچ برای کیوسک‌ها، استندهای هوشمند و میزهای لمسی نمایشگاهی',
+        'پایپ‌لاین‌های گرافیکی بی‌درنگ و جنریتیو با TouchDesigner و Notch با نرخ فریم پایدار ۶۰ هرتز',
+        'اجرای صفر تا صد (Turnkey): تامین سخت‌افزار، نصب و کالیبراسیون در محل و حضور پشتیبان فنی در تمام روزهای نمایشگاه',
       ],
     },
     useCases: [
       {
-        title: { en: 'Trade Show Flagship Kinetic Wall', fa: 'دیوار تعاملی شاخص غرفه‌های نمایشگاهی' },
+        title: { en: 'Trade Show Flagship Kinetic Wall & Crowd Magnet', fa: 'دیوار تعاملی شاخص غرفه و مگنت جذب جمعیت' },
         desc: {
-          en: 'A massive 10-meter video wall that reacts in real-time as visitors walk past, displaying dynamic brand shaders.',
-          fa: 'دیوار ویدیویی ۱۰ متری که با راه رفتن مخاطبان در غرفه، امواج نور و محتوای هوشمند ایجاد می‌کند.',
+          en: 'A massive 10-meter video wall that reacts in real-time as visitors walk past, transforming passersby into engaged participants through dynamic brand shaders.',
+          fa: 'دیوار ویدیویی ۱۰ متری که با راه رفتن مخاطبان در غرفه امواج نوری و محتوای هوشمند تولید کرده و رهگذران سالن را به سمت داخل غرفه جذب می‌کند.',
+        },
+      },
+      {
+        title: { en: 'Interactive Floor & Wall Projection', fa: 'پروژکشن مپینگ تعاملی کف و دیواره‌ها' },
+        desc: {
+          en: 'Creating magical sensory pathways where digital water ripples, corporate storylines, or dynamic graphics follow visitor movements on the floor.',
+          fa: 'خلق مسیرهای تعاملی حسی که با گام برداشتن بازدیدکنندگان، امواج آب، ذرات نورانی یا مفاهیم برند در زیر پای آنان شکل می‌گیرد.',
         },
       },
       {
@@ -488,9 +524,19 @@ export const SERVICES: ServiceItem[] = [
         },
       },
     ],
-    technologies: ['TouchDesigner', 'Azure Kinect', 'LiDAR Sensors', 'Unity', 'WebGL'],
+    technologies: ['TouchDesigner', 'LiDAR Sensors (Hokuyo / Slamtec)', 'Azure Kinect', 'Intel RealSense', 'Unity', 'WebGL'],
     relevantProjects: ['lumina-motion-wall'],
     faqs: [
+      {
+        q: {
+          en: 'How long does it take to deploy and calibrate an interactive installation at an exhibition?',
+          fa: 'راه‌اندازی و کالیبراسیون تجهیزات تعاملی در غرفه نمایشگاه چقدر زمان می‌برد؟',
+        },
+        a: {
+          en: 'Pre-production and software testing are completed in our studio weeks prior. On-site installation, projector blending, and LiDAR touch calibration typically require 6 to 12 hours during the booth construction setup day.',
+          fa: 'تمامی مراحل توسعه نرم‌افزار، تست‌های شبیه‌سازی و محتوا از هفته‌ها قبل در استودیو نهایی می‌شوند. نصب فیزیکی سنسورها، بلِند پروژکتورها و کالیبراسیون لایدار در محل غرفه معمولاً بین ۶ تا ۱۲ ساعت در روز ساخت و تحویل غرفه انجام می‌شود.',
+        },
+      },
       {
         q: {
           en: 'Does MIGO handle the physical hardware as well as the code?',
@@ -499,6 +545,16 @@ export const SERVICES: ServiceItem[] = [
         a: {
           en: 'Yes. We offer 100% turnkey delivery: we specify, calibrate, and mount the sensors, touch screens, and computing units on-site.',
           fa: 'بله. ما خدمات کاملاً ترن‌کی (Turnkey) ارائه می‌دهیم؛ تامین تجهیزات، کالیبراسیون سنسورها، نصب و راه‌اندازی در محل بر عهده تیم ماست.',
+        },
+      },
+      {
+        q: {
+          en: 'How many simultaneous users can interact with a LiDAR touch wall?',
+          fa: 'چند نفر به صورت هم‌زمان می‌توانند با دیوار لمسی لایدار تعامل داشته باشند؟',
+        },
+        a: {
+          en: 'Industrial 2D/3D LiDAR sensors can track 20+ simultaneous touch points and gesture targets with zero input latency across walls up to 20 meters wide.',
+          fa: 'سنسورهای صنعتی لایدار قادر به ردیابی هم‌زمان بیش از ۲۰ نقطه تماس و تعامل کاربر با تاخیر زیر ۱۰ میلی‌ثانیه بر روی دیوارهایی به طول تا ۲۰ متر هستند.',
         },
       },
     ],

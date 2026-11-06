@@ -71,7 +71,7 @@ export function DirectionAwareDrawer({
           </span>
           <button
             onClick={onClose}
-            aria-label="Close menu"
+            aria-label={isRtl ? 'بستن منو' : 'Close menu'}
             className="p-2.5 rounded-xl text-neutral-400 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
           >
             <X className="w-5 h-5" />

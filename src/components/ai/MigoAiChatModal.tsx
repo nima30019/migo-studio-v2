@@ -43,6 +43,21 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
     }
   }, [chat.isOpen]);
 
+  // Global Escape key listener to close modal for WCAG accessibility
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && chat.isOpen) {
+        chat.closeChat();
+      }
+    };
+    if (chat.isOpen) {
+      window.addEventListener('keydown', handleGlobalKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleGlobalKeyDown);
+    };
+  }, [chat.isOpen, chat.closeChat]);
+
   if (!chat.isOpen) return null;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -74,6 +89,9 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={isRtl ? 'دستیار هوشمند MIGO AI' : 'MIGO AI Assistant'}
       className={`fixed bottom-20 sm:bottom-24 ${
         isRtl ? 'left-3 sm:left-6' : 'right-3 sm:right-6'
       } z-50 w-[calc(100vw-24px)] sm:w-[460px] md:w-[500px] h-[80vh] sm:h-[82vh] max-h-[700px] flex flex-col rounded-3xl bg-[#090B10]/95 backdrop-blur-2xl border border-white/[0.12] shadow-[0_25px_80px_rgba(0,0,0,0.85)] overflow-hidden animate-in fade-in zoom-in-95 duration-200`}
@@ -113,6 +131,7 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
           <button
             type="button"
             onClick={chat.clearChat}
+            aria-label={isRtl ? 'پاکسازی گفتگو' : 'Clear conversation'}
             title={isRtl ? 'پاکسازی گفتگو' : 'Clear conversation'}
             className="p-2 rounded-xl text-neutral-400 hover:text-white hover:bg-white/[0.06] transition-colors"
           >
@@ -123,7 +142,8 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
           <button
             type="button"
             onClick={chat.closeChat}
-            title={isRtl ? 'بستن پنجره' : 'Close window'}
+            aria-label={isRtl ? 'بستن پنجره گفتگو' : 'Close chat window'}
+            title={isRtl ? 'بستن پنجره گفتگو' : 'Close chat window'}
             className="p-2 rounded-xl text-neutral-400 hover:text-white hover:bg-white/[0.06] transition-colors"
           >
             <X className="w-4 h-4" />
@@ -256,6 +276,7 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
             value={chat.inputValue}
             onChange={(e) => chat.setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
+            aria-label={isRtl ? 'پیام شما به هوش مصنوعی MIGO' : 'Your message to MIGO AI'}
             placeholder={
               isRtl
                 ? 'هر سوالی دارید بپرسید (مثلاً: قیمت‌ها چطوره؟ یا برای فروشگاه لباس چه پیشنهادی دارید؟)...'
@@ -268,6 +289,7 @@ export function MigoAiChatModal({ chat }: MigoAiChatModalProps) {
             type="button"
             disabled={!chat.inputValue.trim() || chat.isStreaming}
             onClick={() => chat.sendMessage()}
+            aria-label={isRtl ? 'ارسال پیام' : 'Send message'}
             className="p-2.5 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white disabled:opacity-40 disabled:hover:bg-brand-orange transition-all shrink-0 focus:outline-none shadow-glow-orange"
             title={isRtl ? 'ارسال پیام' : 'Send message'}
           >

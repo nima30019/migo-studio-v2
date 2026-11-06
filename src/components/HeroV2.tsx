@@ -81,7 +81,7 @@ export function HeroV2() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-white bg-brand-orange hover:bg-brand-orange-hover shadow-glow-orange hover:shadow-glow-orange-lg transition-all duration-300 text-sm group hover:scale-[1.02] active:scale-95"
               >
                 <span>{UI_STRINGS.exploreWork[locale]}</span>
-                <DirectionAwareArrow type="arrow" className="w-4 h-4 group-hover:translate-x-1" />
+                <DirectionAwareArrow type="arrow" className="w-4 h-4 ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </Link>
 
               <Link

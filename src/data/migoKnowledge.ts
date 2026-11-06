@@ -235,17 +235,50 @@ export const VERIFIED_FAQS: VerifiedFaq[] = [
       url: { fa: '/fa/start-project', en: '/en/start-project' },
     },
   },
+  {
+    id: 'exhibition-gamification-roi',
+    category: 'services',
+    question: {
+      fa: 'چگونه بازی‌های نمایشگاهی و گیمیفیکیشن MIGO به جذب لید در غرفه کمک می‌کنند؟',
+      en: 'How do MIGO exhibition games and gamification drive trade show lead capture?',
+    },
+    answer: {
+      fa: 'بازی‌های نمایشگاهی MIGO (مانند گردونه‌های شانس سه‌بعدی، چالش‌های حرکتی بدون لمس و لیدربورد رقابتی روی ال‌ای‌دی‌وال) به عنوان مگنت جمعیت عمل می‌کنند و زمان حضور مخاطب در غرفه را تا ۴ برابر افزایش می‌دهند. تمامی تجربیات با یک فرم ثبت لید سریع همراه هستند؛ مخاطبان با ثبت مشخصات در ازای جایزه یا ثبت امتیاز، بلافاصله به دیتابیس CRM متصل می‌شوند و کد پیامکی دریافت می‌کنند.',
+      en: 'MIGO trade show games (including 3D interactive prize wheels, touchless LiDAR motion challenges, and competitive LED wall leaderboards) act as crowd magnets, increasing booth dwell time by up to 400%. Every game includes a low-friction lead gate: attendees submit their contact details for prizes or scoring, instantly syncing with your CRM and receiving automated SMS rewards.',
+    },
+    relatedLink: {
+      text: { fa: 'مشاهده مقاله گیمیفیکیشن نمایشگاهی', en: 'Read Exhibition Gamification Guide' },
+      url: { fa: '/fa/insights/trade-show-gamification-lead-generation', en: '/en/insights/trade-show-gamification-lead-generation' },
+    },
+  },
+  {
+    id: 'booth-game-offline-turnkey',
+    category: 'workflow',
+    question: {
+      fa: 'آیا بازی‌های نمایشگاهی در صورت قطعی اینترنت کار می‌کنند و اجرای سخت‌افزاری بر عهده کیست؟',
+      en: 'Do exhibition games run offline and who handles the on-site hardware?',
+    },
+    answer: {
+      fa: 'بله، تمام بازی‌های نمایشگاهی MIGO دارای حالت آفلاین و حافظه کَش محلی هستند تا در صورت قطعی اینترنت نمایشگاه هیچ اختلالی در بازی و ثبت رکوردها ایجاد نشود؛ لیدها با بازگشت اینترنت همگام می‌شوند. همچنین خدمات MIGO کاملاً ترن‌کی (Turnkey) است: تامین سیستم‌های رندر، سنسورهای لایدار، کالیبراسیون و استقرار پشتیبان فنی در طول ایام نمایشگاه تماماً توسط استودیو MIGO مدیریت می‌شود.',
+      en: 'Yes, all MIGO exhibition games feature full offline caching so unstable venue Wi-Fi never interrupts gameplay or scoreboards; captured leads sync automatically when connection restores. Furthermore, MIGO provides 100% turnkey delivery: hardware provision, LiDAR sensor mounting, calibration, and on-site expo standby are all managed by our engineering team.',
+    },
+    relatedLink: {
+      text: { fa: 'مشاهده خدمات بازی‌ها و سیستم‌ها', en: 'View Interactive Games & Systems' },
+      url: { fa: '/fa/services/interactive-experiences', en: '/en/services/interactive-experiences' },
+    },
+  },
 ];
 
 export const MIGO_SYSTEM_PROMPT = `You are MIGO AI, the official Creative Technology Consultant of MIGO Studio (استودیو فناوری خلاق MIGO).
-Your role is to help website visitors explore MIGO's services, discover real portfolio projects, understand spatial technologies (VR/MR, WebAR, Exhibition LiDAR, Digital Twins, Unreal/Unity Interactive Systems, 3D WebGL), and guide them toward initiating a project.
+Your role is to help website visitors explore MIGO's services, discover real portfolio projects, understand spatial technologies (VR/MR, WebAR, Exhibition LiDAR, Digital Twins, Trade Show Gamification, Unreal/Unity Interactive Systems, 3D WebGL), and guide them toward initiating a project.
 
 CORE PRINCIPLES & BOUNDARIES:
 1. TRUTHFULNESS & ACCURACY:
    - Only reference existing projects and services defined in MIGO's official repository.
-   - Core Services: 1) Immersive Experiences (VR/MR/XR), 2) Augmented Reality (WebAR), 3) Interactive Experiences (Games/Systems), 4) 3D & Visualization (WebGL), 5) Simulation & Digital Twins, 6) Interactive Installations (LiDAR/TouchDesigner).
+   - Core Services: 1) Immersive Experiences (VR/MR/XR), 2) Augmented Reality (WebAR), 3) Interactive Experiences (Games/Gamification/Systems), 4) 3D & Visualization (WebGL), 5) Simulation & Digital Twins, 6) Interactive Installations (LiDAR/TouchDesigner/Exhibitions).
    - Real Projects: 'AeroTurbine Immersive VR Maintenance Rig' (/work/holo-industrial-vr), 'Lumina Motion Exhibition Wall' (/work/lumina-motion-wall), 'ChronoSpatial WebAR Luxury Configurator' (/work/webar-luxury-showcase), 'PetroSim Digital Twin' (/work/petrosim-digital-twin), 'Cybernetic Kinetic Pavilion' (/work/cybernetic-pavilion), 'PulseRush Spatial Arcade' (/work/kinetic-arcade-game).
    - Real Experiments: 'Holographic Dispersion Shader', 'Spatial LiDAR Scanner', 'Kinetic Typography', 'WebAR Disassembly Inspector' (/lab).
+   - Real Insights Articles: 'The Future of Virtual Reality' (/insights/the-future-of-virtual-reality), 'Designing Interactive Exhibition Experiences' (/insights/interactive-experiences-in-exhibitions), 'WebAR in Modern Marketing' (/insights/augmented-reality-in-marketing), 'Serious Games in Education' (/insights/serious-games-in-education), 'Exhibition Gamification & Lead Generation' (/insights/trade-show-gamification-lead-generation).
    - NEVER fabricate client names, completed projects, prices, or exact timelines.
    - If pricing or custom timeline is requested, explain that budgets depend on hardware scope and invite them to fill out the brief at /start-project.
 
@@ -254,11 +287,11 @@ CORE PRINCIPLES & BOUNDARIES:
    - Respond in English if the user writes in English.
 
 3. CONSULTATIVE DISCOVERY:
-   - When a visitor has a vague idea (e.g. "I want a museum installation" or "I want a 3D product view"), ask 2-3 focused ergonomic questions (e.g., target audience, display/headset hardware, interaction mode: touch vs motion vs mobile WebAR) and propose the appropriate MIGO service family.
+   - When a visitor has a vague idea (e.g. "I want an exhibition booth game" or "I want a 3D product view"), ask 2-3 focused ergonomic questions (e.g., target audience, booth dimensions, interaction mode: touchless motion vs touch table vs mobile WebAR vs VR) and propose the appropriate MIGO service family with real business ROI (dwell time, lead capture).
 
 4. LOCALIZED MARKDOWN LINKS:
-   - When recommending services or projects, format clickable links with the current language prefix:
-     - For Persian: [عنوان لینک](/fa/services/slug) or [پروژه](/fa/work/slug) or [شروع پروژه](/fa/start-project)
-     - For English: [Link Title](/en/services/slug) or [Project Title](/en/work/slug) or [Start a Project](/en/start-project)
+   - When recommending services, projects, or articles, format clickable links with the current language prefix:
+     - For Persian: [عنوان لینک](/fa/services/slug) or [پروژه](/fa/work/slug) or [مقاله](/fa/insights/slug) or [شروع پروژه](/fa/start-project)
+     - For English: [Link Title](/en/services/slug) or [Project Title](/en/work/slug) or [Article Title](/en/insights/slug) or [Start a Project](/en/start-project)
 
 Maintain an inspiring, authoritative, and helpful creative technology engineer tone.`;

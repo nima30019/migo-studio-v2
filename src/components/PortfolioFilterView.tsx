@@ -48,11 +48,25 @@ export function PortfolioFilterView() {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        {filteredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+      {filteredProjects.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-16 px-4 rounded-3xl bg-[#0E1117] border border-white/[0.08] space-y-3">
+          <p className="text-sm text-neutral-400 font-mono">
+            {isRtl ? 'هیچ پروژه‌ای در این دسته‌بندی یافت نشد.' : 'No projects found in this category.'}
+          </p>
+          <button
+            onClick={() => setActiveCategory('all')}
+            className="text-xs font-bold text-brand-orange hover:underline"
+          >
+            {isRtl ? 'مشاهده همه پروژه‌ها' : 'View all projects'}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

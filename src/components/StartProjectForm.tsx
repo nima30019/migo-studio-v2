@@ -124,7 +124,7 @@ Contact Info:
   const getMailtoUrl = () => {
     const subject = encodeURIComponent(`[MIGO Project RFP] ${selectedService} - ${contact.company || contact.name}`);
     const body = encodeURIComponent(compiledBrief);
-    return `mailto:hello@migo-studio.com?subject=${subject}&body=${body}`;
+    return `mailto:migogamessemnan@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleCopy = () => {
@@ -175,7 +175,7 @@ Contact Info:
         </div>
 
         <div className="pt-4 border-t border-white/[0.06] text-xs font-mono text-neutral-400">
-          DIRECT LINE // hello@migo-studio.com // RESPONSE SLA &lt; 24H
+          DIRECT LINE // migogamessemnan@gmail.com // RESPONSE SLA &lt; 24H
         </div>
       </SpotlightCard>
     );
@@ -372,10 +372,11 @@ Contact Info:
             </div>
 
             <div>
-              <label className="block text-xs font-mono font-medium text-neutral-300 mb-2">
+              <label htmlFor="project-scope" className="block text-xs font-mono font-medium text-neutral-300 mb-2">
                 {isRtl ? 'شرح نیازمندی‌های پروژه' : 'Project Scope & Requirements'} *
               </label>
               <textarea
+                id="project-scope"
                 rows={5}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -384,20 +385,28 @@ Contact Info:
                     ? 'به عنوان مثال: ما به یک غرفه نمایشگاهی تعاملی با سنسور LiDAR و مانیتورینگ آنلاین نیاز داریم که بازدیدکنندگان بتوانند...'
                     : 'e.g. We require a multiplayer VR turbine training simulator with realistic physics and trainee performance reporting...'
                 }
+                aria-required="true"
+                aria-invalid={errors.description ? 'true' : 'false'}
+                aria-describedby={errors.description ? 'project-scope-error' : undefined}
                 className={`w-full px-4 py-3 rounded-xl bg-[#0E1117] border ${
                   errors.description ? 'border-red-500' : 'border-white/[0.1] focus:border-brand-orange'
                 } text-white placeholder-neutral-500 text-xs focus:outline-none transition-all`}
               />
-              {errors.description && <p className="text-red-400 text-[11px] mt-1.5">{errors.description}</p>}
+              {errors.description && (
+                <p id="project-scope-error" className="text-red-400 text-[11px] mt-1.5">
+                  {errors.description}
+                </p>
+              )}
             </div>
 
             {/* Optional Attachments Link */}
             <div>
-              <label className="block text-xs font-mono font-medium text-neutral-300 mb-2 flex items-center gap-1.5">
+              <label htmlFor="project-attachment" className="block text-xs font-mono font-medium text-neutral-300 mb-2 flex items-center gap-1.5">
                 <Paperclip className="w-3.5 h-3.5 text-brand-orange" />
                 <span>{isRtl ? 'لینک اسناد، فیگما یا فایل پیوست (اختیاری)' : 'Attachment Link (Figma, Drive, Dropbox, PDF - Optional)'}</span>
               </label>
               <input
+                id="project-attachment"
                 type="url"
                 value={attachmentLink}
                 onChange={(e) => setAttachmentLink(e.target.value)}
@@ -427,38 +436,55 @@ Contact Info:
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-mono font-medium text-neutral-300 mb-1.5">
+                <label htmlFor="project-name" className="block text-xs font-mono font-medium text-neutral-300 mb-1.5">
                   {isRtl ? 'نام و نام خانوادگی' : 'Full Name'} *
                 </label>
                 <input
+                  id="project-name"
                   type="text"
                   value={contact.name}
                   onChange={(e) => setContact({ ...contact, name: e.target.value })}
                   placeholder={isRtl ? 'مثال: علی احمدی' : 'Alex Johnson'}
+                  aria-required="true"
+                  aria-invalid={errors.name ? 'true' : 'false'}
+                  aria-describedby={errors.name ? 'project-name-error' : undefined}
                   className="w-full px-4 py-2.5 rounded-xl bg-[#0E1117] border border-white/[0.1] text-white text-xs focus:border-brand-orange focus:outline-none"
                 />
-                {errors.name && <p className="text-red-400 text-[11px] mt-1">{errors.name}</p>}
+                {errors.name && (
+                  <p id="project-name-error" className="text-red-400 text-[11px] mt-1">
+                    {errors.name}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="block text-xs font-mono font-medium text-neutral-300 mb-1.5">
+                <label htmlFor="project-email" className="block text-xs font-mono font-medium text-neutral-300 mb-1.5">
                   {isRtl ? 'ایمیل کاری' : 'Business Email'} *
                 </label>
                 <input
+                  id="project-email"
                   type="email"
                   value={contact.email}
                   onChange={(e) => setContact({ ...contact, email: e.target.value })}
                   placeholder="name@company.com"
+                  aria-required="true"
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                  aria-describedby={errors.email ? 'project-email-error' : undefined}
                   className="w-full px-4 py-2.5 rounded-xl bg-[#0E1117] border border-white/[0.1] text-white text-xs focus:border-brand-orange focus:outline-none"
                 />
-                {errors.email && <p className="text-red-400 text-[11px] mt-1">{errors.email}</p>}
+                {errors.email && (
+                  <p id="project-email-error" className="text-red-400 text-[11px] mt-1">
+                    {errors.email}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="block text-xs font-mono font-medium text-neutral-300 mb-1.5">
+                <label htmlFor="project-company" className="block text-xs font-mono font-medium text-neutral-300 mb-1.5">
                   {isRtl ? 'نام شرکت یا برند (اختیاری)' : 'Organization / Brand (Optional)'}
                 </label>
                 <input
+                  id="project-company"
                   type="text"
                   value={contact.company}
                   onChange={(e) => setContact({ ...contact, company: e.target.value })}
@@ -468,10 +494,11 @@ Contact Info:
               </div>
 
               <div>
-                <label className="block text-xs font-mono font-medium text-neutral-300 mb-1.5">
+                <label htmlFor="project-phone" className="block text-xs font-mono font-medium text-neutral-300 mb-1.5">
                   {isRtl ? 'شماره تماس مستقیم' : 'Phone Number'}
                 </label>
                 <input
+                  id="project-phone"
                   type="tel"
                   value={contact.phone}
                   onChange={(e) => setContact({ ...contact, phone: e.target.value })}

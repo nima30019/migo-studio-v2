@@ -15,7 +15,9 @@ export function WebGLFallback({ className = '' }: WebGLFallbackProps) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
+    let animationFrameId: number | null = null;
+    let isIntersecting = true;
+    let isTabVisible = typeof document !== 'undefined' ? !document.hidden : true;
     let width = (canvas.width = canvas.parentElement?.clientWidth || 600);
     let height = (canvas.height = canvas.parentElement?.clientHeight || 600);
 
@@ -40,6 +42,11 @@ export function WebGLFallback({ className = '' }: WebGLFallbackProps) {
     let time = 0;
 
     const render = () => {
+      if (!isIntersecting || !isTabVisible) {
+        animationFrameId = null;
+        return;
+      }
+
       time += 0.015;
       ctx.clearRect(0, 0, width, height);
 
@@ -113,10 +120,49 @@ export function WebGLFallback({ className = '' }: WebGLFallbackProps) {
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    const startLoop = () => {
+      if (animationFrameId === null && isIntersecting && isTabVisible) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    };
+
+    const stopLoop = () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+
+    const handleVisibilityChange = () => {
+      isTabVisible = !document.hidden;
+      if (isTabVisible) {
+        startLoop();
+      } else {
+        stopLoop();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    startLoop();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      stopLoop();
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('resize', handleResize);
     };
   }, []);

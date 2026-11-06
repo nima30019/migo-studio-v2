@@ -149,7 +149,7 @@ export function SoundToggle() {
       onClick={toggleSound}
       aria-label={isMuted ? UI_STRINGS.soundOff[locale] : UI_STRINGS.soundOn[locale]}
       title={isMuted ? UI_STRINGS.soundOff[locale] : UI_STRINGS.soundOn[locale]}
-      className="flex items-center justify-center p-2 rounded-xl text-neutral-400 hover:text-white bg-[#12151B] border border-white/[0.08] hover:border-brand-orange/50 transition-all min-h-[38px] min-w-[38px]"
+      className="flex items-center justify-center p-2 rounded-xl text-neutral-400 hover:text-white bg-[#12151B] border border-white/[0.08] hover:border-brand-orange/50 transition-all min-h-[44px] min-w-[44px] lg:min-h-[38px] lg:min-w-[38px]"
     >
       {isMuted ? (
         <VolumeX className="w-4 h-4 text-neutral-500" />

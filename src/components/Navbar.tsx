@@ -109,7 +109,7 @@ export function Navbar() {
             </nav>
 
             {/* Actions: Sound, Lang Switcher & Start Project */}
-            <div className="hidden md:flex items-center gap-2.5">
+            <div className="hidden lg:flex items-center gap-2.5">
               <SoundToggle />
 
               {/* Language Switch */}

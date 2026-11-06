@@ -84,7 +84,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
         className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white hover:text-brand-orange transition-colors pt-2 group"
       >
         <span>{isRtl ? 'اطلاعات بیشتر و مشخصات' : 'Service Architecture'}</span>
-        <DirectionAwareArrow type="arrow" className="w-3.5 h-3.5 group-hover:translate-x-1" />
+        <DirectionAwareArrow type="arrow" className="w-3.5 h-3.5 ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
       </Link>
     </SpotlightCard>
   );

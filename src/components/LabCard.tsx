@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Play, Sparkles } from 'lucide-react';
 import { ExperimentItem } from '@/data/lab';
 import { useDirection } from './direction/DirectionProvider';
@@ -18,11 +19,14 @@ interface LabCardProps {
 export function LabCard({ experiment, onSelect, isActive = false }: LabCardProps) {
   const { locale, isRtl } = useDirection();
   const { playClick, playHover } = useAudio();
+  const router = useRouter();
 
   const handleCardClick = () => {
     playClick();
     if (onSelect) {
       onSelect(experiment);
+    } else {
+      router.push(`/${locale}/lab`);
     }
   };
 

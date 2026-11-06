@@ -52,7 +52,7 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'N/A'}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`
     );
-    return `mailto:hello@migo-studio.com?subject=${subject}&body=${body}`;
+    return `mailto:migogamessemnan@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleCopy = () => {
@@ -76,7 +76,7 @@ export function ContactForm() {
           <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto leading-relaxed font-light">
             {isRtl
               ? 'پیام شما فرمت‌بندی شد. جهت ارتباط بدون واسطه، می‌توانید آن را از طریق نرم‌افزار ایمیل خود ارسال نمایید یا متن آن را کپی کنید.'
-              : 'Your inquiry has been structured. To ensure direct deliverability, launch your mail client or copy the brief below to send to hello@migo-studio.com.'}
+              : 'Your inquiry has been structured. To ensure direct deliverability, launch your mail client or copy the brief below to send to migogamessemnan@gmail.com.'}
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export function ContactForm() {
         </div>
 
         <div className="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-neutral-400">
-          hello@migo-studio.com // RESPONSE SLA &lt; 24H
+          migogamessemnan@gmail.com // RESPONSE SLA &lt; 24H
         </div>
       </div>
     );
@@ -111,20 +111,24 @@ export function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {/* Name */}
         <div>
-          <label className="block text-xs font-mono font-medium text-neutral-300 mb-2">
+          <label htmlFor="contact-name" className="block text-xs font-mono font-medium text-neutral-300 mb-2">
             {isRtl ? 'نام و نام خانوادگی' : 'Full Name'} *
           </label>
           <input
+            id="contact-name"
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder={isRtl ? 'مثال: علی احمدی' : 'e.g. Alex Johnson'}
+            aria-required="true"
+            aria-invalid={errors.name ? 'true' : 'false'}
+            aria-describedby={errors.name ? 'contact-name-error' : undefined}
             className={`w-full px-4 py-3 rounded-xl bg-[#0F1218] border ${
               errors.name ? 'border-red-500/80 focus:ring-red-500' : 'border-white/[0.1] focus:border-brand-orange'
             } text-white placeholder-neutral-500 text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange transition-all`}
           />
           {errors.name && (
-            <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+            <p id="contact-name-error" className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
               <AlertCircle className="w-3.5 h-3.5" />
               <span>{errors.name}</span>
             </p>
@@ -133,20 +137,24 @@ export function ContactForm() {
 
         {/* Email */}
         <div>
-          <label className="block text-xs font-mono font-medium text-neutral-300 mb-2">
+          <label htmlFor="contact-email" className="block text-xs font-mono font-medium text-neutral-300 mb-2">
             {isRtl ? 'ایمیل کاری' : 'Business Email'} *
           </label>
           <input
+            id="contact-email"
             type="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="name@company.com"
+            aria-required="true"
+            aria-invalid={errors.email ? 'true' : 'false'}
+            aria-describedby={errors.email ? 'contact-email-error' : undefined}
             className={`w-full px-4 py-3 rounded-xl bg-[#0F1218] border ${
               errors.email ? 'border-red-500/80 focus:ring-red-500' : 'border-white/[0.1] focus:border-brand-orange'
             } text-white placeholder-neutral-500 text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange transition-all`}
           />
           {errors.email && (
-            <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+            <p id="contact-email-error" className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
               <AlertCircle className="w-3.5 h-3.5" />
               <span>{errors.email}</span>
             </p>
@@ -157,10 +165,11 @@ export function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {/* Phone */}
         <div>
-          <label className="block text-xs font-mono font-medium text-neutral-300 mb-2">
+          <label htmlFor="contact-phone" className="block text-xs font-mono font-medium text-neutral-300 mb-2">
             {isRtl ? 'شماره تماس (اختیاری)' : 'Phone Number (Optional)'}
           </label>
           <input
+            id="contact-phone"
             type="tel"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -171,10 +180,11 @@ export function ContactForm() {
 
         {/* Subject */}
         <div>
-          <label className="block text-xs font-mono font-medium text-neutral-300 mb-2">
+          <label htmlFor="contact-subject" className="block text-xs font-mono font-medium text-neutral-300 mb-2">
             {isRtl ? 'موضوع ارتباط' : 'Inquiry Scope'}
           </label>
           <select
+            id="contact-subject"
             value={formData.subject}
             onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
             className="w-full px-4 py-3 rounded-xl bg-[#0F1218] border border-white/[0.1] focus:border-brand-orange text-white text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange transition-all"
@@ -190,10 +200,11 @@ export function ContactForm() {
 
       {/* Message */}
       <div>
-        <label className="block text-xs font-mono font-medium text-neutral-300 mb-2">
+        <label htmlFor="contact-message" className="block text-xs font-mono font-medium text-neutral-300 mb-2">
           {isRtl ? 'شرح پیام' : 'Message'} *
         </label>
         <textarea
+          id="contact-message"
           rows={5}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -202,12 +213,15 @@ export function ContactForm() {
               ? 'موضوع، سوالات یا شرح مختصر پیام خود را بنویسید...'
               : 'Write your questions, partnership details, or general inquiry...'
           }
+          aria-required="true"
+          aria-invalid={errors.message ? 'true' : 'false'}
+          aria-describedby={errors.message ? 'contact-message-error' : undefined}
           className={`w-full px-4 py-3 rounded-xl bg-[#0F1218] border ${
             errors.message ? 'border-red-500/80 focus:ring-red-500' : 'border-white/[0.1] focus:border-brand-orange'
           } text-white placeholder-neutral-500 text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange transition-all`}
         />
         {errors.message && (
-          <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+          <p id="contact-message-error" className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
             <AlertCircle className="w-3.5 h-3.5" />
             <span>{errors.message}</span>
           </p>
