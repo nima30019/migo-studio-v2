@@ -18,6 +18,7 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { LabCard } from '@/components/LabCard';
 import { DirectionAwareArrow } from '@/components/direction/DirectionAwareArrow';
 import { SpotlightCard } from '@/components/SpotlightCard';
+import { EngagementModes } from '@/components/EngagementModes';
 import { createLocalizedMetadata } from '@/utils/seo';
 
 export async function generateMetadata({
@@ -211,6 +212,11 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
           </div>
         </div>
       </div>
+
+      {/* 4.5. Modes of Engagement (Inspired by Freakuency & Bora Studios) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <EngagementModes />
+      </section>
 
       {/* 5. Experiments Lab Preview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

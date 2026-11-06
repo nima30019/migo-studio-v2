@@ -18,6 +18,7 @@ import { SERVICES, ServiceItem } from '@/data/services';
 import { StructuredData } from '@/components/StructuredData';
 import { SpotlightCard } from '@/components/SpotlightCard';
 import { DirectionAwareArrow } from '@/components/direction/DirectionAwareArrow';
+import { ExhibitionGameArchetypes } from '@/components/ExhibitionGameArchetypes';
 import {
   getBreadcrumbSchema,
   getServiceSchema,
@@ -174,6 +175,13 @@ export default function ServiceDetailPage({
           ))}
         </div>
       </section>
+
+      {/* Exhibition Game Archetypes & Business KPIs for relevant services */}
+      {(service.id === 'interactive-experiences' || service.id === 'interactive-installations') && (
+        <div className="pt-6 border-t border-white/[0.08]">
+          <ExhibitionGameArchetypes />
+        </div>
+      )}
 
       {/* Technologies Stack */}
       <section className="p-8 rounded-3xl bg-[#0A0D13] border border-white/[0.08] space-y-6">

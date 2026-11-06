@@ -4,6 +4,8 @@ import { Locale, UI_STRINGS } from '@/data/translations';
 import { SERVICES } from '@/data/services';
 import { ServiceCard } from '@/components/ServiceCard';
 import { StructuredData } from '@/components/StructuredData';
+import { EventPackageBuilder } from '@/components/EventPackageBuilder';
+import { EngagementModes } from '@/components/EngagementModes';
 import { getBreadcrumbSchema } from '@/utils/schema';
 import { createLocalizedMetadata } from '@/utils/seo';
 
@@ -33,7 +35,7 @@ export default function ServicesPage({ params }: { params: { locale: Locale } })
   ]);
 
   return (
-    <div className="pt-32 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div className="pt-32 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
       <StructuredData id="services-breadcrumbs" data={breadcrumbSchema} />
 
       {/* Header */}
@@ -54,6 +56,16 @@ export default function ServicesPage({ params }: { params: { locale: Locale } })
         {SERVICES.map((service) => (
           <ServiceCard key={service.id} service={service} />
         ))}
+      </div>
+
+      {/* Interactive Event Tech Package Builder (Inspired by United Games XR & Peek & Poke) */}
+      <div className="pt-8 border-t border-white/[0.08]">
+        <EventPackageBuilder />
+      </div>
+
+      {/* Three Modes of Engagement (Inspired by Freakuency & Bora Studios) */}
+      <div className="pt-8 border-t border-white/[0.08]">
+        <EngagementModes />
       </div>
     </div>
   );

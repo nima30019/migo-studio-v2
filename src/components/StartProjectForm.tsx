@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Glasses,
   Scan,
@@ -63,6 +63,34 @@ export function StartProjectForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isDone, setIsDone] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const pkg = searchParams.get('package');
+      const mode = searchParams.get('mode');
+      const serviceParam = searchParams.get('service');
+
+      if (pkg) {
+        setSelectedService('interactive-experiences');
+        setSelectedGoal('brand-exhibition');
+        const formattedModules = pkg.split(',').join(' + ');
+        setDescription(
+          isRtl
+            ? `پکیج انتخابی از پکیج‌ساز نمایشگاهی: ${formattedModules}\nاهداف تکمیلی غرفه: `
+            : `Selected modules from Exhibition Tech Builder: ${formattedModules}\nAdditional booth goals: `
+        );
+      } else if (mode === 'event') {
+        setSelectedService('interactive-installations');
+        setSelectedGoal('brand-exhibition');
+        setTimeline('under-1-month');
+      } else if (mode === 'custom') {
+        setSelectedGoal('rd-prototype');
+      } else if (serviceParam) {
+        setSelectedService(serviceParam);
+      }
+    }
+  }, [isRtl]);
 
   const validateCurrentStep = () => {
     const err: Record<string, string> = {};
