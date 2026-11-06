@@ -52,8 +52,8 @@ export function HeroV2() {
               <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-6xl tracking-tight text-white leading-[1.15]">
                 {isRtl ? (
                   <>
-                    ما تجربیات <span className="text-gradient-orange">تعاملی</span> <br />
-                    و فضایی خلق می‌کنیم.
+                    مهندسی تجربیات <br />
+                    <span className="text-gradient-orange">تعاملی و فضایی.</span>
                   </>
                 ) : (
                   <>

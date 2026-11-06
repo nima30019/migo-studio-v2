@@ -52,7 +52,7 @@ export const NAV_ITEMS: NavItem[] = [
 export const UI_STRINGS = {
   brandName: {
     en: 'MIGO',
-    fa: 'میگو',
+    fa: 'MIGO',
   },
   brandTagline: {
     en: 'Creative Technology Studio',
@@ -60,27 +60,27 @@ export const UI_STRINGS = {
   },
   heroHeadingLine1: {
     en: 'ENGINEERING',
-    fa: 'ما تجربیات',
+    fa: 'مهندسی تجربیات',
   },
   heroHeadingAccent: {
     en: 'INTERACTIVE',
-    fa: 'تعاملی و غوطه‌ورکننده',
+    fa: 'تعاملی و فضایی',
   },
   heroHeadingLine2: {
     en: 'REALITIES.',
-    fa: 'خلق می‌کنیم.',
+    fa: 'فراتر از مرزها.',
   },
   heroSubheadline: {
     en: '// Spatial Computing • Virtual Reality (VR/MR) • WebAR • Serious Games',
-    fa: '// رایانش فضایی • واقعیت مجازی و ترکیبی • WebAR • بازی‌های جدی',
+    fa: '// رایانش فضایی • واقعیت مجازی و ترکیبی (VR/MR) • وب‌آر (WebAR) • بازی‌های تعاملی و جدی',
   },
   heroDescription: {
     en: 'MIGO blends real-time 3D graphics, spatial computing, tactile hardware sensors, and simulation physics to engineer extraordinary digital brand experiences and mission-critical training tools.',
-    fa: 'استودیو فناوری خلاق MIGO با تلفیق گرافیک پیشرفته ریل‌تایم، رایانش فضایی، سنسورهای فیزیکی و فیزیک شبیه‌سازی، تجربیات دیجیتال متمایز، ابزارهای آموزشی حیاتی و چیدمان‌های نمایشگاهی خلق می‌کند.',
+    fa: 'استودیو MIGO پیوندگاه هنر دیجیتال، مهندسی ریل‌تایم و پردازش فیزیکی است. ما با تلفیق گرافیک سه‌بعدی بی‌درنگ، واقعیت مجازی و سنسورهای تعاملی، غرفه‌های نمایشگاهی شاخص، شبیه‌سازهای صنعتی و تجربیات فضایی ماندگار خلق می‌کنیم.',
   },
   exploreWork: {
     en: 'Explore Case Studies',
-    fa: 'مشاهده پروژه‌ها',
+    fa: 'کاوش در پروژه‌ها',
   },
   exploreLab: {
     en: 'Enter Experiments Lab',
@@ -88,23 +88,23 @@ export const UI_STRINGS = {
   },
   startProject: {
     en: 'Start a Project',
-    fa: 'شروع پروژه',
+    fa: 'آغاز همکاری و پروژه',
   },
   whatWeDo: {
     en: 'Core Specializations',
-    fa: 'زمینه‌های فعالیت ما',
+    fa: 'تخصص‌ها و حوزه‌های فعالیت',
   },
   whatWeDoDesc: {
     en: 'We craft high-performance interactive experiences bridging physical architecture and digital imagination.',
-    fa: 'ما تجربیات تعاملی پیشرفته‌ای خلق می‌کنیم که پل ارتباطی میان معماری فیزیکی و تخیل دیجیتال هستند.',
+    fa: 'آفرینش تجربیات تعاملی و چندحسی که مرز میان فضای فیزیکی و دنیای دیجیتال را محو می‌کنند.',
   },
   selectedWork: {
     en: 'Selected Client Work',
-    fa: 'پروژه‌های برگزیده',
+    fa: 'پروژه‌های شاخص و برگزیده',
   },
   selectedWorkDesc: {
     en: 'Production deployments spanning virtual reality rigs, WebAR configurators, interactive exhibitions, and simulation engines.',
-    fa: 'پروژه‌های اجرایی شامل سامانه‌های واقعیت مجازی، پیکربندی‌کننده‌های WebAR، چیدمان‌های تعاملی نمایشگاهی و شبیه‌سازها.',
+    fa: 'نمونه‌ای از سیستم‌های عملیاتی استودیو شامل شبیه‌سازهای پیشرفته VR، کانفیگوراتورهای سه‌بعدی WebAR و چیدمان‌های تعاملی نمایشگاهی.',
   },
   viewAllWork: {
     en: 'View All Projects',
@@ -116,27 +116,27 @@ export const UI_STRINGS = {
   },
   labDesc: {
     en: 'Interactive research, real-time WebGL shaders, kinetic typography, and physical computing prototypes pushed directly to your browser.',
-    fa: 'تحقیقات تعاملی، شیدرهای ریل‌تایم WebGL، تایپوگرافی حرکتی و پروتوتایپ‌های پردازش فیزیکی مستقیماً در مرورگر شما.',
+    fa: 'کاوش در مرزهای گرافیک وب؛ آزمایش‌های تعاملی با شیدرهای بی‌درنگ WebGL، تایپوگرافی زنده و تعاملات نوین مستقیماً در مرورگر شما.',
   },
   ourApproach: {
     en: 'From Concept to Deployment',
-    fa: 'از ایده تا اجرای عملیاتی',
+    fa: 'از خلق کانسپت تا استقرار عملیاتی',
   },
   ourApproachDesc: {
     en: 'Our four-stage engineering methodology guarantees high-fidelity visuals, 60+ FPS performance, and hardware stability.',
-    fa: 'متدولوژی چهارمرحله‌ای استودیو MIGO تضمین‌کننده وفاداری بصری بالا، نرخ فریم ۶۰+ پایدار و پایداری کامل سخت‌افزاری است.',
+    fa: 'فرآیند مهندسی چهارگانه MIGO تضمین‌کننده خروجی بصری سینماتیک، فریم‌ریت پایدار ۶۰+ و کارکرد بی‌نقص در شلوغ‌ترین رویدادهاست.',
   },
   industries: {
     en: 'Industries We Empower',
-    fa: 'صنایعی که با آن‌ها همکاری داریم',
+    fa: 'صنایع و کاربردهای هدف',
   },
   techStackHeadline: {
     en: 'Industrial-Grade Technology Stack',
-    fa: 'بر پایه فناوری‌های صنعتی و روز دنیا',
+    fa: 'زیرساخت فنی و ابزارهای مهندسی',
   },
   techStackDesc: {
     en: 'Built on Unreal Engine 5, Unity Spatial XR, WebGL/Three.js, LiDAR sensors, and custom microcontrollers.',
-    fa: 'توسعه بر پایه Unreal Engine 5، یونیتی، وب‌جی‌ال، سنسورهای لایدار و میکروکنترلرهای اختصاصی.',
+    fa: 'توسعه اختصاصی بر پایه Unreal Engine 5، یونیتی، Three.js، سنسورهای لیزری لایدار و پردازنده‌های سخت‌افزاری تعبیه شده.',
   },
   aboutPreviewHeadline: {
     en: 'Where Precision Engineering Meets Digital Artistry.',
@@ -144,15 +144,15 @@ export const UI_STRINGS = {
   },
   aboutPreviewText: {
     en: 'MIGO is an independent creative technology studio based in Tehran with international delivery capability. We reject generic templates in favor of tailored real-time engines, sensory interactions, and memorable spatial computing.',
-    fa: 'استودیو MIGO استودیوی تخصصی فناوری‌های خلاق است. ما ساختارهای کلیشه‌ای و تکراری را کنار می‌گذاریم و بر روی طراحی ریل‌تایم، تعاملات حسی چندرسانه‌ای و رایانش فضایی متمرکز می‌شویم.',
+    fa: 'استودیو فناوری خلاق MIGO با تمرکز بر مرزهای تعامل انسان و کامپیوتر متولد شده است. ما قالب‌های آماده و سنتی را کنار می‌گذاریم تا با مهندسی اختصاصی انجین‌های سه‌بعدی و سخت‌افزارهای حسگر، تجربیاتی نو، جسورانه و ماندگار برای برندهای پیشرو خلق کنیم.',
   },
   learnMoreAboutUs: {
     en: 'Learn More About Studio',
-    fa: 'آشنایی بیشتر با استودیو',
+    fa: 'درباره استودیو و نگرش ما',
   },
   insightsHeadline: {
     en: 'Insights & Technical Notes',
-    fa: 'یادداشت‌های فنی و مقالات',
+    fa: 'یادداشت‌های فنی و بینش‌ها',
   },
   finalCtaHeadline: {
     en: 'Ready to Build Something Unprecedented?',
@@ -160,11 +160,11 @@ export const UI_STRINGS = {
   },
   finalCtaDesc: {
     en: 'Whether you need a trade show showstopper, an enterprise VR training platform, or zero-install WebAR, let’s talk architecture.',
-    fa: 'چه برای غرفه نمایشگاهی متمایز، چه شبیه‌ساز واقعیت مجازی صنعتی یا WebAR، بیایید درباره معماری پروژه صحبت کنیم.',
+    fa: 'اگر در اندیشه خلق یک غرفه نمایشگاهی پربازدید، شبیه‌ساز آموزش صنعتی یا پرتال واقعیت افزوده سه‌بعدی هستید، برای معماری و امکان‌سنجی فنی پروژه همراه شما هستیم.',
   },
   footerDesc: {
     en: 'MIGO is a premier creative technology studio engineering next-generation VR/MR, WebAR, kinetic exhibition walls, serious games, and real-time 3D simulation.',
-    fa: 'استودیو MIGO، استودیوی تخصصی فناوری‌های خلاق در زمینه توسعه واقعیت مجازی و افزوده، دیوارهای تعاملی نمایشگاهی، بازی‌سازی و شبیه‌سازی سه‌بعدی.',
+    fa: 'استودیو فناوری خلاق MIGO؛ پیشرو در مهندسی واقعیت مجازی و ترکیبی (VR/MR)، وب‌آر بدون نیاز به نصب، اینستالیشن‌های حرکتی نمایشگاهی و شبیه‌سازی صنعتی.',
   },
   rightsReserved: {
     en: 'All rights reserved.',
@@ -188,11 +188,11 @@ export const UI_STRINGS = {
   },
   overview: {
     en: 'Overview & Architecture',
-    fa: 'نمای کلی و معماری',
+    fa: 'نمای کلی و معماری فنی',
   },
   capabilities: {
     en: 'Capabilities & Deliverables',
-    fa: 'قابلیت‌ها و خروجی‌ها',
+    fa: 'قابلیت‌ها و خروجی‌های اجرایی',
   },
   useCases: {
     en: 'Real-world Applications',
@@ -200,7 +200,7 @@ export const UI_STRINGS = {
   },
   technologiesUsed: {
     en: 'Core Technologies',
-    fa: 'فناوری‌های به‌کاررفته',
+    fa: 'فناوری‌ها و ابزارهای کلیدی',
   },
   faq: {
     en: 'Technical FAQ',
@@ -208,23 +208,23 @@ export const UI_STRINGS = {
   },
   projectChallenge: {
     en: 'The Challenge',
-    fa: 'چالش پروژه',
+    fa: 'مسئله و چالش پروژه',
   },
   creativeSolution: {
     en: 'Engineered Solution',
-    fa: 'راهکار مهندسی‌شده',
+    fa: 'راهکار مهندسی‌شده استودیو',
   },
   technicalImplementation: {
     en: 'Technical Pipeline',
-    fa: 'پایپ‌لاین فنی و معماری',
+    fa: 'پایپ‌لاین فنی و معماری نرم‌افزار',
   },
   outcomes: {
     en: 'Measured Impact',
-    fa: 'نتایج و دستاوردهای سنجیده‌شده',
+    fa: 'نتایج و دستاوردهای ملموس',
   },
   relatedProjects: {
     en: 'Related Projects',
-    fa: 'پروژه‌های مرتبط',
+    fa: 'سایر پروژه‌های مرتبط',
   },
   readArticle: {
     en: 'Read Full Article',
@@ -236,26 +236,26 @@ export const UI_STRINGS = {
   },
   contactUs: {
     en: 'Get in Touch',
-    fa: 'تماس با ما',
+    fa: 'ارتباط با ما',
   },
   startProjectTitle: {
     en: 'Initiate a Project with MIGO',
-    fa: 'شروع همکاری و سفارش پروژه',
+    fa: 'آغاز همکاری و سفارش پروژه',
   },
   startProjectSubtitle: {
     en: 'Brief us on your timeline, hardware scope, and creative goals. Our technical leads will respond within 24 hours.',
-    fa: 'زمان‌بندی، بستر سخت‌افزاری و اهداف پروژه خود را با ما در میان بگذارید. تیم فنی ما ظرف ۲۴ ساعت پاسخگوی شما خواهند بود.',
+    fa: 'اهداف کلیدی، فضای اجرا و بستر سخت‌افزاری مدنظرتان را در چند گام ساده ثبت کنید؛ معماران فنی استودیو MIGO جهت تحلیل نیازمندی‌ها و ارائه پروپوزال با شما تماس خواهند گرفت.',
   },
   webglFallbackNotice: {
     en: 'Interactive 3D preview running in optimized 2D fallback mode. For the full real-time shader experience, enable WebGL hardware acceleration.',
-    fa: 'پیش‌نمایش تعاملی سه‌بعدی در حالت بهینه دومرحله‌ای در حال اجراست. برای تجربه شیدرهای ریل‌تایم، شتاب‌دهنده سخت‌افزاری WebGL را فعال کنید.',
+    fa: 'پیش‌نمایش تعاملی در حالت بهینه دومرحله‌ای رندر می‌شود. برای فعال‌سازی کامل شیدرهای گرافیکی، شتاب‌دهنده سخت‌افزاری مرورگر خود را فعال کنید.',
   },
   soundOn: {
     en: 'Sound FX: ON',
-    fa: 'صدای تعاملی: روشن',
+    fa: 'افکت صوتی: روشن',
   },
   soundOff: {
     en: 'Sound FX: MUTED',
-    fa: 'صدای تعاملی: خاموش',
+    fa: 'افکت صوتی: بی‌صدا',
   },
 };

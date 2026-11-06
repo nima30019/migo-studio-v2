@@ -118,7 +118,7 @@ export default function ServiceDetailPage({
             href={`/${locale}/start-project`}
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-white bg-brand-orange hover:bg-brand-orange-hover shadow-glow-orange transition-all text-sm"
           >
-            <span>{isRtl ? 'استعلام فنی و سفارش این خدمت' : 'Request Architecture Consultation'}</span>
+            <span>{isRtl ? 'مشاوره فنی و امکان‌سنجی این پروژه' : 'Request Architecture Consultation'}</span>
             <DirectionAwareArrow type="up-right" className="w-4 h-4" />
           </Link>
         </div>
@@ -131,7 +131,7 @@ export default function ServiceDetailPage({
             {UI_STRINGS.capabilities[locale]}
           </h2>
           <p className="text-sm text-neutral-400 font-light">
-            {isRtl ? 'مشخصات فنی و استانداردهای پیاده‌سازی' : 'Engineered Deliverables & Benchmarks'}
+            {isRtl ? 'مشخصات فنی و استانداردهای مهندسی' : 'Engineered Deliverables & Benchmarks'}
           </p>
         </div>
 

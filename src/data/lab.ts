@@ -33,7 +33,7 @@ export const LAB_EXPERIMENTS: ExperimentItem[] = [
     slug: 'holographic-fluid-mesh',
     title: {
       en: 'Holographic Fluid Mesh & Noise Displacement',
-      fa: 'شیدر موج سیال هولوگرافیک و تغییر شکل ریل‌تایم',
+      fa: 'شیدر سیال هولوگرافیک و تغییر شکل بی‌درنگ مش',
     },
     category: {
       en: 'GLSL Shaders & WebGL',
@@ -46,7 +46,7 @@ export const LAB_EXPERIMENTS: ExperimentItem[] = [
     },
     shortDescription: {
       en: 'Simplex noise vertex displacement with chromatic aberration, real-time cursor repulsion, and interactive turbulence frequency.',
-      fa: 'تغییر مکان برداری نویز سیمپلکس با انحراف رنگی کروماتیک، واکنش بی‌درنگ به موقعیت ماوس و بسامد تلاطم پویا.',
+      fa: 'جابجایی برداری نویز سیمپلکس با انحراف رنگی، واکنش آنی به ماوس و بسامد تلاطم پویا بر روی پردازنده گرافیکی.',
     },
     technicalDetails: {
       en: 'Computes customized simplex noise on vertex geometry directly on the GPU, avoiding CPU bottlenecks and achieving locked 60+ FPS performance even on low-power devices.',
@@ -157,7 +157,7 @@ export const LAB_EXPERIMENTS: ExperimentItem[] = [
     slug: 'kinetic-typography-distortion',
     title: {
       en: 'Reactive Kinetic Typography & Spring Dynamics',
-      fa: 'تایپوگرافی حرکتی واکنشی و دینامیک فنری',
+      fa: 'تایپوگرافی حرکتی تعاملی بر پایه فیزیک کشسانی فنر',
     },
     category: {
       en: 'Kinetic Computing',
@@ -219,7 +219,7 @@ export const LAB_EXPERIMENTS: ExperimentItem[] = [
     slug: 'webar-spatial-anchor-preview',
     title: {
       en: 'Zero-Install WebAR Surface Anchor Inspector',
-      fa: 'کاوشگر لنگراندازی سطحی واقعیت افزوده وب (WebAR)',
+      fa: 'کاوشگر واقعیت افزوده وب (WebAR) و نمای انفجاری قطعات',
     },
     category: {
       en: 'WebXR / WebAR',
@@ -232,7 +232,7 @@ export const LAB_EXPERIMENTS: ExperimentItem[] = [
     },
     shortDescription: {
       en: 'PBR 3D asset inspection with exploded mechanical views, simulated AR surface reticle anchoring, and real-time environment lighting.',
-      fa: 'بررسی مشخصات مواد PBR با امکان انفجار قطعات مکانیکی، شبکه‌بندی لنگراندازی روی سطح و نورپردازی محیطی بی‌درنگ.',
+      fa: 'بررسی تعاملی مدل‌های سه‌بعدی با نمای انفجاری مکانیکی، لنگراندازی روی سطوح در مرورگر و نورپردازی محیطی بی‌درنگ.',
     },
     technicalDetails: {
       en: 'Simulates WebXR hit-testing algorithms right within standard WebGL browsers without requiring external native apps.',

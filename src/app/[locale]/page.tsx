@@ -258,12 +258,12 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
               </div>
               <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
                 {isRtl
-                  ? 'پیوند هنر تعاملی با مهندسی بلادرنگ گرافیک'
+                  ? 'پیوند معماری فضایی با مهندسی گرافیک بی‌درنگ'
                   : 'Bridging Spatial Architecture & Real-Time Graphics'}
               </h2>
               <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
                 {isRtl
-                  ? 'استودیو MIGO یک استودیوی پیشرو در فناوری‌های تعاملی، واقعیت مجازی، واقعیت افزوده و اینستالیشن‌های فیزیکی-دیجیتال است. ما با رویکرد مهندسی دقیق و زیبایی‌شناسی معاصر، تجربیاتی می‌سازیم که مرز میان جهان فیزیکی و داده‌های دیجیتال را در هم می‌شکند.'
+                  ? 'استودیو فناوری خلاق MIGO، کانون آفرینش تجربیات تعاملی، واقعیت مجازی و اینستالیشن‌های چندحسی است. ما با تلفیق مهندسی دقیق سخت‌افزار و رندرهای سه‌بعدی بی‌درنگ، فاصله میان جهان فیزیکی و خیال دیجیتال را از میان برمی‌داریم.'
                   : 'MIGO is an independent creative technology studio engineering immersive VR/MR environments, lightweight zero-install WebAR, and sensory exhibition architecture. We fuse hardware sensor engineering with cutting-edge real-time 3D pipelines.'}
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
@@ -288,7 +288,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   href={`/${locale}/about`}
                   className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-white/[0.08] hover:bg-brand-orange hover:text-white border border-white/[0.12] transition-all"
                 >
-                  <span>{isRtl ? 'آشنایی با فلسفه، تیم و محیط استودیو' : 'Discover Studio Philosophy & Approach'}</span>
+                  <span>{isRtl ? 'درباره فلسفه و متدولوژی مهندسی ما' : 'Discover Studio Philosophy & Approach'}</span>
                   <DirectionAwareArrow type="arrow" className="w-4 h-4" />
                 </Link>
               </div>
@@ -301,7 +301,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   {isRtl ? 'حوزه تخصصی عمیق' : 'Core Disciplines'}
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                  {isRtl ? 'رایانش فضایی، وب‌تری‌دی، گیم و اینستالیشن' : 'Spatial computing, Web3D, gaming & interactive spaces'}
+                  {isRtl ? 'رایانش فضایی، وب سه‌بعدی، گیم و اینستالیشن' : 'Spatial computing, Web3D, gaming & interactive spaces'}
                 </p>
               </div>
               <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
@@ -310,7 +310,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   {isRtl ? 'کدنویسی درون‌استودیویی' : 'In-House Production'}
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                  {isRtl ? 'بدون برون‌سپاری، کنترل کامل بر کیفیت فریم و سنسور' : 'Zero outsourcing, total control over framerate and hardware'}
+                  {isRtl ? 'توسعه ۱۰۰٪ درون‌استودیویی، کنترل کامل بر فریم‌ریت و سخت‌افزار' : 'Zero outsourcing, total control over framerate and hardware'}
                 </p>
               </div>
               <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
@@ -319,7 +319,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   {isRtl ? 'بهینه‌سازی وب' : 'Ultra-Light Payloads'}
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                  {isRtl ? 'فشرده‌سازی بافت‌های KTX2 و هندسه Draco' : 'Compressed textures & Draco geometry'}
+                  {isRtl ? 'فشرده‌سازی بافت‌های KTX2 و بهینه‌سازی هندسه Draco' : 'Compressed textures & Draco geometry'}
                 </p>
               </div>
               <div className="p-5 rounded-2xl bg-[#0F131D]/80 border border-white/[0.06] space-y-2">
@@ -328,7 +328,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
                   {isRtl ? 'پایداری نمایشگاهی' : 'Hardware Telemetry'}
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                  {isRtl ? 'مانیتورینگ ریموت و سلامت سیستم‌های فیزیکی' : 'Remote kiosk monitoring & watchdog auto-recovery'}
+                  {isRtl ? 'پایش مداوم ریموت و بازیابی خودکار سلامت کیوسک‌ها' : 'Remote kiosk monitoring & watchdog auto-recovery'}
                 </p>
               </div>
             </div>

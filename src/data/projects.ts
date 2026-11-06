@@ -62,7 +62,7 @@ export const PROJECTS: ProjectItem[] = [
     },
     solution: {
       en: 'MIGO engineered a standalone Meta Quest 3 application utilizing optimized CAD meshes, dynamic torque feedback, and a real-time procedural step-verifier with automatic mistake highlighting.',
-      fa: 'استودیو MIGO یک نرم‌افزار روان برای عینک‌های Meta Quest 3 با مش‌های بهینه‌شده صنعتی CAD، بازخورد گشتاور آچارها و راهنمای گام‌به‌گام هوشمند طراحی کرد که خطاهای تکنسین را فوراً مشخص می‌کند.',
+      fa: 'استودیو MIGO نرم‌افزار مستقلی برای هدست‌های Meta Quest 3 با مش‌های بهینه‌شده صنعتی CAD، بازخورد دینامیک گشتاور و راهنمای گام‌به‌گام هوشمند طراحی کرد که خطاهای تکنسین را در لحظه مشخص می‌کند.',
     },
     technicalImplementation: {
       en: 'Developed in Unity 6 using the OpenXR runtime. Custom LOD generation reduced 14 million polygon CAD files to 420,000 polygons while preserving micrometer edge chamfers. Spatial audio conveys turbine bearing friction.',
@@ -80,7 +80,7 @@ export const PROJECTS: ProjectItem[] = [
         'صفر شدن خطرات جانی و آسیب به تجهیزات در حین باز و بست قطعات حساس',
         'کاهش ۸۵ درصدی هزینه‌های دوره آموزشی به ازای هر دوره کارآموزی',
         'صدور خودکار کارنامه ارزشیابی با ثبت ثانیه‌به‌ثانیه اشتباهات',
-        'نرخ فریم پایدار ۹۰ فریم بر ثانیه روی پردازنده‌های مستقل موبایلی عینک',
+        'نرخ فریم پایدار ۹۰ فریم بر ثانیه روی چیپست‌های پردازشی مستقل هدست',
       ],
     },
     featured: true,

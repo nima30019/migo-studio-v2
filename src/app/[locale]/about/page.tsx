@@ -52,10 +52,10 @@ export default function StudioPage({ params }: { params: { locale: Locale } }) {
   const philosophyPillars = [
     {
       icon: Zap,
-      title: { en: 'Performance as a Feature', fa: 'کارایی و فریم‌ریت، ویژگی اصلی ما' },
+      title: { en: 'Performance as a Feature', fa: 'پایداری فریم‌ریت، اصل بنیادین ما' },
       desc: {
         en: 'We reject bloated templates. Every shader, polygon, and draw call is budgeted for locked 60+ FPS to guarantee zero motion sickness in VR and instantaneous Web loads.',
-        fa: 'ما ساختارهای سنگین و کلیشه‌ای وب را رد می‌کنیم. هر شیدر و مش هندسی برای دستیابی به ۶۰+ فریم پایدار بودجه‌بندی می‌شود تا سرگیجه در VR به صفر برسد.',
+        fa: 'ما قالب‌های آماده و کدهای سنگین را کنار می‌گذاریم. هر شیدر گرافیکی و مش هندسی با انضباط سخت‌گیرانه برای نرخ فریم پایدار ۶۰+ فریم بر ثانیه بهینه‌سازی می‌شود تا تجربه کاربر در واقعیت مجازی و وب، روان و بدون تاخیر باشد.',
       },
     },
     {
@@ -63,15 +63,15 @@ export default function StudioPage({ params }: { params: { locale: Locale } }) {
       title: { en: 'The Physical-Digital Continuum', fa: 'پیوند بی‌واسطه فیزیک و تصویر' },
       desc: {
         en: 'Digital experiences should not remain trapped behind flat screens. We link code to physical computing, spatial sensors, depth cameras, and tactile actuators.',
-        fa: 'جهان دیجیتال نباید در صفحات تخت محصور بماند. ما کد را به سنسورهای فضایی، دوربین‌های عمق‌سنج، ردیاب‌های حرکتی و کنترلرهای لمسی پیوند می‌دهیم.',
+        fa: 'دنیای دیجیتال نباید در حصار نمایشگرهای تخت محدود بماند. ما نرم‌افزار را به سنسورهای لیزری لایدار، دوربین‌های عمق‌سنج و حسگرهای فیزیکی پیوند می‌زنیم تا فضا به تجربه‌ای زنده و تعاملی بدل شود.',
       },
     },
     {
       icon: ShieldCheck,
-      title: { en: 'Autonomous Turnkey Stability', fa: 'پایداری عملیاتی ترن‌کی ۲۴/۷' },
+      title: { en: 'Autonomous Turnkey Stability', fa: 'پایداری بی‌وقفه در شلوغ‌ترین رویدادها' },
       desc: {
         en: 'Our trade show installations and enterprise training platforms operate autonomously for weeks under heavy visitor loads with zero memory leaks.',
-        fa: 'کیوسک‌ها و دیوارهای تعاملی نمایشگاهی ما هفته‌ها زیر بار ترافیک شدید بازدیدکنندگان بدون افت فریم یا نشت حافظه اجرا می‌شوند.',
+        fa: 'سیستم‌های نمایشگاهی و شبیه‌سازهای سازمانی استودیو MIGO برای کارکرد شبانه‌روزی زیر بار ترافیک هزاران بازدیدکننده مهندسی شده‌اند؛ بدون افت فریم، بدون کرش و با اطمینان ۱۰۰ درصدی.',
       },
     },
   ];
@@ -80,26 +80,26 @@ export default function StudioPage({ params }: { params: { locale: Locale } }) {
   const creativePrinciples = [
     {
       num: '01',
-      title: { en: 'Spatial-First Ergonomics', fa: 'ارگونومی انسان‌محور در فضای سه‌بعدی' },
+      title: { en: 'Spatial-First Ergonomics', fa: 'ارگونومی فضایی و انسان‌محور' },
       desc: {
         en: 'Designing intuitive physical gestures and natural spatial scales rather than porting legacy 2D UI paradigms into 3D environments.',
-        fa: 'طراحی ژست‌های حرکتی طبیعی دست و مقیاس‌های فضایی متناسب با آناتومی انسان، به جای انتقال صرف المان‌های دوبعدی به فضای سه‌بعدی.',
+        fa: 'طراحی ژست‌های حرکتی طبیعی و مقیاس‌های فضایی متناسب با رفتار طبیعی انسان، به جای انتقال فرم‌های سنتی دوبعدی به دنیای سه‌بعدی.',
       },
     },
     {
       num: '02',
-      title: { en: 'Physics-Grounded Feedback', fa: 'فیزیک شبیه‌سازی‌شده و بازخورد حسی' },
+      title: { en: 'Physics-Grounded Feedback', fa: 'شبیه‌سازی دقیق فیزیک و بازخورد حسی' },
       desc: {
         en: 'Simulating true mass, momentum, collision impulse, and spatial 3D audio so every interaction feels tactile and authentic.',
-        fa: 'محاسبه تکانه، اینرسی، اصطکاک و صوت فضایی سه‌بعدی به گونه‌ای که تعامل کاربر با قطعات مجازی کاملاً طبیعی و حسی احساس شود.',
+        fa: 'محاسبه دقیق اینرسی، جرم، اصطکاک و صدای فضایی سه‌بعدی؛ به طوری که هر تعامل در دنیای مجازی، اصیل، ملموس و قابل‌باور احساس شود.',
       },
     },
     {
       num: '03',
-      title: { en: 'Zero-Friction Accessibility', fa: 'دسترسی سریع با حداقل اصطکاک' },
+      title: { en: 'Zero-Friction Accessibility', fa: 'دسترسی آنی با حداقل پیچیدگی' },
       desc: {
         en: 'From instant WebAR activated by a single packaging QR scan to tetherless standalone VR headsets requiring no complex setups.',
-        fa: 'از WebAR بدون نیاز به نصب اپلیکیشن تنها با یک اسکن، تا هدست‌های مستقل VR که کاربر بدون پیچیدگی ظرف چند ثانیه وارد فضا می‌شود.',
+        fa: 'از وب‌آر (WebAR) بدون نیاز به نصب اپلیکیشن تنها با اسکن یک QR کد، تا هدست‌های مستقل واقعیت مجازی که بدون کابل یا تنظیمات پیچیده، کاربر را بلافاصله وارد تجربه می‌کنند.',
       },
     },
   ];

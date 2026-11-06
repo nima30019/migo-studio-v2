@@ -31,7 +31,7 @@ export const SERVICES: ServiceItem[] = [
     aliases: ['virtual-reality', 'vr-mr'],
     title: {
       en: 'Immersive Experiences — VR / MR / XR',
-      fa: 'تجربیات غوطه‌ورکننده — VR / MR / XR',
+      fa: 'تجربیات غوطه‌ور و فضایی — VR / MR / XR',
     },
     family: {
       en: 'Spatial Computing',
@@ -39,11 +39,11 @@ export const SERVICES: ServiceItem[] = [
     },
     shortDescription: {
       en: 'High-fidelity spatial computing, standalone Meta Quest/Pico environments, and tethered PC-VR rigs for enterprise simulations and entertainment.',
-      fa: 'رایانش فضایی با وفاداری بصری بالا، توسعه اپلیکیشن‌های مستقل VR/MR و سیستم‌های قدرتمند PC-VR برای شبیه‌سازی و سرگرمی.',
+      fa: 'رایانش فضایی با کیفیت بصری سینماتیک، توسعه نرم‌افزارهای مستقل VR/MR و سیستم‌های قدرتمند شبیه‌سازی و سرگرمی.',
     },
     overview: {
       en: 'MIGO engineers spatial computing applications that transport users into interactive digital realms. From tetherless standalone headsets to high-performance PC-VR rigs, we craft intuitive physics-driven interactions, realistic spatial audio, and photorealistic 3D environments.',
-      fa: 'استودیو MIGO نرم‌افزارهای رایانش فضایی (Spatial Computing) طراحی می‌کند که کاربران را به اعماق دنیاهای دیجیتال هدایت می‌کنند. از هدست‌های مستقل بی‌سیم گرفته تا سیستم‌های قدرتمند PC-VR، ما تعاملات فیزیکی طبیعی، صدای فضایی سه‌بعدی و محیط‌های بسیار واقع‌گرایانه خلق می‌کنیم.',
+      fa: 'استودیو MIGO نرم‌افزارهای رایانش فضایی (Spatial Computing) را با تکیه بر تعاملات فیزیکی طبیعی، صدای سه‌بعدی و محیط‌های فوتورئال مهندسی می‌کند. از هدست‌های مستقل بی‌سیم تا سیستم‌های سنگین صنعتی PC-VR، ما مرز میان کاربر و جهان دیجیتال را به تجربه‌ای زیسته و ملموس بدل می‌سازیم.',
     },
     icon: 'Glasses',
     badge: {
@@ -70,7 +70,7 @@ export const SERVICES: ServiceItem[] = [
     },
     useCases: [
       {
-        title: { en: 'Enterprise Workforce Training', fa: 'آموزش پرسنل سازمان‌ها' },
+        title: { en: 'Enterprise Workforce Training', fa: 'آموزش پرسنل و مهندسان سازمان‌ها' },
         desc: {
           en: 'Hazard-free interactive procedures allowing technicians to practice critical operations before touching physical hardware.',
           fa: 'تمرین سناریوهای حساس و خطرآفرین در محیط مجازی بدون تحمیل کوچک‌ترین ریسک جانی یا خسارت به تجهیزات واقعی.',
@@ -84,7 +84,7 @@ export const SERVICES: ServiceItem[] = [
         },
       },
       {
-        title: { en: 'Brand Showrooms & Experiences', fa: 'شوروم‌های تعاملی برند' },
+        title: { en: 'Brand Showrooms & Experiences', fa: 'شوروم‌های تعاملی و فضاهای پرچمدار برند' },
         desc: {
           en: 'Transporting global audiences into customized virtual worlds showcasing flagship products at scale.',
           fa: 'انتقال مخاطبان نمایشگاهی به دنیاهای اختصاصی و مقیاس‌پذیر برای لمس قابلیت‌های محصولات شاخص برند.',
@@ -136,7 +136,7 @@ export const SERVICES: ServiceItem[] = [
     },
     overview: {
       en: 'Bridging physical space with intelligent digital layers. MIGO crafts zero-install WebAR that works instantly on standard mobile browsers, as well as native mobile AR applications utilizing LiDAR surface tracking, image recognition, and real-time occlusion.',
-      fa: 'پیوند لایه‌های دیجیتال هوشمند با جهان واقعی. استودیو MIGO راهکارهای WebAR بدون نیاز به نصب را برای دسترسی آنی کاربران موبایل و همچنین اپلیکیشن‌های بومی با ردیابی سطوح، تشخیص تصاویر و انسداد فضایی توسعه می‌دهد.',
+      fa: 'پیوند لایه‌های دیجیتال هوشمند با جهان واقعی؛ استودیو MIGO با توسعه تجربیات WebAR بدون نیاز به نصب، دسترسی به مدل‌های سه‌بعدی را از طریق اسکن سریع کد QR در مرورگرهای موبایل ممکن می‌سازد. همچنین با بهره‌گیری از اسکنرهای LiDAR در اپلیکیشن‌های بومی، جانمایی دقیق قطعات و انسداد فضایی فوتورئال را در اختیار صنایع و برندها قرار می‌دهد.',
     },
     icon: 'Scan',
     badge: {
@@ -324,7 +324,7 @@ export const SERVICES: ServiceItem[] = [
     },
     overview: {
       en: 'High-end 3D visual fidelity meeting real-time web performance. MIGO produces ultra-detailed polygon models, physically based rendering (PBR) materials, and cinematic animations engineered for both offline rendering and 60 FPS real-time WebGL engines.',
-      fa: 'تلاقی هنر بصری سه‌بعدی با کارایی ریل‌تایم وب. استودیو MIGO به مدل‌سازی دقیق صنعتی، ساخت متریال‌های فیزیکی PBR و انیمیشن‌های سینماتیک برای رندرهای استاتیک و انجین‌های تعاملی وب می‌پردازد.',
+      fa: 'تلاقی هنر بصری سه‌بعدی با کارایی فوق‌العاده وب؛ استودیو MIGO با مدل‌سازی دقیق صنعتی، شیدرهای فیزیکی PBR و انیمیشن‌های تعاملی، رندرهایی خیره‌کننده با فریم‌ریت پایدار ۶۰ هرتز در مرورگرها خلق می‌کند.',
     },
     icon: 'Box',
     badge: {
@@ -400,7 +400,7 @@ export const SERVICES: ServiceItem[] = [
     },
     overview: {
       en: 'Engineering real-time physics engines and digital replicas of industrial infrastructure. MIGO builds safety simulation environments, aeronautical turbine maintenance trainers, and oil & gas pipeline emergency scenarios with zero physical hazard.',
-      fa: 'مهندسی موتورهای فیزیک ریل‌تایم و نمونه‌های دیجیتال زیرساخت‌های صنعتی. استودیو MIGO محیط‌های شبیه‌سازی ایمنی HSE، تعمیر و نگهداری توربین‌های هوایی و سناریوهای اضطراری نفت و گاز را بدون کوچک‌ترین خطر جانی بازآفرینی می‌کند.',
+      fa: 'مهندسی موتورهای فیزیک بی‌درنگ و دوقلوهای دیجیتال زیرساخت‌های صنعتی؛ استودیو MIGO مانورهای ایمنی HSE، عیب‌یابی توربین‌های هوایی و سناریوهای اضطراری نفت و گاز را بدون کوچک‌ترین ریسک جانی یا خسارت به تجهیزات بازآفرینی می‌کند.',
     },
     icon: 'Cpu',
     badge: {
